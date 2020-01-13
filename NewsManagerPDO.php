@@ -13,6 +13,7 @@ class NewsManagerPDO extends NewsManager {
     protected function add(News $news) {
         $req = $this->db->prepare("INSERT INTO news (auteur, titre, contenu, date_ajout, date_contenu) VALUES (:auteur, :titre, :contenu, NOW(), NOW()");
 
+        // on peut enlever les : devant auteur, titre et contenu, à test !!
         $req->bindValue(':auteur', $news->getAuteur());
         $req->bindValue(':titre', $news->getTitre());
         $req->bindValue(':contenu', $news->getContenu());
@@ -45,7 +46,7 @@ class NewsManagerPDO extends NewsManager {
         // On parcourt notre liste de news pour pouvoir placer des instances de DateTime en guise de dates d'ajout et de modification.
         foreach ($listeNews as $news) {
             $news->setDate_ajout(new DateTime($news->getDate_ajout()));
-            $news->setDate_modif(new DateTime($news->getDate_modif()));
+            // $news->setDate_modif(new DateTime($news->getDate_modif()));
         }
         
         $requete->closeCursor();
@@ -63,7 +64,7 @@ class NewsManagerPDO extends NewsManager {
         $news = $req->fetch();
 
         $news->setDate_ajout(new DateTime($news->getDate_ajout()));
-        $news->setDate_modif(new DateTime($news->getDate_modif()));
+        // $news->setDate_modif(new DateTime($news->getDate_modif()));
 
         return $news;
     }

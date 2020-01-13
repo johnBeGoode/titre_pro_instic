@@ -8,7 +8,7 @@ class News {
     protected $titre;
     protected $contenu;
     protected $date_ajout;
-    protected $date_modif;
+    // protected $date_modif;
 
     // constantes (relatives aux erreurs possibles rencontrées lors de l'exécution de la méthode)
     const AUTEUR_INVALIDE = 1;
@@ -48,7 +48,6 @@ class News {
 
     // getters
     public function erreurs() {
-
         return $this->erreurs;
     }
 
@@ -72,9 +71,9 @@ class News {
         return $this->date_ajout;
     }
 
-    public function getDate_modif() {
-        return $this->date_modif;
-    }
+    // public function getDate_modif() {
+    //     return $this->date_modif;
+    // }
 
     // setters
     public function setId($id) {
@@ -113,7 +112,7 @@ class News {
         $this->date_ajout = $date_ajout;
     }
 
-    public function setDate_modif($date_modif) {
-        $this->date_modif = $date_modif;
-    }
+    // public function setDate_modif($date_modif) {
+    //     $this->date_modif = $date_modif;
+    // }
 }

@@ -1,0 +1,25 @@
+- Systeme interface admin:
+	- appliquer le tab dynamique grafikart (bootstrap)
+	- module ajouter article sur une autre page (pas avec tableau)
+
+- template ou mise en forme maison ??
+
+- créer la classe commentaires
+
+- utiliser les diagrammes merise (mcd) et uml (diagramme de cas d'utilisation):
+
+	- définition diag de cas d'utilisation: recence les gdes fonctionnalités
+	d'un système (fonctions primaires). On ne s'attarde pas sur cmt on les fait.
+	Un cas d'utilisation c'est un service rendu par le système en réponse
+	à une sollicitation d'un acteur.
+
+	- déf MCD: décrit les données du SI (entité-association). Normalement on
+	fait un dictionnaires des données avant mais pr des questions de temps
+	fait manuellement étant donné le nombre réduit de tables
+
+- pagination si bcp de billets
+
+L'utilisateur se connecte et peut poster des articles et commenter.
+Il peut modifier ses commentaires et déposer des com sur d'autres articles.
+
+

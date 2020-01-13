@@ -1,5 +1,5 @@
 <?php
-require('Autoloader.php');
+require_once 'Autoloader.php';
 Autoloader::register();
 
 $db = DBFactory::getMysqlConnexionWithPDO();

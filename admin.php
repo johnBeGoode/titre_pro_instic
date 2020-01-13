@@ -1,5 +1,7 @@
 <?php
-require('Autoloader.php');
+require_once 'functions/auth.php';
+force_user_connected();
+require_once 'Autoloader.php';
 Autoloader::register();
 
 $db = DBFactory::getMysqlConnexionWithPDO();
@@ -60,8 +62,14 @@ if (isset($_POST['auteur'])) {
         }
     </style>
 </head>
+
 <body>
     <p><a href="index1.php">Accéder à l'accueil du site</a></p>
+    <?php
+    if (is_connected()) { ?>
+        <a href="logout.php">Se déconnecter</a>
+    <?php } ?>
+    
         
         <form action="admin.php" method="post">
         <p style="text-align: center">
@@ -102,11 +110,15 @@ if (isset($_POST['auteur'])) {
         <p style="text-align: center">Il y a actuellement <?= $manager->count() ?> news. En voici la liste :</p>
         
         <table>
-        <tr><th>Auteur</th><th>Titre</th><th>Date d'ajout</th><th>Dernière modification</th><th>Action</th></tr>
+        <!-- <tr><th>Auteur</th><th>Titre</th><th>Date d'ajout</th><th>Dernière modification</th><th>Action</th></tr> -->
+        <tr><th>Auteur</th><th>Titre</th><th>Date d'ajout</th><th>Action</th></tr>
     <?php
     foreach ($manager->getList() as $news)
     {
-    echo '<tr><td>', $news->getAuteur(), '</td><td>', $news->getTitre(), '</td><td>', $news->getDate_ajout()->format('d/m/Y à H\hi'), '</td><td>', ($news->getDate_ajout() == $news->getDate_modif() ? '-' : $news->getDate_modif()->format('d/m/Y à H\hi')), '</td><td><a href="?modifier=', $news->getId(), '">Modifier</a> | <a href="?supprimer=', $news->getId(), '">Supprimer</a></td></tr>', "\n";
+    // echo '<tr><td>', $news->getAuteur(), '</td><td>', $news->getTitre(), '</td><td>', $news->getDate_ajout()->format('d/m/Y à H\hi'), '</td><td>', ($news->getDate_ajout() == $news->getDate_modif() ? '-' : $news->getDate_modif()->format('d/m/Y à H\hi')), '</td><td><a href="?modifier=', $news->getId(), '">Modifier</a> | <a href="?supprimer=', $news->getId(), '">Supprimer</a></td></tr>', "\n";
+
+    echo '<tr><td>', $news->getAuteur(), '</td><td>', $news->getTitre(), '</td><td>', $news->getDate_ajout()->format('d/m/Y à H\hi'), '</td><td><a href="?modifier=', $news->getId(), '">Modifier</a> | <a href="?supprimer=', $news->getId(), '">Supprimer</a></td></tr>', "\n";
+
     }
     ?>
     </table>
