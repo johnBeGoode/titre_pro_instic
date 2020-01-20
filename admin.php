@@ -8,7 +8,7 @@ $db = DBFactory::getMysqlConnexionWithPDO();
 $manager = new NewsManagerPDO($db);
 
 if (isset($_GET['modifier'])) {
-    $news = $manager->getUnique((int)$_GET['modifier']);
+    $news = $manager->getOne((int)$_GET['modifier']);
 }
 
 if (isset($_GET['supprimer'])) {
@@ -109,16 +109,33 @@ if (isset($_POST['auteur'])) {
         
         <p style="text-align: center">Il y a actuellement <?= $manager->count() ?> news. En voici la liste :</p>
         
-        <table>
+        <table class="table table-striped">
         <!-- <tr><th>Auteur</th><th>Titre</th><th>Date d'ajout</th><th>Dernière modification</th><th>Action</th></tr> -->
-        <tr><th>Auteur</th><th>Titre</th><th>Date d'ajout</th><th>Action</th></tr>
+        <!-- <tr><th>Auteur</th><th>Titre</th><th>Date d'ajout</th><th>Action</th></tr> -->
+        <thead>
+            <tr>
+                <th>Auteur</th>
+                <th>Titre</th>
+                <th>Date d'ajout</th>
+                <th>Action</th>
+            </tr>
+        <thead><tbody>
     <?php
     foreach ($manager->getList() as $news)
     {
-    // echo '<tr><td>', $news->getAuteur(), '</td><td>', $news->getTitre(), '</td><td>', $news->getDate_ajout()->format('d/m/Y à H\hi'), '</td><td>', ($news->getDate_ajout() == $news->getDate_modif() ? '-' : $news->getDate_modif()->format('d/m/Y à H\hi')), '</td><td><a href="?modifier=', $news->getId(), '">Modifier</a> | <a href="?supprimer=', $news->getId(), '">Supprimer</a></td></tr>', "\n";
+    ?>
 
-    echo '<tr><td>', $news->getAuteur(), '</td><td>', $news->getTitre(), '</td><td>', $news->getDate_ajout()->format('d/m/Y à H\hi'), '</td><td><a href="?modifier=', $news->getId(), '">Modifier</a> | <a href="?supprimer=', $news->getId(), '">Supprimer</a></td></tr>', "\n";
+    <!-- // echo '<tr><td>', $news->getAuteur(), '</td><td>', $news->getTitre(), '</td><td>', $news->getDate_ajout()->format('d/m/Y à H\hi'), '</td><td>', ($news->getDate_ajout() == $news->getDate_modif() ? '-' : $news->getDate_modif()->format('d/m/Y à H\hi')), '</td><td><a href="?modifier=', $news->getId(), '">Modifier</a> | <a href="?supprimer=', $news->getId(), '">Supprimer</a></td></tr>', "\n";
 
+    // echo '<tr><td>', $news->getAuteur(), '</td><td>', $news->getTitre(), '</td><td>', $news->getDate_ajout()->format('d/m/Y à H\hi'), '</td><td><a href="?modifier=', $news->getId(), '">Modifier</a> | <a href="?supprimer=', $news->getId(), '">Supprimer</a></td></tr>', "\n"; -->
+    <tr>
+        <td><?= $news->getAuteur() ?></td>
+        <td><?= $news->getTitre() ?></td>
+        <td><?= $news->getDate_ajout()->format('d/m/Y à H\hi') ?></td>
+        <td><a href="?modifier='<?= $news->getId() ?>'">Modifier</a> | <a href="?supprimer='<?= $news->getId() ?> '">Supprimer</a></td><br>
+    </tr>
+
+    <?php
     }
     ?>
     </table>

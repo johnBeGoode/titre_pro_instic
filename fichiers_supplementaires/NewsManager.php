@@ -2,10 +2,10 @@
 abstract class NewsManager {
 
     // permet d'ajouter une news (en param celle à ajouter)
-    abstract public function add(News $news); // c'est la classe fille qui va réécrire la méthode d'où le abstract devant le fct
+    abstract protected function add(News $news); // c'est la classe fille qui va réécrire la méthode d'où le abstract devant le fct
 
     // met à jour une news
-    abstract public function update(News $news);
+    abstract protected function update(News $news);
 
     // supprime une news avec son identifiant
     abstract public function delete($id);
@@ -17,14 +17,13 @@ abstract class NewsManager {
     abstract public function getList($debut = -1, $limite = -1);
 
     // retourne une news précise en fct de son id
-    abstract public function getOne($id);
+    abstract public function getUnique($id);
     
     // renvoie le nb de news total
     abstract public function count();
     
     // permet d'enregistrer une news
     public function save(News $news) {
-        
         if ($news->isValid()) {
             $news->isNew() ? $this->add($news) : $this->update($news);
         }
@@ -32,4 +31,5 @@ abstract class NewsManager {
             throw new RuntimeException('La news doit être valide pour être enregistrée');
         }
     }
+
 }

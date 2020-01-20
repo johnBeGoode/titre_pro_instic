@@ -1,56 +1,52 @@
 <?php
 class News {
     
-    // attributs
-    protected $erreurs = [];
     protected $id;
     protected $auteur;
     protected $titre;
     protected $contenu;
     protected $date_ajout;
-    // protected $date_modif;
+    protected $erreurs = [];
 
-    // constantes (relatives aux erreurs possibles rencontrées lors de l'exécution de la méthode)
+    // Constantes (relatives aux erreurs possibles rencontrées lors de l'exécution de la méthode)
     const AUTEUR_INVALIDE = 1;
     const TITRE_INVALIDE = 2;
     const CONTENU_INVALIDE = 3;
 
-    // méthodes
-    public function __construct($data = []) {
+
+
+    public function __construct($data = []) { // voir si on peut mettre Array $data ici
 
         if(!empty($data)) { // si on a spécifié des valeurs alors on hydrate l'objet
             $this->hydrate($data);
         }
     }
 
-    public function hydrate(Array $data):void {
+    public function hydrate(Array $data):void { // un tableau doit être passé en paramètre d'où le "Array")
 
         foreach ($data as $key => $val) {
-            $methode = 'set' . ucfirst($key);
-            if (method_exists($this, $methode)) {
-                $this->$methode($val);
+            $method = 'set' . ucfirst($key);
+            if (method_exists($this, $method)) { // ici $this fait référence à la classe. On vérifie que la méthode existe dans la classe
+                $this->$method($val); // si c'est le cas alors on appelle le setter
             }
         }
     }
 
-    // voir si la news est nouvelle
+    // Voir si la news est nouvelle
     public function isNew():bool {
 
         return empty($this->id);
     }
 
-    // voir si la news est valide
+    // Voir si la news est valide
     public function isValid():bool {
 
-        return !(empty($this->auteur) || empty($this->titre) || empty($this->contenu));
+        // return !(empty($this->auteur) || empty($this->titre) || empty($this->contenu));
+        return (!empty($this->auteur) && !empty($this->titre) && !empty($this->contenu));
     }
 
 
-    // getters
-    public function erreurs() {
-        return $this->erreurs;
-    }
-
+    // Getters
     public function getId() {
         return $this->id;
     }
@@ -71,13 +67,13 @@ class News {
         return $this->date_ajout;
     }
 
-    // public function getDate_modif() {
-    //     return $this->date_modif;
-    // }
+    public function erreurs() {
+        return $this->erreurs;
+    }
 
-    // setters
+
+    // Setters
     public function setId($id) {
-
         $this->id = (int)$id;
     }
 
@@ -111,8 +107,4 @@ class News {
     public function setDate_ajout($date_ajout) {
         $this->date_ajout = $date_ajout;
     }
-
-    // public function setDate_modif($date_modif) {
-    //     $this->date_modif = $date_modif;
-    // }
 }

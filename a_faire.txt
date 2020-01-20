@@ -1,10 +1,8 @@
 - Systeme interface admin:
 	- appliquer le tab dynamique grafikart (bootstrap)
-	- module ajouter article sur une autre page (pas avec tableau)
+	- module ajouter article sur une autre page
 
 - template ou mise en forme maison ??
-
-- créer la classe commentaires
 
 - utiliser les diagrammes merise (mcd) et uml (diagramme de cas d'utilisation):
 
@@ -17,9 +15,9 @@
 	fait un dictionnaires des données avant mais pr des questions de temps
 	fait manuellement étant donné le nombre réduit de tables
 
-- pagination si bcp de billets
+- pagination si bcp de billets (optionnel)
 
-L'utilisateur se connecte et peut poster des articles et commenter.
-Il peut modifier ses commentaires et déposer des com sur d'autres articles.
+L'utilisateur se connecte et peut poster ses commentaires (car il s'agit d'un blog et non
+d'un forum donc pas de gestion des news)
 
 
