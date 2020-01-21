@@ -16,10 +16,11 @@ $manager = new NewsManagerPDO($db);
   </head>
   
   <body>
-  <div id="header">
+  <!-- <div id="header">
     <p><a href="admin.php">Accéder à l'espace d'administration</a></p>
     <h1>Mon super Blog</h1>
-  </div>
+  </div> -->
+  <?php require_once 'elements/head.php'; ?>
 
     <h2>Voici les dernières news publiées:</h2>
 <?php
@@ -74,5 +75,7 @@ else {
   }
 }
 ?>
+
+<?php require_once 'elements/footer.php'; ?>
 </body>
 </html>

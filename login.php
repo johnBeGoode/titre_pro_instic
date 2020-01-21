@@ -19,7 +19,7 @@ if (is_connected()) {
     exit();
 }
 
-require 'elements/header.php'; 
+require 'elements/head.php'; 
 ?>
  
  <?php if($error) { ?>
@@ -27,7 +27,10 @@ require 'elements/header.php';
         <?= $error; ?>
     </div>
  <?php } ?>
-<form action="" method="post">
+
+<!-- ---------- PARTIE GRAFIKART -->
+
+<!-- <form action="" method="post">
     <div class="form-group">
         <input type="text" name="pseudo" placeholder="Votre pseudo" class="form-control">
     </div>
@@ -35,6 +38,84 @@ require 'elements/header.php';
         <input type="password" name="password" placeholder="Votre mot de passe" class="form-control">
     </div>
     <button type="submit" class="btn btn-primary">Se connecter</button>
-</form>
+</form> -->
 
-<?php require 'elements/footer.php'; ?>
+<!-- ---------- PARTIE GRAFIKART -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous"> -->
+    <style>
+      /* html, body {
+  height: 100%;
+} */
+
+/* body {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+} */
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+.form-signin .checkbox {
+  font-weight: 400;
+}
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}  
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="text-center">
+        <form class="form-signin">
+        <!-- <img class="mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <div class="checkbox mb-3">
+            <label>
+            <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2017-2019</p>
+        </form>
+    </div>
+
+    <?php require 'elements/footer.php'; ?>
+</body>
+</html>
+
