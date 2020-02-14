@@ -5,7 +5,7 @@
   <?php 
   $moviesManager = new MoviesManager($db);
   $movies = $moviesManager->getAllMovies();
-  
+
   foreach($movies as $movie){
     echo $movie->getTitle();
   }
