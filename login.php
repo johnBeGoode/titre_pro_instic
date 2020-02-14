@@ -1,7 +1,7 @@
 <?php 
 $error = null;
-if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
-    if ($_POST['pseudo'] === 'John' && $_POST['password'] === 'Doe') {
+if (!empty($_POST['login']) && !empty($_POST['password'])) {
+    if ($_POST['login'] === 'John' && $_POST['password'] === 'Doe') {
         session_start();
         // On stocke une valeur pour que ça renvoie true
         $_SESSION['connected'] = 1;
@@ -23,24 +23,10 @@ require 'elements/head.php';
 ?>
  
  <?php if($error) { ?>
-    <div class="alert alert-danger">
+    <div class="alert alert-danger text-center">
         <?= $error; ?>
     </div>
  <?php } ?>
-
-<!-- ---------- PARTIE GRAFIKART -->
-
-<!-- <form action="" method="post">
-    <div class="form-group">
-        <input type="text" name="pseudo" placeholder="Votre pseudo" class="form-control">
-    </div>
-    <div class="form-group">
-        <input type="password" name="password" placeholder="Votre mot de passe" class="form-control">
-    </div>
-    <button type="submit" class="btn btn-primary">Se connecter</button>
-</form> -->
-
-<!-- ---------- PARTIE GRAFIKART -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +34,6 @@ require 'elements/head.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous"> -->
     <style>
       /* html, body {
   height: 100%;
@@ -64,9 +49,10 @@ require 'elements/head.php';
   background-color: #f5f5f5;
 } */
 
+
 .form-signin {
   width: 100%;
-  max-width: 330px;
+  max-width: 400px;
   padding: 15px;
   margin: auto;
 }
@@ -98,20 +84,19 @@ require 'elements/head.php';
 </head>
 <body>
     <div class="text-center">
-        <form class="form-signin">
+        <form class="form-signin" action="" method="post">
         <!-- <img class="mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <div class="checkbox mb-3">
+        <h1 class="h3 mb-3 font-weight-normal">Admin</h1>
+        <!-- <label for="inputEmail" class="sr-only">Login</label> -->
+        <input type="text" name="login" class="form-control" placeholder="Login" required autofocus>
+        <!-- <label for="inputPassword" class="sr-only">Password</label> -->
+        <input type="password" name="password" class="form-control" placeholder="Password" required>
+        <!-- <div class="checkbox mb-3">
             <label>
             <input type="checkbox" value="remember-me"> Remember me
             </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <p class="mt-5 mb-3 text-muted">&copy; 2017-2019</p>
+        </div> -->
+        <button class="btn btn-lg btn-primary btn-block mt-5" type="submit">Connect</button>
         </form>
     </div>
 
