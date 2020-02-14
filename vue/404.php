@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-</head>
-<body>
+<?php require_once 'include/header.php' ?>
     <h1>Erreur 404</h1>      
-</body>
-</html>
+
+<?php require_once 'include/footer.php' ?>

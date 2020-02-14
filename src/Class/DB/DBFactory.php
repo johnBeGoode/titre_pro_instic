@@ -2,7 +2,7 @@
 class DBFactory {
 
     public static function getMysqlConnexionWithPDO() {
-        $db = new PDO('mysql:host=localhost;dbname=app_john;charset=utf8', 'root', '');
+        $db = new PDO('mysql:host=localhost;dbname=appjohn;charset=utf8', 'root', '');
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         return $db;

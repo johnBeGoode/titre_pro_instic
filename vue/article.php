@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-</head>
-<body>
+<?php require_once 'include/header.php' ?>
     <h1>Article</h1>
     <?php
         echo "id = ".$vars["id"]."<br>";
         echo "slug = ".$vars["slug"];
     ?>    
-</body>
-</html>
+<?php require_once 'include/footer.php' ?>

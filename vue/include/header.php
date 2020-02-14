@@ -1,3 +1,11 @@
+<?php
+error_reporting(E_ALL);
+require_once 'src/class/DB/DBFactory.php';
+require_once 'src/class/Manager/MoviesManager.php';
+
+$db = DBFactory::getMysqlConnexionWithPDO();
+$manager = new MoviesManager($db);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-</head>
-<body>
+<?php require_once 'include/header.php' ?>
     <h1>contact</h1>        
-</body>
-</html>
+<?php require_once 'include/footer.php' ?>

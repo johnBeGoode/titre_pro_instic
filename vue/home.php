@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>    
-</head>
+<?php require_once 'include/header.php'; ?>
+<?php require_once 'src/class/Manager/MoviesManager.php'; ?>
 
-<body class="<?= $config['theme'];?>">
-    <h1>Homepage</h1>        
-</body>
-</html>
+    <h2>Voici les dernières news publiées:</h2>
+  <?php 
+  $moviesManager = new MoviesManager($db);
+  $movies = $moviesManager->getAllMovies();
+  
+  foreach($movies as $movie){
+    echo $movie->getTitle();
+  }
+  
+  ?>
+
+<?php require_once 'include/footer.php'; ?>
