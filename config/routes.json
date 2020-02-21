@@ -1,0 +1,15 @@
+{
+    "routes":{
+        "":                     "home",
+        "contact":              "contact",
+        "article/{slug}/{id}":  "article",        
+        "article/{id}":         "article", 
+        "connexion":            "login",
+        "espace_administration":"admin"        
+    },  
+    
+    "regexParam":{
+        "{slug}":  "(.+)",
+        "{id}":    "([0-9]+)"  
+    }
+}
