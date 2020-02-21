@@ -1,4 +1,5 @@
 <?php
+
 require_once("../models/Autoloader.php");
 require("../controllers/Router/Router.php");
 
