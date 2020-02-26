@@ -1,50 +1,55 @@
 <?php
 namespace App\EntityManager;
 use App\DBFactory;
+use App\Entity\Comments;
+
 
 class CommentsManager {
 
     protected $db;
 
 
-    public function __construct(PDO $db) {
-
-        $this->db = $db;
+    public function __construct() {
+        $this->db = DBFactory::getConnexion();
     }
 
-    public function add(Comments $comments ) {
+    public function add(Comments $comment) {
+        $req = $this->db->prepare("INSERT INTO comments (comment, date_add, movie_id, user_id) VALUES (:comment, NOW(), :movie_id, :user_id");
 
-        $req = $this->db->prepare("INSERT INTO news_commentaires (id_news, auteur, commentaire, date_commentaire) VALUES (:id_news, :auteur, :commentaire, NOW()");
-
-        $req->bindValue(':id_news', $comments->getIdNews());
-        $req->bindValue(':auteur', $comments->getAuteur());
-        $req->bindValue(':commentaire', $comments->getCommentaire());
+        $req->bindValue(':comment', $comment->getComment());
+        $req->bindValue(':movie_id', $comment->getMovieId());
+        $req->bindValue(':user_id', $comment->getUserId());
 
         $req->execute();
     }
 
-    public function update(Comments $comments) {
+    public function update(Comments $comment) {
+        $req = $this->db->prepare("UPDATE comments SET comment = :comment, WHERE id = :id");
 
-        $req = $this->db->prepare("UPDATE comments SET auteur = :auteur, commentaire = :commentaire, date_commentaire = :date_commentaire WHERE id = :id");
-
-        $req->bindValue(':auteur', $comments->getAuteur());
-        $req->bindValue(':commentaire', $comments->getCommentaire());
-        $req->bindValue(':id', $comments->getId(), PDO::PARAM_INT);
+        // Nécessaire de pouvoir modifier champs movie_id et user_id ???
+        $req->bindValue(':comment', $comment->getComment());
+        $req->bindValue(':id', $comment->getId(), PDO::PARAM_INT);
 
         $req->execute();
     }
 
     public function delete($id) {
-
-        $this->db->exec("DELETE FROM news_commentaires WHERE id =" . (int)$id);
+        $this->db->exec("DELETE FROM comments WHERE id =" . (int)$id);
     }
 
     public function count() {
-        
-        return $this->db->query("SELECT COUNT(id) FROM news_commentaires")->fetchColumn();
+        return $this->db->query("SELECT COUNT(id) FROM comments")->fetchColumn();
+    }
+
+    public function getAllComments() {
+        $sql = "SELECT * FROM comments ORDER BY date_add DESC";
+        $req = $this->db->query($sql);
+        $datas = $req->fetchAll(PDO::FETCH_CLASS, 'App\Entity\Comments');
+
+        return $datas;
     }
 
     public function getOne($id) {
-        return $this->db->query("SELECT * FROM news_commentaires WHERE id=" . (int) $id);
+        return $this->db->query("SELECT * FROM comments WHERE id=" . (int)$id);
     }
 }

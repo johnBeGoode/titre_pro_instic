@@ -10,9 +10,8 @@ class DBFactory {
         'password' => ''
     );
 
-    public static function getMysqlConnexionWithPDO() {
+    public static function getConnexion() {
         $db = new \PDO('mysql:host=' . self::$database['hostname'] . ';dbname=' .  self::$database['database'] . ';charset=utf8', self::$database['login'], self::$database['password']);
-
         $db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
         return $db;
