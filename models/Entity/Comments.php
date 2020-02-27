@@ -10,13 +10,13 @@ class Comments {
     protected $user_id;
 
 
-    public function __construct($id, $comment, $date_add, $movie_id, $user_id) {
-        $this->id = $id;
-        $this->comment = $comment;
-        $this->date_add = $date_add;
-        $this->movie_id = $movie_id;
-        $this->user_id = $user_id;
-    }
+    // public function __construct($id, $comment, $date_add, $movie_id, $user_id) {
+    //     $this->id = $id;
+    //     $this->comment = $comment;
+    //     $this->date_add = $date_add;
+    //     $this->movie_id = $movie_id;
+    //     $this->user_id = $user_id;
+    // }
 
     // Getters
     public function getId() {

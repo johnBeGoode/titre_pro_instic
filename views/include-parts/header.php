@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title_page; ?></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="/public/styles.css">
-    <link rel="icon" href="public/images/favicon.ico">
+    <link rel="stylesheet" href="public/styles.css">
+    <link rel="shortcut icon" type="image/x-icon" href="public/images/spiral.ico">
     <meta name="description" content="<?= $desc_page; ?>"/>
     <meta name="author" content="Jonathan Martin"/>
 </head>

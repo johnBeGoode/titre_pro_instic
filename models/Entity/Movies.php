@@ -1,5 +1,6 @@
 <?php
 namespace App\Entity;
+use DateTime;
 
 class Movies {
 
@@ -12,15 +13,15 @@ class Movies {
     protected $slug;
 
 
-    public function __construct($id, $title, $resume, $date_add, $picture, $is_published, $slug) {
-        $this->id = $id;
-        $this->title = $title;
-        $this->resume = $resume;
-        $this->date_add = $date_add;
-        $this->picture = $picture;
-        $this->is_published = $is_published;
-        $this->slug = $slug;
-    }
+    // public function __construct($id, $title, $resume, $date_add, $picture, $is_published, $slug) {
+    //     $this->id = $id;
+    //     $this->title = $title;
+    //     $this->resume = $resume;
+    //     $this->date_add = $date_add;
+    //     $this->picture = $picture;
+    //     $this->is_published = $is_published;
+    //     $this->slug = $slug;
+    // }
 
     // Getters
     public function getId() {
@@ -36,7 +37,8 @@ class Movies {
     }
 
     public function getDateAdd() {
-        return $this->date_add;
+        $date = new DateTime($this->date_add);
+        return $date->format('d-m-Y H:i');
     }
 
     public function getPicture() {
