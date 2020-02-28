@@ -1,9 +1,12 @@
 $(document).ready(function() {
-    console.log($('.trailer'));
-$('.btn-trailer').on('click', function() {
-    $('.trailer').slideDown(500);
-   
-})
 
-
+    $(".btn-trailer").click(function(e){
+        e.stopPropagation();
+        $(this).parents("article").find(".trailer").slideDown(500);        
+    });
+    
+    $("html").click(function(){
+        $(".trailer").slideUp(500);
+    });
+    
 })

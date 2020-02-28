@@ -57,17 +57,24 @@ class MovieManager {
         return $datas;
     }
 
-    // public function getOne($id) {
-    //     $sql = "SELECT * FROM movies WHERE id = :id";
-    //     $req = $this->db->prepare($sql);
-    //     $req->bindValue(':id', (int)$id, PDO::PARAM_INT);
-    //     $req->execute();
-    //     $movie = $req->fetchOne(\PDO::FETCH_CLASS, 'App\Entity\Movies');
+    public function getNbMovies(int $nb) {
+        $sql = "SELECT * FROM movies ORDER BY date_add DESC LIMIT 0, :nb_max";
+        $req = $this->db->prepare($sql);        
+        // $req->bindValue(':nb_min', 0, \PDO::PARAM_INT);
+        $req->bindValue(':nb_max', $nb, \PDO::PARAM_INT);
+        $req->execute();
+        $datas = $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Movie');
 
-    //     return $movie;
-    // }
+        return $datas;
+    }
 
     public function getOne($id) {
-        return $this->db->query("SELECT * FROM movies WHERE id=" . (int) $id);
+        $sql = "SELECT * FROM movies WHERE id = :id";
+        $req = $this->db->prepare($sql);
+        $req->bindValue(':id', (int)$id, \PDO::PARAM_INT);
+        $req->execute();
+        $movie = $req->fetchObject('App\Entity\Movie');
+
+        return $movie;
     }
 }
