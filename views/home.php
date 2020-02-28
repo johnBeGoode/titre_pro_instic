@@ -10,7 +10,7 @@
                 <div class="thumbnail"><img src="<?= $movie->getPicture(); ?>" alt="<?= $movie->getSlug(); ?>"></div>
                 <div class="article_content">
                     <h2><?= $movie->getTitle(); ?></h2>
-                    <button><i class="fas fa-video"></i></button>
+                    <button class="btn-trailer"><i class="fas fa-video"></i></button>
                     <p><?= $movie->getDateAdd(); ?></p>
                     <p><?= nl2br(substr($movie->getResume(),0, 200)) . '...'; ?><br>
                         <a href="">Lire la suite</a>    
