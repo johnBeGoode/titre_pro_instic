@@ -1,0 +1,35 @@
+#home {
+    padding: 50px 100px;
+
+    section.articles {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        article {
+            display: flex;
+            margin-bottom: 50px;
+            width: 550px;
+            .thumbnail {
+                width: 180px;            
+                height: 250px;
+                border: 1px solid black;
+                overflow: hidden;
+                img {
+                    width: auto;
+                    height: 100%; // définit également la largeur pour ne pas déformer le ratio
+                }
+            }
+            .article_content {
+                width: 350px;
+                padding: 0 50px;
+
+                p {
+                    text-align: justify;
+                }
+            }
+
+        }
+    }
+}
+

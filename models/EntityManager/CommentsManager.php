@@ -1,0 +1,55 @@
+<?php
+namespace App\EntityManager;
+use App\DBFactory;
+use App\Entity\Comments;
+
+
+class CommentsManager {
+
+    protected $db;
+
+
+    public function __construct() {
+        $this->db = DBFactory::getConnexion();
+    }
+
+    public function add(Comments $comment) {
+        $req = $this->db->prepare("INSERT INTO comments (comment, date_add, movie_id, user_id) VALUES (:comment, NOW(), :movie_id, :user_id");
+
+        $req->bindValue(':comment', $comment->getComment());
+        $req->bindValue(':movie_id', $comment->getMovieId());
+        $req->bindValue(':user_id', $comment->getUserId());
+
+        $req->execute();
+    }
+
+    public function update(Comments $comment) {
+        $req = $this->db->prepare("UPDATE comments SET comment = :comment, WHERE id = :id");
+
+        // Nécessaire de pouvoir modifier champs movie_id et user_id ???
+        $req->bindValue(':comment', $comment->getComment());
+        $req->bindValue(':id', $comment->getId(), PDO::PARAM_INT);
+
+        $req->execute();
+    }
+
+    public function delete($id) {
+        $this->db->exec("DELETE FROM comments WHERE id =" . (int)$id);
+    }
+
+    public function count() {
+        return $this->db->query("SELECT COUNT(id) FROM comments")->fetchColumn();
+    }
+
+    public function getAllComments() {
+        $sql = "SELECT * FROM comments ORDER BY date_add DESC";
+        $req = $this->db->query($sql);
+        $datas = $req->fetchAll(PDO::FETCH_CLASS, 'App\Entity\Comments');
+
+        return $datas;
+    }
+
+    public function getOne($id) {
+        return $this->db->query("SELECT * FROM comments WHERE id=" . (int)$id);
+    }
+}
