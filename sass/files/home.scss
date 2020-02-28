@@ -1,6 +1,8 @@
 #home {
+    overflow-x: hidden;
+    margin-top: 150px;
     padding: 50px 100px;
-
+    @include gradeSkew;
     section.articles {
         display: flex;
         justify-content: space-between;
