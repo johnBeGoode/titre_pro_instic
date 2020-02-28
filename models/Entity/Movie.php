@@ -2,7 +2,7 @@
 namespace App\Entity;
 use DateTime;
 
-class Movies {
+class Movie {
 
     protected $id;
     protected $title;
@@ -55,6 +55,4 @@ class Movies {
     public function getSlug() {
         return $this->slug;
     }
-
-    // Setters ??
 }

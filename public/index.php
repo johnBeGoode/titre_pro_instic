@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(E_ALL);
 require_once("../models/Autoloader.php");
 require("../controllers/Router/Router.php");
 
