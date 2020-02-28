@@ -3,7 +3,7 @@
 }
 
 #home {
-    margin-top: 150px;
+    margin-top: 170px;
     padding: 50px 100px;
     @include gradeSkew;
     @include boxShadowAround;
@@ -17,6 +17,7 @@
             display: flex;
             margin-bottom: 50px;
             width: 550px;
+            position: relative;
             .thumbnail {
                 width: 180px;            
                 height: 250px;
@@ -31,9 +32,35 @@
                 width: 350px;
                 padding: 0 50px;
 
+                h2 {
+                    font-size: 1.5em;
+                    display: inline-block;
+                    width: 80%;
+                }
+
+                button {
+                    display: inline-block;
+                    width: 18%;
+                    vertical-align: top;
+                    border: 1px solid black;
+                    border-radius: 10px;
+                    background-color: transparent;
+                }
+
                 p {
                     text-align: justify;
                 }
+                
+                a {
+                    color: antiquewhite;
+                }
+            }
+
+            .trailer {
+                // display: none;
+                position: absolute;
+                width: 100%;
+                height: 100%
             }
 
         }

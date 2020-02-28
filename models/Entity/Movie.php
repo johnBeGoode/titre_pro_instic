@@ -11,6 +11,7 @@ class Movie {
     protected $picture;
     protected $is_published;
     protected $slug;
+    protected $trailer;
 
 
     // public function __construct($id, $title, $resume, $date_add, $picture, $is_published, $slug) {
@@ -54,5 +55,13 @@ class Movie {
 
     public function getSlug() {
         return $this->slug;
+    }
+
+    public function getTrailer() {
+        return $this->trailer;
+    }
+
+    public function getVideo() {
+        echo '<iframe src="https://www.youtube.com/embed/' . $this->getTrailer() . '?controls=0&autoplay=1&mute=1&loop=1&playlist=' . $this->getTrailer() . 'frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="trailer"></iframe>';
     }
 }
