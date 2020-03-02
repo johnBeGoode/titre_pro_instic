@@ -1,10 +1,10 @@
 <?php
 namespace App\EntityManager;
 use App\DBFactory;
-use App\Entity\Movies;
+use App\Entity\Movie;
 
 
-class MoviesManager {
+class MovieManager {
 
     // attribut contenant l'instance représentant la base de données
     protected $db;
@@ -14,7 +14,7 @@ class MoviesManager {
         $this->db = DBFactory::getConnexion();
     }
 
-    public function add(Movies $movie) {
+    public function add(Movie $movie) {
         $req = $this->db->prepare("INSERT INTO movies (title, resume, date_add, picture, is_published, slug) VALUES (:title, :resume, NOW(), :picture, :is_published, :slug");
 
         // Faire test avec un array à la place de bindValue
@@ -27,10 +27,10 @@ class MoviesManager {
         $req->execute();
     }
 
-    public function update(Movies $movie) {
+    public function update(Movie $movie) {
         $req = $this->db->prepare("UPDATE movies SET title = :title, resume = :resume, picture = :picture, is_published = :is_published, slug = :slug WHERE id = :id");
 
-        $req->bindValue(':title', $movis->getTitle());
+        $req->bindValue(':title', $movie->getTitle());
         $req->bindValue(':resume', $movie->getResume());
         $req->bindValue(':picture', $movie->getPiture());
         $req->bindValue(':is_published', $movie->getIs_published());
@@ -52,22 +52,29 @@ class MoviesManager {
     public function getAllMovies() {
         $sql = "SELECT * FROM movies ORDER BY date_add DESC";
         $req = $this->db->query($sql);
-        $datas = $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Movies');
+        $datas = $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Movie');
 
         return $datas;
     }
 
-    // public function getOne($id) {
-    //     $sql = "SELECT * FROM movies WHERE id = :id";
-    //     $req = $this->db->prepare($sql);
-    //     $req->bindValue(':id', (int)$id, PDO::PARAM_INT);
-    //     $req->execute();
-    //     $movie = $req->fetchOne(\PDO::FETCH_CLASS, 'App\Entity\Movies');
+    public function getNbMovies(int $nb) {
+        $sql = "SELECT * FROM movies ORDER BY date_add DESC LIMIT 0, :nb_max";
+        $req = $this->db->prepare($sql);        
+        // $req->bindValue(':nb_min', 0, \PDO::PARAM_INT);
+        $req->bindValue(':nb_max', $nb, \PDO::PARAM_INT);
+        $req->execute();
+        $datas = $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Movie');
 
-    //     return $movie;
-    // }
+        return $datas;
+    }
 
     public function getOne($id) {
-        return $this->db->query("SELECT * FROM movies WHERE id=" . (int) $id);
+        $sql = "SELECT * FROM movies WHERE id = :id";
+        $req = $this->db->prepare($sql);
+        $req->bindValue(':id', (int)$id, \PDO::PARAM_INT);
+        $req->execute();
+        $movie = $req->fetchObject('App\Entity\Movie');
+
+        return $movie;
     }
 }

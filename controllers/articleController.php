@@ -1,11 +1,11 @@
-<?php 
-use App\EntityManager\ArticleManager;
+<?php
+error_reporting(E_ALL);
+use App\EntityManager\MovieManager;
 
-$articleManager = new ArticleManager();
-$article = $articleManager->getArticle();
-var_dump($article);
+$movieManager = new MovieManager();
 
-echo "id = ".$vars["id"]."<br>";
-echo "slug = ".$vars["slug"];
-  
+$movie = $movieManager->getOne($vars['id']);
+$title_page = "Article Chromatic SinémA";
+$desc_page = "lorem iiiiiii";
+
 require_once("../views/".$vue.".php");

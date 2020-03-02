@@ -1,11 +1,12 @@
 header {
-
     width: 100%;  
     height: 80px;
-    border-bottom: 1px solid $colorTitle;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-bottom: 40px;
+    @include gradeDark;
+    @include boxShadowAround;
 
     div#logo_header {
 
@@ -21,6 +22,7 @@ header {
             top: 10px;
             left: 5px;
             font-weight: bold;
+            color: white;
         }
     }
 
@@ -38,7 +40,7 @@ header {
 
             a {
                 text-decoration: none;
-                color: $colorTitle;
+                color: white;
                 font-weight: bold;
 
                 &:hover {

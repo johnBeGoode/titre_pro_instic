@@ -1,10 +1,10 @@
 <?php
 namespace App\EntityManager;
 use App\DBFactory;
-use App\Entity\Comments;
+use App\Entity\Comment;
 
 
-class CommentsManager {
+class CommentManager {
 
     protected $db;
 
@@ -13,7 +13,7 @@ class CommentsManager {
         $this->db = DBFactory::getConnexion();
     }
 
-    public function add(Comments $comment) {
+    public function add(Comment $comment) {
         $req = $this->db->prepare("INSERT INTO comments (comment, date_add, movie_id, user_id) VALUES (:comment, NOW(), :movie_id, :user_id");
 
         $req->bindValue(':comment', $comment->getComment());
@@ -23,10 +23,9 @@ class CommentsManager {
         $req->execute();
     }
 
-    public function update(Comments $comment) {
+    public function update(Comment $comment) {
         $req = $this->db->prepare("UPDATE comments SET comment = :comment, WHERE id = :id");
 
-        // Nécessaire de pouvoir modifier champs movie_id et user_id ???
         $req->bindValue(':comment', $comment->getComment());
         $req->bindValue(':id', $comment->getId(), PDO::PARAM_INT);
 
@@ -44,7 +43,7 @@ class CommentsManager {
     public function getAllComments() {
         $sql = "SELECT * FROM comments ORDER BY date_add DESC";
         $req = $this->db->query($sql);
-        $datas = $req->fetchAll(PDO::FETCH_CLASS, 'App\Entity\Comments');
+        $datas = $req->fetchAll(PDO::FETCH_CLASS, 'App\Entity\Comment');
 
         return $datas;
     }

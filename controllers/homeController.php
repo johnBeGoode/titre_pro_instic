@@ -1,8 +1,9 @@
 <?php
-use App\EntityManager\MoviesManager;
+error_reporting(E_ALL);
+use App\EntityManager\MovieManager;
 
-$movieManager = new MoviesManager();
-$movies = $movieManager->getAllMovies();
+$movieManager = new MovieManager();
+$movies = $movieManager->getNbMovies(9);
 $title_page = "Accueil Chromatic SinémA";
 $desc_page = "lorem rgdfghfdghfgdffh";
 

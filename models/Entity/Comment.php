@@ -1,7 +1,7 @@
 <?php
 namespace App\Entity;
 
-class Comments {
+class Comment {
     
     protected $id;
     protected $comment;
