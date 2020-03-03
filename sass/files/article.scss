@@ -1,8 +1,11 @@
 .content {
+    @include gradeSkew;
+    @include boxShadowAround;
     display: flex;
     justify-content: space-around;
     margin: 0 100px;
     margin-bottom: 100px;
+    padding: 50px;
     div:nth-child(2) {
         padding: 0 50px;
         span {
@@ -19,6 +22,7 @@
 }
 
 .bande-annonce {
+    @include boxShadowAround;
     width: 700px;
     margin: auto;
     margin-bottom: 100px;

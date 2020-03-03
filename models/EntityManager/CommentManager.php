@@ -27,7 +27,7 @@ class CommentManager {
         $req = $this->db->prepare("UPDATE comments SET comment = :comment, WHERE id = :id");
 
         $req->bindValue(':comment', $comment->getComment());
-        $req->bindValue(':id', $comment->getId(), PDO::PARAM_INT);
+        $req->bindValue(':id', $comment->getId(), \PDO::PARAM_INT);
 
         $req->execute();
     }
@@ -40,15 +40,25 @@ class CommentManager {
         return $this->db->query("SELECT COUNT(id) FROM comments")->fetchColumn();
     }
 
-    public function getAllComments() {
-        $sql = "SELECT * FROM comments ORDER BY date_add DESC";
-        $req = $this->db->query($sql);
-        $datas = $req->fetchAll(PDO::FETCH_CLASS, 'App\Entity\Comment');
+    // public function getAllComments() {
+    //     $sql = "SELECT * FROM comments ORDER BY date_add DESC";
+    //     $req = $this->db->query($sql);
+    //     $datas = $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Comment');
+
+    //     return $datas;
+    // }
+
+    public function getAllComments($movieId) {
+        $sql = "SELECT * FROM comments WHERE movie_id= :movieId ORDER BY date_add DESC";
+        $req = $this->db->prepare($sql);
+        $req->bindValue(':movieId', $movieId, \PDO::PARAM_INT);
+        $req->execute();
+        $datas = $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Comment');
 
         return $datas;
     }
 
-    public function getOne($id) {
-        return $this->db->query("SELECT * FROM comments WHERE id=" . (int)$id);
-    }
+    // public function getOne($id) {
+    //     return $this->db->query("SELECT * FROM comments WHERE id=" . (int)$id);
+    // }
 }

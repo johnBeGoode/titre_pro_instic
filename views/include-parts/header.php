@@ -22,7 +22,7 @@
         <div id="menu">
             <nav>
                 <ul>
-                    <li><a href="">Home</a></li>
+                    <li><a href="/">Home</a></li>
                     <li><a href="">Cinéma</a></li>
                     <li><a href="">Série</a></li>
                     <li><a href="">Contact</a></li>

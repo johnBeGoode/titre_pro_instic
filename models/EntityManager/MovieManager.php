@@ -59,7 +59,6 @@ class MovieManager {
     public function getNbMovies(int $nb) {
         $sql = "SELECT * FROM movies ORDER BY date_add DESC LIMIT 0, :nb_max";
         $req = $this->db->prepare($sql);        
-        // $req->bindValue(':nb_min', 0, \PDO::PARAM_INT);
         $req->bindValue(':nb_max', $nb, \PDO::PARAM_INT);
         $req->execute();
         $datas = $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Movie');

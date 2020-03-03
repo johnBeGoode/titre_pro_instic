@@ -1,6 +1,6 @@
 <?php require_once("include-parts/header.php"); ?>
 
-<div class="content">
+<div class="content oblique-positive">
     <div>
         <p class="thumbnail"><img src="<?= $movie->getPicture(); ?>" alt="<?= $movie->getSlug(); ?>"></p>
     </div>
@@ -18,7 +18,18 @@
 </div>
 
 <div class="bloc-commentaire">
-    <h3>Commentaires</h3>
+    <h3>Commentaires:</h3>
+    <div>
+        <?php foreach($comments as $comment): ?>
+            <p>
+                <?= $comment->getDateAdd(); ?>
+                <?= $comment->getUserId(); ?><br>
+            </p>
+            <p>
+                <?= $comment->getComment(); ?>
+            </p>
+        <?php endforeach; ?>
+    </div>
 </div>
 
 <?php require_once("include-parts/footer.php"); ?>
