@@ -17,10 +17,7 @@
                     </p>
                 </div>
 
-                <!-- mettre mute=1 pour lancer l'autoplay (paramètre autoplay=1) -->
-                <!-- <iframe src="https://www.youtube.com/embed/<?= $movie->getTrailer(); ?>?controls=0&autoplay=1&mute=1&loop=1&playlist=<?= $movie->getTrailer(); ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="trailer"></iframe> -->
-
-                  <?php $movie->getVideo(); ?>
+                <?php $movie->getVideo(); ?> 
             </article>
 
             <?php endforeach; ?>

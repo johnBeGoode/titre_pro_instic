@@ -6,7 +6,7 @@ use App\Entity\Movie;
 
 class MovieManager {
 
-    // attribut contenant l'instance représentant la base de données
+    
     protected $db;
 
 
@@ -40,8 +40,7 @@ class MovieManager {
         $req->execute();
     }
 
-     // Requête préparée
-     public function delete($id) {
+    public function delete($id) {
         $this->db->exec("DELETE FROM movies WHERE id = " . (int)$id);
     }
 

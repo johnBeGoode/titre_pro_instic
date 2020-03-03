@@ -1,0 +1,28 @@
+.content {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 100px;
+    margin-bottom: 100px;
+    div:nth-child(2) {
+        padding: 0 50px;
+        span {
+            font-weight: bold;
+        }
+    }
+}
+
+.thumbnail {
+    img {
+        width: 300px;
+        height: 400px;
+    }
+}
+
+.bande-annonce {
+    width: 700px;
+    margin: auto;
+    margin-bottom: 100px;
+    iframe {
+        width: 100%;
+    }
+}

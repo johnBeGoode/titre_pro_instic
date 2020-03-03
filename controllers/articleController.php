@@ -6,6 +6,6 @@ $movieManager = new MovieManager();
 
 $movie = $movieManager->getOne($vars['id']);
 $title_page = "Article Chromatic SinémA";
-$desc_page = "lorem iiiiiii";
+$desc_page = "Fiche détaillé et commentaires utilisateurs";
 
-require_once("../views/".$vue.".php");
+require_once("../views/" . $vue . ".php");

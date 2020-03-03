@@ -61,6 +61,7 @@ class Movie {
         return $this->trailer;
     }
 
+    // mettre mute=1 pour lancer l'autoplay (paramètre autoplay=1)
     public function getVideo() {
         echo '<iframe src="https://www.youtube.com/embed/' . $this->getTrailer() . '?controls=0&autoplay=1&mute=1&loop=1&playlist=' . $this->getTrailer() . '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="trailer"></iframe>';
     }
