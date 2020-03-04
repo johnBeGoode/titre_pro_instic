@@ -5,7 +5,7 @@
 #home {
     margin-top: 170px;
     padding: 50px 100px;
-    @include gradeSkew;
+    @include gradeOrange;
     @include boxShadowAround;
 
     section.articles {

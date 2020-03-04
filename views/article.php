@@ -11,25 +11,27 @@
     </div>
 </div>
 
-<!-- Déjà une div avec la class trailer -->
-<!-- <?//php $movie->getVideo(); ?> -->
 <div class="bande-annonce">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/<?= $movie->getTrailer() ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <?php $movie->getVideoArticle(); ?>
 </div>
 
-<div class="bloc-commentaire">
-    <h3>Commentaires:</h3>
-    <div>
-        <?php foreach($comments as $comment): ?>
+<div class="bloc-commentaire oblique-negative">
+    <h3>Commentaires:</h3><br>
+    <?php foreach($comments as $comment): ?>
+        <div class="one-comment">
             <p>
-                <?= $comment->getDateAdd(); ?>
-                <?= $comment->getUserId(); ?><br>
-            </p>
-            <p>
+                <span>
+                    <?= $comment->getDateAdd(); ?>,
+                    <!-- <?//= $comment->getUserId(); ?> -->
+                    <?= $userName['name']; ?>:
+                </span>
+                <br>
                 <?= $comment->getComment(); ?>
             </p>
-        <?php endforeach; ?>
-    </div>
+        
+            
+        </div>
+    <?php endforeach; ?>
 </div>
 
 <?php require_once("include-parts/footer.php"); ?>

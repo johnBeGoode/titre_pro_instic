@@ -36,7 +36,15 @@ body {
     background: linear-gradient(90deg, rgba(23,23,25,1) 0%, rgba(66,66,66,1) 52%, rgba(23,23,25,1) 100%);
 } 
 
-@mixin gradeSkew {
+@mixin gradeOrange {
     background: rgb(230,94,29);
     background: linear-gradient(90deg, rgba(230,94,29,1) 0%, rgba(214,131,92,1) 49%, rgba(241,110,47,1) 100%);
+}
+
+// @mixin gradeBlue {
+//     background: linear-gradient(90deg, rgb(177, 223, 247) 0%, rgb(214, 231, 245) 49%, rgb(176, 221, 245) 100%);
+// }
+
+@mixin gradeGray {
+    background: linear-gradient(90deg, rgb(247, 247, 247) 0%, rgb(249, 249, 250) 49%, rgb(249, 252, 253) 100%);
 }

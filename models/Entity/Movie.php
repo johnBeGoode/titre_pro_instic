@@ -14,16 +14,6 @@ class Movie {
     protected $trailer;
 
 
-    // public function __construct($id, $title, $resume, $date_add, $picture, $is_published, $slug) {
-    //     $this->id = $id;
-    //     $this->title = $title;
-    //     $this->resume = $resume;
-    //     $this->date_add = $date_add;
-    //     $this->picture = $picture;
-    //     $this->is_published = $is_published;
-    //     $this->slug = $slug;
-    // }
-
     // Getters
     public function getId() {
         return $this->id;
@@ -64,5 +54,9 @@ class Movie {
     // mettre mute=1 pour lancer l'autoplay (paramètre autoplay=1)
     public function getVideo() {
         echo '<iframe src="https://www.youtube.com/embed/' . $this->getTrailer() . '?controls=0&autoplay=1&mute=1&loop=1&playlist=' . $this->getTrailer() . '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="trailer"></iframe>';
+    }
+
+    public function getVideoArticle() {
+        echo '<iframe width="560" height="315" src="https://www.youtube.com/embed/' . $this->getTrailer() . '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
     }
 }

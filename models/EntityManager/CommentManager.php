@@ -61,4 +61,18 @@ class CommentManager {
     // public function getOne($id) {
     //     return $this->db->query("SELECT * FROM comments WHERE id=" . (int)$id);
     // }
+
+    public function getUserName(int $userId) {
+        // $sql = "SELECT users.name FROM users, comments WHERE users.id = comments.user_id ";
+        // $req = $this->db->query($sql);
+        // $data = $req->fetch();
+
+        $sql = "SELECT users.name FROM users INNER JOIN comments ON users.id = comments.user_id WHERE users.id = :userId";
+        $req = $this->db->prepare($sql);
+        $req->bindValue(':userId', $userId, \PDO::PARAM_INT);
+        $req->execute();
+        $data = $req->fetch();
+
+        return $data;
+    }
 }
