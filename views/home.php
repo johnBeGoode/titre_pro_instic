@@ -1,4 +1,4 @@
-<?php require_once("include-parts/header.php"); ?>
+<?php require_once 'include-parts/header.php'; ?>
 
 <?php require_once 'include-parts/caroussel.php'; ?>
 
@@ -24,4 +24,4 @@
         </section>
     </div>
 
-<?php require_once("include-parts/footer.php"); ?>
+<?php require_once 'include-parts/footer.php'; ?>

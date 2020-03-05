@@ -1,2 +1,2 @@
 <?php 
-require_once("../views/".$vue.".php");
+require_once '../views/' . $vue . '.php';

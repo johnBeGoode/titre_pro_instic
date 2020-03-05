@@ -15,4 +15,4 @@ $movie = $movieManager->getOne($vars['id']);
 $comments = $commentManager->getAllComments($vars['id']);
 $userName = $commentManager->getUserName(2); // si valeur en dure ça marche
 
-require_once("../views/" . $vue . ".php");
+require_once '../views/' . $vue . '.php';

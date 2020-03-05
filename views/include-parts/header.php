@@ -30,8 +30,10 @@
             </nav>
         </div>
         <div id="button">
-            <button type="button" class="btn btn-primary">Créer un compte</button>
-            <button type="button" class="btn btn-primary">Se connecter</button>
+            <!-- <button type="button" class="btn btn-primary">Créer un compte</button>
+            <button type="button" class="btn btn-primary">Se connecter</button> -->
+            <a href="" class="btn btn-primary">Créer un compte</a>
+            <a href="/connexion" class="btn btn-primary">Se connecter</a>
         </div>
     </header>
     

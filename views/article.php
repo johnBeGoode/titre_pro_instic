@@ -1,4 +1,4 @@
-<?php require_once("include-parts/header.php"); ?>
+<?php require_once 'include-parts/header.php'; ?>
 
 <div class="content oblique-positive">
     <div>
@@ -34,4 +34,4 @@
     <?php endforeach; ?>
 </div>
 
-<?php require_once("include-parts/footer.php"); ?>
+<?php require_once 'include-parts/footer.php'; ?>
