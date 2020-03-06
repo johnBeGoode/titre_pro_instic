@@ -6,9 +6,7 @@
     <title><?= $title_page; ?></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="/public/styles.css">
-    <link rel="shortcut icon" type="image/x-icon" href="public/images/spiral.ico">
-    <!-- Font Awesome library -->
-    <!-- <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> -->
+    <link rel="shortcut icon" type="image/x-icon" href="/public/images/spiral.ico">
     <script src="https://kit.fontawesome.com/1f7564e144.js"></script>
     <meta name="description" content="<?= $desc_page; ?>"/>
     <meta name="author" content="Jonathan Martin"/>
@@ -24,7 +22,7 @@
         <div id="menu">
             <nav>
                 <ul>
-                    <li><a href="">Home</a></li>
+                    <li><a href="/">Home</a></li>
                     <li><a href="">Cinéma</a></li>
                     <li><a href="">Série</a></li>
                     <li><a href="">Contact</a></li>
@@ -32,8 +30,10 @@
             </nav>
         </div>
         <div id="button">
-            <button type="button" class="btn btn-primary">Créer un compte</button>
-            <button type="button" class="btn btn-primary">Se connecter</button>
+            <!-- <button type="button" class="btn btn-primary">Créer un compte</button>
+            <button type="button" class="btn btn-primary">Se connecter</button> -->
+            <a href="" class="btn btn-primary">Créer un compte</a>
+            <a href="/connexion" class="btn btn-primary">Se connecter</a>
         </div>
     </header>
     

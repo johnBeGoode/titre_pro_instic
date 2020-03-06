@@ -1,5 +1,7 @@
 <?php
 namespace App\Entity;
+use App\EntityManager\UserManager;
+use DateTime;
 
 class Comment {
     
@@ -9,14 +11,6 @@ class Comment {
     protected $movie_id;
     protected $user_id;
 
-
-    // public function __construct($id, $comment, $date_add, $movie_id, $user_id) {
-    //     $this->id = $id;
-    //     $this->comment = $comment;
-    //     $this->date_add = $date_add;
-    //     $this->movie_id = $movie_id;
-    //     $this->user_id = $user_id;
-    // }
 
     // Getters
     public function getId() {
@@ -28,16 +22,20 @@ class Comment {
     }
 
     public function getDateAdd() {
-        return $this->date_add;
+        $date = new DateTime($this->date_add);
+        return $date->format('d-m-Y H:i');
     }
 
     public function getMovieId() {
         return $this->movie_id;
     }
 
-    public function getUserId() {
+    public function getUserId() {        
         return $this->user_id;
     }
 
-    // Setters ??
+    public function getUser() {
+        $userMn = new UserManager();
+        return $userMn->getUser($this->user_id);
+    }
 }

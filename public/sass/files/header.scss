@@ -9,7 +9,6 @@ header {
     @include boxShadowAround;
 
     div#logo_header {
-
         display: flex;
 
         #logo_image {
@@ -27,12 +26,10 @@ header {
     }
 
     #menu {
-
         width: 40%;
         height: 50px;
 
         ul {
-
             list-style: none;
             display: flex;
             justify-content: space-around;

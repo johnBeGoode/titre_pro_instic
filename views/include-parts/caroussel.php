@@ -6,7 +6,7 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="http://fr.web.img2.acsta.net/carousels/20/02/18/11/56/4078575.jpg" class="d-block w-100"
+            <img src="public/images/caroussel/2987340.jpg" class="d-block w-100"
                 alt="...">
             <div class="carousel-caption d-none d-md-block">
                 <h5>First slide label</h5>
@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="carousel-item">
-            <img src="http://fr.web.img4.acsta.net/carousels/20/01/29/11/06/5804904.jpg" class="d-block w-100"
+            <img src="public/images/caroussel/3683424.jpg" class="d-block w-100"
                 alt="...">
             <div class="carousel-caption d-none d-md-block">
                 <h5>Second slide label</h5>

@@ -1,1 +1,1 @@
-start sass\dart-sass\sass.bat sass/styles.scss public/styles.css  --watch --style=compressed
+start public\sass\dart-sass\sass.bat public/sass/styles.scss public/styles.css  --watch --style=compressed

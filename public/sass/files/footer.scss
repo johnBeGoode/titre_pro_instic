@@ -1,5 +1,4 @@
 footer {
-
     @include gradeDark;
     @include boxShadowAround;
     color: $white;
@@ -9,7 +8,6 @@ footer {
     margin-top: 50px;
 
     #links {
-
         display: flex;
         justify-content: space-around;
         align-items: center;
@@ -17,7 +15,6 @@ footer {
         height: 250px;
 
         .div_footer {
-
             h5 {
                 color: $colorTitleF;
             }
@@ -33,8 +30,8 @@ footer {
 
             a {
                 color: $white;
-                &:hover {
 
+                &:hover {
                     text-decoration: none;
                     color: $colorHoverLink;
                 }
@@ -43,38 +40,34 @@ footer {
     }
     
     #reseau_social {
-
         position: absolute;
         right: 5%;
         top: 15%;
         width: 18%;
         display: flex;
         justify-content: space-around;
-        
-        #logofb {
 
+        #logofb {
             width: 35px;
             height: 35px;
         }
 
         .logo_rs {
-
             width: 30px;
             height: 30px;
         }
     }
 
     #menu_footer {
-
         position: absolute;
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
+
         a {
-            color: $white;            
-
+            color: $white;
+                        
             &:hover {
-
                 text-decoration: none;
                 color: $colorHoverLink;
             }

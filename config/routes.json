@@ -5,7 +5,8 @@
         "article/{slug}/{id}":  "article",        
         "article/{id}":         "article", 
         "connexion":            "login",
-        "espace_administration":"admin"        
+        "administration":       "admin",
+        "deconnexion":          "deconnexion"        
     },  
     
     "regexParam":{

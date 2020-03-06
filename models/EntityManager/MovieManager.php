@@ -6,7 +6,7 @@ use App\Entity\Movie;
 
 class MovieManager {
 
-    // attribut contenant l'instance représentant la base de données
+    
     protected $db;
 
 
@@ -40,8 +40,7 @@ class MovieManager {
         $req->execute();
     }
 
-     // Requête préparée
-     public function delete($id) {
+    public function delete($id) {
         $this->db->exec("DELETE FROM movies WHERE id = " . (int)$id);
     }
 
@@ -57,10 +56,17 @@ class MovieManager {
         return $datas;
     }
 
+    public function getAllMoviesPublished() {
+        $sql = "SELECT * FROM movies WHERE is_published = 1 ORDER BY date_add DESC";
+        $req = $this->db->query($sql);
+        $datas = $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Movie');
+
+        return $datas;
+    }
+
     public function getNbMovies(int $nb) {
-        $sql = "SELECT * FROM movies ORDER BY date_add DESC LIMIT 0, :nb_max";
+        $sql = "SELECT * FROM movies WHERE is_published = 1 ORDER BY date_add DESC LIMIT 0, :nb_max";
         $req = $this->db->prepare($sql);        
-        // $req->bindValue(':nb_min', 0, \PDO::PARAM_INT);
         $req->bindValue(':nb_max', $nb, \PDO::PARAM_INT);
         $req->execute();
         $datas = $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Movie');
