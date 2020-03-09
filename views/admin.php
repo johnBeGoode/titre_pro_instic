@@ -23,6 +23,8 @@
             <th>Titre</th>
             <th>Date d'ajout</th>
             <th>Synopsis</th>
+            <th>Nb de commentaires</th>
+            <th>Publié</th>
         </tr>
     <thead>
 

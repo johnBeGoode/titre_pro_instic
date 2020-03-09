@@ -1,0 +1,24 @@
+#error-page {
+    width: auto;
+    height: auto;
+    .error-message {
+        width: 50%;
+        margin: 80px auto;
+        border: 1px solid black;
+        border-radius: 10px;
+        background-color: rgb(245, 240, 240);
+        text-align: center;
+
+        h1 {
+            color: red;
+        }
+    }
+
+    footer {
+        position: absolute;
+        bottom: 0;
+        @media screen and (max-height: 800px) {
+            position: relative;
+        }
+    }
+}

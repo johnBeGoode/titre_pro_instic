@@ -1,0 +1,41 @@
+#page-contact {
+    width: 70%;
+    margin: auto;
+
+    form {
+        margin-top: 50px;
+
+        span {
+            font-size: 0.8rem;
+            color: red;
+        }
+ 
+        input[type=text], textarea {
+            margin-bottom: 15px;
+            border-radius: 5px;
+            color: lightgray;
+        }
+
+
+    }
+}
+    
+
+    // #msg_erreurs {
+    //     font-size: 0.7em;
+    //     color: red;
+    //     text-align: center;
+    //     margin-top: -50px;
+    //     margin-bottom: 50px;
+    // }
+    
+    // #msg_envoi {
+    //     font-size: 0.7em;
+    //     color: green;
+    //     text-align: center;
+    //     margin-top: -50px;
+    //     margin-bottom: 50px;
+    // }
+
+  
+    
