@@ -1,9 +1,11 @@
 <?php
 namespace App\Entity;
+use DateTime;
 
 class User {
 
     protected $id;
+    protected $avatar;
     protected $name;
     protected $password;
     protected $role;
@@ -14,6 +16,10 @@ class User {
     // Getters
     public function getId() {
         return $this->id;
+    }
+
+    public function getAvatar() {
+        return $this->avatar;
     }
 
     public function getName() {
@@ -32,7 +38,8 @@ class User {
         return $this->email;
     }
 
-    public function getDate_registration() {
-        return $this->date_registration;
+    public function getDateRegistration() {
+        $date = new DateTime($this->date_registration);
+        return $date->format('d-m-Y H:i');
     }
 }

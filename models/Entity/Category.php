@@ -1,7 +1,7 @@
 <?php
 namespace App\Entity;
 
-class Categorie {
+class Category {
 
     protected $id;
     protected $name;
@@ -14,5 +14,9 @@ class Categorie {
 
     public function getName() {
         return $this->name;
+    }
+
+    public function getMoviesByCategory() {
+        
     }
 }

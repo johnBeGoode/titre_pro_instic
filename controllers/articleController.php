@@ -10,7 +10,7 @@ $commentManager = new CommentManager();
 
 $movie = $movieManager->getOne($vars['id']);
 
-$comments = $commentManager->getAllComments($vars['id']);
+$comments = $commentManager->getAllCommentsForMovie($vars['id']);
 
 if ($vars['slug'] === $movie->getSlug() && $movie->getIsPublished()) {
     $title_page = 'Article '. $movie->getTitle();

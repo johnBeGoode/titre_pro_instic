@@ -40,11 +40,19 @@ class CommentManager {
         return $this->db->query("SELECT COUNT(id) FROM comments")->fetchColumn();
     }
 
-    public function getAllComments($movieId) {
+    public function getAllCommentsForMovie($movieId) {
         $sql = "SELECT * FROM comments WHERE movie_id= :movieId ORDER BY date_add DESC";
         $req = $this->db->prepare($sql);
         $req->bindValue(':movieId', $movieId, \PDO::PARAM_INT);
         $req->execute();
+        $datas = $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Comment');
+
+        return $datas;
+    }
+
+    public function getAllComments() {
+        $sql = "SELECT * FROM comments ORDER BY date_add DESC";
+        $req = $this->db->query($sql);
         $datas = $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Comment');
 
         return $datas;

@@ -1,21 +1,40 @@
-#tab-admin {
-    width: 95%;
-    margin: auto;
-    text-align: center;
-
-    thead {
-        text-align: center;
+#page-admin {
+    h1 {
+        margin-bottom: 100px;
     }
-
-    tbody {
-        img {
-            width: 60px;
-            height: 80px;
+    nav {
+        width: 75%;
+        ul {
+            display: flex;
+            justify-content: space-around;
+            li {
+                list-style-type: none;
+                a {
+    
+                }
+            }
         }
     }
 
-    td {
-        padding: 3px;
+    table {
+        width: 90%;
+        margin: auto;
+        text-align: center;
+    }
+
+    .admin-articles {
+        thead {
+            text-align: center;
+        }
+        tbody {
+            img {
+                width: 60px;
+                height: 80px;
+            }
+        }
+        td {
+            padding: 3px;
+        }
     }
 
 }

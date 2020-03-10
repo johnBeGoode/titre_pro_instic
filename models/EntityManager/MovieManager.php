@@ -6,7 +6,6 @@ use App\Entity\Movie;
 
 class MovieManager {
 
-    
     protected $db;
 
 

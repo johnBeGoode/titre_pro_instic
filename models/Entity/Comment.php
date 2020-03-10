@@ -35,7 +35,7 @@ class Comment {
     }
 
     public function getUser() {
-        $userMn = new UserManager();
-        return $userMn->getUser($this->user_id);
+        $userManager = new UserManager();
+        return $userManager->getUser($this->user_id);
     }
 }

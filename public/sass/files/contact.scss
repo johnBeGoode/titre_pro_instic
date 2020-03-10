@@ -1,41 +1,30 @@
 #page-contact {
     width: 70%;
     margin: auto;
-
+    #msg_erreurs {
+        font-size: 0.8em;
+        color: red;
+    }
+    #msg_envoi {
+        font-size: 0.8em;
+        color: green;
+    }
     form {
         margin-top: 50px;
-
+        textarea {
+            resize: none;
+        }
         span {
             font-size: 0.8rem;
             color: red;
         }
- 
         input[type=text], textarea {
             margin-bottom: 15px;
             border-radius: 5px;
-            color: lightgray;
+            border-color: lightgray;
         }
-
-
     }
 }
-    
-
-    // #msg_erreurs {
-    //     font-size: 0.7em;
-    //     color: red;
-    //     text-align: center;
-    //     margin-top: -50px;
-    //     margin-bottom: 50px;
-    // }
-    
-    // #msg_envoi {
-    //     font-size: 0.7em;
-    //     color: green;
-    //     text-align: center;
-    //     margin-top: -50px;
-    //     margin-bottom: 50px;
-    // }
 
   
     

@@ -1,7 +1,7 @@
 <?php 
 namespace App\EntityManager;
-use App\Entity\User;
 use App\DBFactory;
+use App\Entity\User;
 
 class UserManager {
 
@@ -16,10 +16,18 @@ class UserManager {
         $req = $this->db->prepare($sql);        
         $req->bindValue(':id', $id, \PDO::PARAM_INT);
         $req->execute();
-        //$data = $req->fetchAll(\PDO::FETCH_OBJ, 'App\Entity\User');
+        //$data = $req->fetchAll(\PDO::FETCH_OBJ);
         $data = $req->fetchObject('App\Entity\User');
 
         return $data;
+    }
+
+    public function getAllUsers() {
+        $sql = "SELECT * FROM users ORDER BY date_registration DESC";
+        $req = $this->db->query($sql);
+        $datas = $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\User');
+
+        return $datas;
     }
 
 }
