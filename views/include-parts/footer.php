@@ -3,27 +3,20 @@
         <div class="div_footer">
             <h5>Azerty</h5>
             <ul>
-                <li><a href="#">Lorem</a></li> 
-                <li><a href="#">Consectur</a></li>
-                <li><a href="#">Nihili</a></li>
+                <li><a href="#">Recrutement</a></li>
+                <li><a href="#">Presse</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Partenaires</a></li>
             </ul>
         </div>
 
         <div class="div_footer">
             <h5>Bzerty</h5>
             <ul>
-                <li><a href="#">Extant</a></li>
-                <li><a href="#">Fundita</a></li>
-                <li><a href="#">Asbolus</a></li>
-            </ul>
-        </div>
-
-        <div class="div_footer">
-            <h5>Czerty</h5>
-            <ul>
-                <li><a href="#">Chill Out</a></li>
-                <li><a href="#">Raptio</a></li>
-                <li><a href="#">Palaestri</a></li>
+                <li><a href="#">Références</a></li> 
+                <li><a href="#">CGU</a></li>
+                <li><a href="#">Mentions légales</a></li>
+                <li><a href="#">A propos</a></li>
             </ul>
         </div>
     </div>
@@ -35,8 +28,9 @@
         <a href="#"><img class="logo_rs" src="/public/images/ico_twitter.png" alt="twitter"></a>
     </div>
 
-    <div id="menu_footer">
-        <a href="#">Présentation</a>  | <a href="#">A propos</a> | <a href="#">Contact</a>  | <a href="#">Mentions légales</a>
+    <div id="copyright">
+        <img src="https://cdn.svgporn.com/logos/chromatic-icon.svg" alt="">
+        Chromatic Sinéma, All Rights Reserved, 2020
     </div>
 </footer>
 
@@ -48,5 +42,6 @@
 
 <script src="/public/js/app.js"></script>
 <script src="/public/js/form.js"></script>
+<script src="/public/js/onglets_admin.js"></script>
 </body>
 </html>

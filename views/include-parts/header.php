@@ -24,17 +24,15 @@
             <nav>
                 <ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="">Cinéma</a></li>
-                    <li><a href="">Série</a></li>
+                    <li><a href="">Séries</a></li>
+                    <li><a href="">Podcasts</a></li>
                     <li><a href="/contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
         <div id="button">
-            <!-- <button type="button" class="btn btn-primary">Créer un compte</button>
-            <button type="button" class="btn btn-primary">Se connecter</button> -->
             <a href="" class="btn btn-primary">Créer un compte</a>
-            <a href="/connexion" class="btn btn-primary"><?= $_SESSION['connected'] === 1 ? 'Admin' : 'Se connecter' ?></a>
+            <a href="/connexion" class="btn btn-primary"><?= isset($_SESSION['connected']) ? 'Admin' : 'Se connecter' ?></a>
         </div>
     </header>
     

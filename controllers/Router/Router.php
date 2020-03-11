@@ -11,7 +11,7 @@ class Router{
         $this->url = $url;
         
         $routesJsonFile = file_get_contents(__DIR__."/../../config/routes.json");
-        $routesJson = json_decode($routesJsonFile, true);        
+        $routesJson = json_decode($routesJsonFile, true);
         $this->routes = $routesJson['routes'];
         $this->regExpParam = $routesJson['regexParam'];            
     }
@@ -57,8 +57,7 @@ class Router{
             throw new RouterException('Le controller '.$vue.'Controller.php n\'existe pas dans le dossier "/controllers/"');
         }
         require_once("../controllers/".$vue."Controller.php"); 
-    }
-    
+    }   
 }
 
 

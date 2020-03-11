@@ -6,31 +6,26 @@ footer {
     height: 300px;
     position: relative;
     margin-top: 50px;
-
     #links {
         display: flex;
         justify-content: space-around;
         align-items: center;
         width: 50%;
         height: 250px;
-
         .div_footer {
+            height: 165px;
             h5 {
                 color: $colorTitleF;
             }
-
             ul {
                 list-style: none;
-
                 li {
                     font-size: 0.9rem;
                     padding: 5% 0;
                 }
             }
-
             a {
                 color: $white;
-
                 &:hover {
                     text-decoration: none;
                     color: $colorHoverLink;
@@ -38,7 +33,6 @@ footer {
             }
         }
     }
-    
     #reseau_social {
         position: absolute;
         right: 5%;
@@ -46,31 +40,25 @@ footer {
         width: 18%;
         display: flex;
         justify-content: space-around;
-
         #logofb {
             width: 35px;
             height: 35px;
         }
-
         .logo_rs {
             width: 30px;
             height: 30px;
         }
     }
-
-    #menu_footer {
+    #copyright {
+        font-size: 0.8em;
         position: absolute;
-        bottom: 0;
+        bottom: 1%;
         left: 50%;
         transform: translateX(-50%);
-
-        a {
-            color: $white;
-                        
-            &:hover {
-                text-decoration: none;
-                color: $colorHoverLink;
-            }
+        img {
+            width: 20px;
+            height: 20px;
+            vertical-align: text-top;
         }
     }
 }

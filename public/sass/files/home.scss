@@ -3,44 +3,37 @@
 }
 
 #home {
-    margin-top: 170px;
-    padding: 50px 100px;
     @include gradeOrange;
     @include boxShadowAround;
-
+    margin-top: 170px;
+    padding: 50px 100px;
     section.articles {
         display: flex;
         justify-content: flex-start;
         flex-wrap: wrap;
-
         article {
             display: flex;
             margin-bottom: 50px;
             width: 550px;
             position: relative;
-
             .thumbnail {
                 width: 180px;            
                 height: 250px;
                 overflow: hidden;
-
                 img {
                     width: auto;
                     height: 100%; // définit également la largeur pour ne pas déformer le ratio
                 }
             }
-
             .article_content {
                 width: 350px;
                 padding: 0 50px;
-
                 h2 {
                     font-size: 1.5em;
                     display: inline-block;
                     width: 80%;
                     color: black;
                 }
-
                 button {
                     display: inline-block;
                     width: 18%;
@@ -49,16 +42,13 @@
                     border-radius: 10px;
                     background-color: transparent;
                 }
-
                 p {
                     text-align: justify;
                 }
-                
                 a {
                     color: antiquewhite;
                 }
             }
-
             .trailer {
                 display: none;
                 position: absolute;
