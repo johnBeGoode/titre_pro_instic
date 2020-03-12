@@ -5,11 +5,11 @@
     nav {
         width: 75%;
         .tabs{
-            &:after {
-                display: table;
-                content: ' ';
-                clear: both;
-            }
+            // &:after {
+            //     display: table;
+            //     content: ' ';
+            //     clear: both;
+            // }
             .active a {
                 background-color: rgb(238, 230, 230);
                 border-radius: 10px;
@@ -27,21 +27,24 @@
     .tabs-content {
         position: relative;
         /* mettre une position relative avant le z-index */
-        z-index: 3;
+        // z-index: 3;
         padding: 20px;
         background-color: #fff;
         box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
         .tab-content {
-            display: none;
-            .active {
-                display: block;
-            }
-        }
-        table {
             width: 90%;
             margin: auto;
             text-align: center;
+            display: none;
+            &.active {
+                display: block;
+            }
         }
+        // table {
+        //     width: 90%;
+        //     margin: auto;
+        //     text-align: center;
+        // }
         .admin-articles {
             thead {
                 text-align: center;
