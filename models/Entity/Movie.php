@@ -6,7 +6,7 @@ class Movie {
 
     protected $id;
     protected $title;
-    protected $resume;
+    protected $synopsis;
     protected $date_add;
     protected $picture;
     protected $is_published;
@@ -23,8 +23,8 @@ class Movie {
         return $this->title;
     }
 
-    public function getResume() {
-        return $this->resume;
+    public function getSynopsis() {
+        return $this->synopsis;
     }
 
     public function getDateAdd() {

@@ -26,7 +26,7 @@ class Router{
                 return;
             }        
         }
-        $this->badUrl();
+        Router::badUrl();
     }
     
     private function transformRouteWithRegexp($routePattern){
@@ -36,7 +36,7 @@ class Router{
         }
         return $routePattern;
     }
-    
+       
     private function detectVars($routePattern, $matches){
         $vars = [];
         $matches = array_slice($matches,1);
@@ -47,9 +47,9 @@ class Router{
             return $vars;
         }
     }
-
-    public function badUrl(){
-        require_once("../views/404.php"); 
+    
+    public static function badUrl(){
+        require_once("../controllers/404Controller.php"); 
     }
     
     private function callView($vue, $vars = null){            

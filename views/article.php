@@ -13,7 +13,7 @@
         <div>
             <h2><?= $movie->getTitle(); ?></h2>
             <p>Ajouté le <?= $movie->getDateAdd(); ?></p><br>
-            <p><span>Synopsis:</span>  <br> <?= $movie->getResume(); ?></p>
+            <p><span>Synopsis:</span>  <br> <?= $movie->getSynopsis(); ?></p>
         </div>
     </article>
 

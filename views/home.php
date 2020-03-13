@@ -20,7 +20,7 @@
                     </a>
                     <button class="btn-trailer"><i class="fas fa-video"></i></button>
                     <p><?= $movie->getDateAdd(); ?></p>
-                    <p><?= nl2br(substr($movie->getResume(),0, 200)) . '...'; ?><br>
+                    <p><?= nl2br(substr($movie->getSynopsis(),0, 200)) . '...'; ?><br>
                         <a href="<?= $urlArticle ?>">Lire la suite</a>    
                     </p>
                 </div>

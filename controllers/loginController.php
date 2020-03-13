@@ -27,7 +27,7 @@ if (isset($_POST['login']) && !empty($_POST['login']) && isset($_POST['password'
         session_start();
         // On stocke une valeur pour que ça renvoie true
         $_SESSION['connected'] = 1;
-        header('Location: /administration');
+        header('Location: /administration?page=articles');
         exit();
     }
     else {
@@ -36,7 +36,7 @@ if (isset($_POST['login']) && !empty($_POST['login']) && isset($_POST['password'
 }
 
 if (is_connected()) {
-    header('Location: /administration');
+    header('Location: /administration?page=articles');
     exit();
 }
 ?>

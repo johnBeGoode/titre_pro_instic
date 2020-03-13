@@ -13,24 +13,24 @@ class MovieManager {
         $this->db = DBFactory::getConnexion();
     }
 
-    public function add(Movie $movie) {
-        $req = $this->db->prepare("INSERT INTO movies (title, resume, date_add, picture, is_published, slug) VALUES (:title, :resume, NOW(), :picture, :is_published, :slug");
+    public function add($title, $synopsis, $isPublished, $image=null) {
+        $slug = str_replace(' ','_', $title);
+        $req = $this->db->prepare("INSERT INTO movies (title, synopsis, date_add, picture, is_published, slug) VALUES (:title, :synopsis, NOW(), :picture, :is_published, :slug)");
 
         // Faire test avec un array à la place de bindValue
-        $req->bindValue(':title', $movie->getTitle());
-        $req->bindValue(':resume', $movie->getResume());
-        $req->bindValue(':picture', $movie->getPiture());
-        $req->bindValue(':is_published', $movie->getIs_published());
-        $req->bindValue(':slug', $movie->getSlug());
-      
+        $req->bindValue(':title', $title);
+        $req->bindValue(':synopsis', $synopsis);
+        $req->bindValue(':picture', $image);
+        $req->bindValue(':is_published', $isPublished);
+        $req->bindValue(':slug', $slug);
         $req->execute();
     }
 
     public function update(Movie $movie) {
-        $req = $this->db->prepare("UPDATE movies SET title = :title, resume = :resume, picture = :picture, is_published = :is_published, slug = :slug WHERE id = :id");
+        $req = $this->db->prepare("UPDATE movies SET title = :title, synopsis = :synopsis, picture = :picture, is_published = :is_published, slug = :slug WHERE id = :id");
 
         $req->bindValue(':title', $movie->getTitle());
-        $req->bindValue(':resume', $movie->getResume());
+        $req->bindValue(':synopsis', $movie->getResume());
         $req->bindValue(':picture', $movie->getPiture());
         $req->bindValue(':is_published', $movie->getIs_published());
         $req->bindValue(':slug', $movie->getSlug());
