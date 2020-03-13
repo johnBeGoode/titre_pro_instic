@@ -12,7 +12,7 @@
     </div>
    
 
-    <form action="" method="post">
+    <form action="" method="post" class="oblique-negative">
         <label for="nom">Nom *</label><br>
         <input type="text" name="nom" id="nom" size="40" value="<?= isset($_SESSION['inputs']['nom']) ? $_SESSION['inputs']['nom'] : ''?>"> <span id="aide_nom"></span><br>
 

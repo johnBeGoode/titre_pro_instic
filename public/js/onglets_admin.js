@@ -3,24 +3,19 @@ let afficherOnglet = function(a) {
     let div = a.parentNode.parentNode.parentNode.parentNode
     // let div = document.getElementById('wrapper')
 
-    // if (li.classList.contains('active')) {
-    //     return false
-    // }
+    if (li.classList.contains('active')) {
+        return false
+    }
     
-    // on retire la class active à l'onglet actif
     div.querySelector('.tabs .active').classList.remove('active')
-    // j'ajoute la class active à l'onglet actuel
     li.classList.add('active')
-    // on retire la class active du contenu actif
+
     div.querySelector('.tab-content.active').classList.remove('active')
-    // on ajoute la classe active au nouveau contenu actif
     div.querySelector(a.getAttribute('href')).classList.add('active')
-    
 }
 
-// ajout évènement clic sur les liens
 let tabs = document.querySelectorAll('.tabs a')
-// on applique une fonction sur chacun de ces liens avec une boucle
+
 for (let i = 0; i < tabs.length; i++) {
     let link = tabs[i]
     link.addEventListener('click', function (e) {

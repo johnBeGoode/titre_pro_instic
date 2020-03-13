@@ -10,7 +10,10 @@
         color: green;
     }
     form {
-        margin-top: 50px;
+        @include gradeGray;
+        @include boxShadowAround;
+        margin: 100px auto;
+        padding: 50px;
         textarea {
             resize: none;
         }
