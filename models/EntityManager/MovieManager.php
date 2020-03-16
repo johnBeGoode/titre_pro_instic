@@ -15,7 +15,7 @@ class MovieManager {
 
     public function add($title, $synopsis, $isPublished, $image=null) {
         $slug = str_replace(' ','_', $title);
-        $req = $this->db->prepare("INSERT INTO movies (title, synopsis, date_add, picture, is_published, slug) VALUES (:title, :synopsis, NOW(), :picture, :is_published, :slug)");
+        $req = $this->db->prepare("INSERT INTO movies (title, synopsis, date_add, picture, is_published, slug, trailer, mise_en_avant) VALUES (:title, :synopsis, NOW(), :picture, :is_published, :slug, :trailer, :mise_en_avant)");
 
         // Faire test avec un array à la place de bindValue
         $req->bindValue(':title', $title);
@@ -23,6 +23,8 @@ class MovieManager {
         $req->bindValue(':picture', $image);
         $req->bindValue(':is_published', $isPublished);
         $req->bindValue(':slug', $slug);
+        $req->bindValue(':trailer', $trailer);
+        $req->bindValue(':mise_en_avant', $mise_en_avant);
         $req->execute();
     }
 
@@ -30,11 +32,11 @@ class MovieManager {
         $req = $this->db->prepare("UPDATE movies SET title = :title, synopsis = :synopsis, picture = :picture, is_published = :is_published, slug = :slug WHERE id = :id");
 
         $req->bindValue(':title', $movie->getTitle());
-        $req->bindValue(':synopsis', $movie->getResume());
-        $req->bindValue(':picture', $movie->getPiture());
-        $req->bindValue(':is_published', $movie->getIs_published());
+        $req->bindValue(':synopsis', $movie->getSynopsis());
+        $req->bindValue(':picture', $movie->getPicture());
+        $req->bindValue(':is_published', $movie->getIsPublished());
         $req->bindValue(':slug', $movie->getSlug());
-        $req->bindValue(':id', $movie->getId(), PDO::PARAM_INT); // avec PDO::PARAM_INT, on attend bien une valeur de type INT
+        $req->bindValue(':id', $movie->getId(), \PDO::PARAM_INT);
 
         $req->execute();
     }
