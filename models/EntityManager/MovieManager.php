@@ -14,7 +14,8 @@ class MovieManager {
     }
 
     public function add($title, $synopsis, $picture, $isPublished, $slug, $trailer, $misEnAvant) {
-        $slug = str_replace(' ','_', $title);
+        $slug = strtolower($title);
+        $slug = str_replace(' ','_', $slug);
         $req = $this->db->prepare("INSERT INTO movies (title, synopsis, date_add, picture, is_published, slug, trailer, mis_en_avant) VALUES (:title, :synopsis, NOW(), :picture, :is_published, :slug, :trailer, :mis_en_avant)");
 
         // Faire test avec un array à la place de bindValue

@@ -49,7 +49,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                    <a href="administration?page=articles&update=<?= $movie->getId(); ?>" class="btn btn-primary update" title="Modifier"><i class="fas fa-pencil-alt"></i></a> 
+                    <a href="administration?page=articles&update=<?= $movie->getId(); ?>" class="btn btn-primary" title="Modifier"><i class="fas fa-pencil-alt"></i></a> 
                     <a href="administration?page=articles&delete=<?= $movie->getId(); ?>" class="btn btn-danger delete" title="Supprimer"><i class="fas fa-trash"></i></a>
                 </td>
             </tr>

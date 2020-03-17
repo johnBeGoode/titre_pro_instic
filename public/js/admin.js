@@ -16,8 +16,13 @@ $(document).ready(function() {
         }
     })
 
-    $('.update').click(function(e) {
-        $('button').hide()
-        $('form').show()
-    })
+    // windox.location renvoie les informations concernant l'url de la page
+    // La propriété search renvoie le ? ainsi que les paramètres situés après le ? de l'url
+   let pageParams = window.location.search
+   let regExp = new RegExp('(?:page=articles){1}[a-z 1-9 = &]*(?:update=[0-9]+)')
+    // On compare l'url avec l'expression régulière et s'il y a page=articles et update = "un chiffre" alors on cache le bouton et on affiche le formulaire
+   if (pageParams.match(regExp)) {
+       $('button').hide()
+       $('form').show(500)
+   }
 })
