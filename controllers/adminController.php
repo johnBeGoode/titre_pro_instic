@@ -14,7 +14,7 @@ $commentManager = new CommentManager();
 $categoryManager = new CategoryManager();
 $userManager = new UserManager();
 
-$nbMovies = $movieManager->count();
+// $nbMovies = $movieManager->count();
 
 // $scriptJS = '/public/js/admin.js';
 $jsFiles = ['admin.js'];
@@ -37,8 +37,12 @@ if (isset($_GET['page'])) {
             // if ($_POST['type'] === 'film') {
                 $titre = htmlspecialchars($_POST['titre']);
                 $synopsis = htmlspecialchars($_POST['synopsis']);
+                $picture = null; // fonctionne quand même si on supprime la ligne
                 $isPublished = isset($_POST['publie']) ? 1 : 0;
-                $movieManager->add($titre, $synopsis, $isPublished);
+                $slug = htmlspecialchars($_POST['slug']);
+                $trailer = htmlspecialchars($_POST['trailer']);
+                $misEnAvant = isset($_POST['mis-en-avant']) ? 1 : 0;
+                $movieManager->add($titre, $synopsis, $picture, $isPublished, $slug, $trailer, $misEnAvant);
                 header('Location: /administration?page=articles');
             // }
         }
@@ -52,25 +56,35 @@ if (isset($_GET['page'])) {
         if (isset($_GET['update'])) {
             $id = htmlspecialchars($_GET['update']);
             $movie = $movieManager->getOne($id);
-            // $movieManager->update($movie);
-            // header('Location: /administration?page=articles');
-        }
 
-     } elseif ($getPage === 'comments') {
-        $comments = $commentManager->getAllComments();
-        $commentsLink = 'active';
-        $content = '../views/admin-parts/adm_comments.php';
-     } elseif ($getPage === 'categories') {
-        $categories = $categoryManager->getAllCategories();
-        $categoriesLink = 'active';
-        $content = '../views/admin-parts/adm_categories.php';
-     } elseif ($getPage === 'users') {
-        $users = $userManager->getAllUsers();
-        $usersLink = 'active';
-        $content = '../views/admin-parts/adm_users.php';
-     } elseif ($getPage === 'mon_compte') {
-        $accountLink = 'active';
-     }
+            if (isset($_POST['type']) && $_POST['type'] == 'film') {
+                $title = htmlspecialchars($_POST['titre']);
+                $synopsis = htmlspecialchars($_POST['synopsis']);
+                // $picture = null; // fonctionne quand même si on supprime la ligne
+                // $isPublished = isset($_POST['publie']) ? 1 : 0;
+                // $slug = htmlspecialchars($_POST['slug']);
+                // $trailer = htmlspecialchars($_POST['trailer']);
+                // $misEnAvant = isset($_POST['mis-en-avant']) ? 1 : 0;
+                $movieManager->update($title, $synopsis);
+                header('Location: /administration?page=articles');
+            }
+
+        } elseif ($getPage === 'comments') {
+            $comments = $commentManager->getAllComments();
+            $commentsLink = 'active';
+            $content = '../views/admin-parts/adm_comments.php';
+        } elseif ($getPage === 'categories') {
+            $categories = $categoryManager->getAllCategories();
+            $categoriesLink = 'active';
+            $content = '../views/admin-parts/adm_categories.php';
+        } elseif ($getPage === 'users') {
+            $users = $userManager->getAllUsers();
+            $usersLink = 'active';
+            $content = '../views/admin-parts/adm_users.php';
+        } elseif ($getPage === 'mon_compte') {
+            $accountLink = 'active';
+        }
+    }
 }
 // if (isset($_POST['type'])) {
 //     if ($_POST['type'] === 'film') {

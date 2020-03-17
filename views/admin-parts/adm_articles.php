@@ -16,17 +16,14 @@
         <option value="serie">Série</option>
     </select><br><br>
 
-    <label>Slug</label><br>
-    <input type="text" class="form-control" name="slug" value="<?= isset($movie) ? $movie->getSlug() : ''; ?>"><br>
-
     <label>Trailer</label><br>
     <input type="text" class="form-control" name="trailer" value="<?= isset($movie) ? $movie->getTrailer() : ''; ?>"><br>
 
     <label>Publié</label> <input type="checkbox" name="publie" <?= isset($movie) && $movie->getIsPublished() ? 'checked' : ''; ?>><br>
 
-    <label>Mise en avant</label> <input type="checkbox" name="mise-en-avant"><br><br>
+    <label>Mise en avant</label> <input type="checkbox" name="mis-en-avant"><br><br>
 
-    <input type="submit" class="btn btn-primary" value="<?= isset($_GET['update']) ? 'Modifier' : 'Ajouter'; ?>">
+    <input type="submit" class="btn btn-primary" value="<?= isset($_GET['update']) ? 'Mettre à jour' : 'Ajouter'; ?>">
 </form>
 
 <table class="admin-articles table table-striped">
