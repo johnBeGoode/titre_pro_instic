@@ -1,4 +1,3 @@
-
 let nom = document.getElementById('nom');
 let aideNom = document.getElementById('aide_nom');
 let mail = document.getElementById('mail');

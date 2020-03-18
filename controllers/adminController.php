@@ -32,19 +32,18 @@ if (isset($_GET['page'])) {
         $movies = $movieManager->getAllMovies();
         $articlesLink = 'active';
         $content = '../views/admin-parts/adm_articles.php';
+// CECI EST LA BONNE VERSION
 
         if (isset($_POST['type']) && $_POST['type'] == 'film') {
-            // if ($_POST['type'] === 'film') {
-                $titre = htmlspecialchars($_POST['titre']);
-                $synopsis = htmlspecialchars($_POST['synopsis']);
-                $picture = null; // fonctionne quand même si on supprime la ligne
-                $isPublished = isset($_POST['publie']) ? 1 : 0;
-                $slug = htmlspecialchars($_POST['slug']);
-                $trailer = htmlspecialchars($_POST['trailer']);
-                $misEnAvant = isset($_POST['mis-en-avant']) ? 1 : 0;
-                $movieManager->add($titre, $synopsis, $picture, $isPublished, $slug, $trailer, $misEnAvant);
-                header('Location: /administration?page=articles');
-            // }
+            $titre = htmlspecialchars($_POST['titre']);
+            $synopsis = htmlspecialchars($_POST['synopsis']);
+            // $picture = null; // fonctionne quand même si on supprime la ligne
+            $isPublished = isset($_POST['publie']) ? 1 : 0;
+            $slug = htmlspecialchars($_POST['slug']);
+            $trailer = htmlspecialchars($_POST['trailer']);
+            $misEnAvant = isset($_POST['mis-en-avant']) ? 1 : 0;
+            $movieManager->add($titre, $synopsis, $picture, $isPublished, $slug, $trailer, $misEnAvant);
+            header('Location: /administration?page=articles');
         }
         
         if (isset($_GET['delete'])) {
@@ -68,32 +67,28 @@ if (isset($_GET['page'])) {
                 $movieManager->update($title, $synopsis);
                 header('Location: /administration?page=articles');
             }
-
-        } elseif ($getPage === 'comments') {
-            $comments = $commentManager->getAllComments();
-            $commentsLink = 'active';
-            $content = '../views/admin-parts/adm_comments.php';
-        } elseif ($getPage === 'categories') {
-            $categories = $categoryManager->getAllCategories();
-            $categoriesLink = 'active';
-            $content = '../views/admin-parts/adm_categories.php';
-        } elseif ($getPage === 'users') {
-            $users = $userManager->getAllUsers();
-            $usersLink = 'active';
-            $content = '../views/admin-parts/adm_users.php';
-        } elseif ($getPage === 'mon_compte') {
-            $accountLink = 'active';
-        }
+        }    
+    } 
+    elseif ($getPage === 'comments') {
+        $comments = $commentManager->getAllComments();
+        $commentsLink = 'active';
+        $content = '../views/admin-parts/adm_comments.php';
+    } 
+    elseif ($getPage === 'categories') {
+        $categories = $categoryManager->getAllCategories();
+        $categoriesLink = 'active';
+        $content = '../views/admin-parts/adm_categories.php';
+    } 
+    elseif ($getPage === 'users') {
+        $users = $userManager->getAllUsers();
+        $usersLink = 'active';
+        $content = '../views/admin-parts/adm_users.php';
+    } 
+    elseif ($getPage === 'mon_compte') {
+        $accountLink = 'active';
     }
 }
-// if (isset($_POST['type'])) {
-//     if ($_POST['type'] === 'film') {
-//         $titre = htmlspecialchars($_POST['titre']);
-//         $synopsis = htmlspecialchars($_POST['synopsis']);
-//         $isPublished = isset($_POST['publie']) ? 1 : 0;
-//         $movieManager->add($titre, $synopsis, $isPublished);
-//         header('Location: /administration?page=articles');
-//     }
-// }
+
+
 
 require_once '../views/' . $vue . '.php'; 

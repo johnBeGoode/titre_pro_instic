@@ -24,6 +24,7 @@
     <label>Mise en avant</label> <input type="checkbox" name="mis-en-avant"><br><br>
 
     <input type="submit" class="btn btn-primary" value="<?= isset($_GET['update']) ? 'Mettre à jour' : 'Ajouter'; ?>">
+    <input type="reset" class="btn btn-primary" value='Annuler'>
 </form>
 
 <table class="admin-articles table table-striped">

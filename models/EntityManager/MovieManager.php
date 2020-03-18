@@ -29,12 +29,12 @@ class MovieManager {
         $req->execute();
     }
 
-    public function update($title, $synopsis) {
+    public function update($id, $title, $synopsis) {
         $req = $this->db->prepare("UPDATE movies SET title = :title, synopsis = :synopsis WHERE id = :id");
 
         $req->bindValue(':title', $title);
         $req->bindValue(':synopsis', $synopsis);
-        $req->bindValue(':id', $_GET['update']);
+        $req->bindValue(':id', $id);
         // $req->bindValue(':picture', $movie->getPicture());
         // $req->bindValue(':is_published', $movie->getIsPublished());
         // $req->bindValue(':slug', $movie->getSlug());
