@@ -23,7 +23,7 @@
 
     <label>Mise en avant</label> <input type="checkbox" name="mis-en-avant"><br><br>
 
-    <input type="submit" class="btn btn-primary" value="<?= isset($_GET['update']) ? 'Mettre à jour' : 'Ajouter'; ?>">
+    <input type="submit" name="submit" class="btn btn-primary" value="<?= isset($_GET['action']) && $_GET['action'] == 'update' ? 'Mettre à jour' : 'Ajouter'; ?>">
     <input type="reset" class="btn btn-primary" value='Annuler'>
 </form>
 
@@ -49,9 +49,9 @@
                 <td class="synop"><?= substr($movie->getSynopsis(),0,200) ?> ...</td>
                 <td></td>
                 <td></td>
-                <td>
-                    <a href="administration?page=articles&update=<?= $movie->getId(); ?>" class="btn btn-primary" title="Modifier"><i class="fas fa-pencil-alt"></i></a> 
-                    <a href="administration?page=articles&delete=<?= $movie->getId(); ?>" class="btn btn-danger delete" title="Supprimer"><i class="fas fa-trash"></i></a>
+                <td class="icone-crud">
+                    <a href="administration?page=articles&action=update&id=<?= $movie->getId(); ?>" class="btn btn-primary" title="Modifier"><i class="fas fa-pencil-alt"></i></a> 
+                    <a href="administration?page=articles&action=delete&id=<?= $movie->getId(); ?>" class="btn btn-danger delete" title="Supprimer"><i class="fas fa-trash"></i></a>
                 </td>
             </tr>
             <?php endforeach ?>

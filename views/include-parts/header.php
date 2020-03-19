@@ -23,10 +23,10 @@
         <div id="menu">
             <nav>
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="">Séries</a></li>
-                    <li><a href="">Podcasts</a></li>
-                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href=""><i class="fas fa-tv"></i> Séries</a></li>
+                    <li><a href=""><i class="fas fa-podcast"></i> Podcasts</a></li>
+                    <li><a href="/contact"><i class="fas fa-phone-alt"></i> Contact</a></li>
                 </ul>
             </nav>
         </div>

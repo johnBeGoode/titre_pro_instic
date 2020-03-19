@@ -2,6 +2,11 @@
     h1 {
         margin-bottom: 100px;
     }
+    #div-success {
+        width: 30%;
+        margin: auto;
+        text-align: center;
+    }
     nav {
         width: 75%;
         margin: auto;
@@ -57,6 +62,9 @@
                 padding: 3px;
                 &.synop {
                     width: 500px;
+                }
+                &.icone-crud {
+                    vertical-align: middle;
                 }
             }
         }

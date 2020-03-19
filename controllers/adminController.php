@@ -32,31 +32,25 @@ if (isset($_GET['page'])) {
         $movies = $movieManager->getAllMovies();
         $articlesLink = 'active';
         $content = '../views/admin-parts/adm_articles.php';
-// CECI EST LA BONNE VERSION
+        $messageConfirmation = null;
 
-        if (isset($_POST['type']) && $_POST['type'] == 'film') {
+        if (isset($_POST['submit']) && $_POST['submit'] == 'Ajouter') {
+        // if (isset($_GET['action']) && $_GET['action'] == 'add' ) {
             $titre = htmlspecialchars($_POST['titre']);
             $synopsis = htmlspecialchars($_POST['synopsis']);
             // $picture = null; // fonctionne quand même si on supprime la ligne
             $isPublished = isset($_POST['publie']) ? 1 : 0;
-            $slug = htmlspecialchars($_POST['slug']);
             $trailer = htmlspecialchars($_POST['trailer']);
             $misEnAvant = isset($_POST['mis-en-avant']) ? 1 : 0;
             $movieManager->add($titre, $synopsis, $picture, $isPublished, $slug, $trailer, $misEnAvant);
+            $_SESSION['success'] = 'Le film a bien été ajouté';
             header('Location: /administration?page=articles');
-        }
-        
-        if (isset($_GET['delete'])) {
-            $id = htmlspecialchars($_GET['delete']);
-            $movieManager->delete($id);
-            header('Location: /administration?page=articles');
-        }
-
-        if (isset($_GET['update'])) {
-            $id = htmlspecialchars($_GET['update']);
+        } 
+        elseif (isset($_GET['action']) && $_GET['action'] == 'update') {
+            $id = htmlspecialchars($_GET['id']);
             $movie = $movieManager->getOne($id);
 
-            if (isset($_POST['type']) && $_POST['type'] == 'film') {
+            if (isset($_POST['submit']) && $_POST['submit'] == 'Mettre à jour') {
                 $title = htmlspecialchars($_POST['titre']);
                 $synopsis = htmlspecialchars($_POST['synopsis']);
                 // $picture = null; // fonctionne quand même si on supprime la ligne
@@ -64,10 +58,17 @@ if (isset($_GET['page'])) {
                 // $slug = htmlspecialchars($_POST['slug']);
                 // $trailer = htmlspecialchars($_POST['trailer']);
                 // $misEnAvant = isset($_POST['mis-en-avant']) ? 1 : 0;
-                $movieManager->update($title, $synopsis);
+                $movieManager->update($title, $synopsis, $id);
+                $messageConfirmation = 'Le film a bien été mis à jour';
                 header('Location: /administration?page=articles');
             }
-        }    
+        }
+        elseif (isset($_GET['action']) && $_GET['action'] == 'delete') {
+            $id = htmlspecialchars($_GET['id']);
+            $movieManager->delete($id);
+            $messageConfirmation = 'Le film a bien été supprimé';
+            header('Location: /administration?page=articles');
+        }
     } 
     elseif ($getPage === 'comments') {
         $comments = $commentManager->getAllComments();

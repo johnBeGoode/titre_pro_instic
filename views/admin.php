@@ -3,6 +3,12 @@
 <div id="page-admin">
     <h1>Page d'administration</h1>
 
+    <?php if (isset($_SESSION['success'])) { ?>
+                <div id="msg-success" class="alert alert-success">
+                    <?= $_SESSION['success'] ?>
+                </div>
+    <?php } ?>
+
     <nav>
         <ul class="tabs">
             <li><a href="administration?page=mon_compte" class="<?= $accountLink; ?>">Mon compte</a></li>
@@ -19,6 +25,5 @@
         require $content;
     }
     ?>
-
-
+    
 <?php require_once 'include-parts/footer.php'; ?>

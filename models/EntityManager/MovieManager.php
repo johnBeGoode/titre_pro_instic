@@ -29,7 +29,7 @@ class MovieManager {
         $req->execute();
     }
 
-    public function update($id, $title, $synopsis) {
+    public function update($title, $synopsis, $id) {
         $req = $this->db->prepare("UPDATE movies SET title = :title, synopsis = :synopsis WHERE id = :id");
 
         $req->bindValue(':title', $title);
