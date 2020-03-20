@@ -49,5 +49,7 @@ if(isset($jsFiles)):
 endif; 
 ?>
 
+<!-- Ancienne méthode avec le exit() dans le controller -->
+<?//php UNSET($_SESSION['success']); ?> 
 </body>
 </html>

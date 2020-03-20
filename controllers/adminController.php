@@ -45,6 +45,7 @@ if (isset($_GET['page'])) {
             $movieManager->add($titre, $synopsis, $picture, $isPublished, $slug, $trailer, $misEnAvant);
             $_SESSION['success'] = 'Le film a bien été ajouté';
             header('Location: /administration?page=articles');
+            // exit();
         } 
         elseif (isset($_GET['action']) && $_GET['action'] == 'update') {
             $id = htmlspecialchars($_GET['id']);
@@ -59,15 +60,17 @@ if (isset($_GET['page'])) {
                 // $trailer = htmlspecialchars($_POST['trailer']);
                 // $misEnAvant = isset($_POST['mis-en-avant']) ? 1 : 0;
                 $movieManager->update($title, $synopsis, $id);
-                $messageConfirmation = 'Le film a bien été mis à jour';
+                $_SESSION['success'] = 'Le film a bien été mis à jour';
                 header('Location: /administration?page=articles');
+                // exit();
             }
         }
         elseif (isset($_GET['action']) && $_GET['action'] == 'delete') {
             $id = htmlspecialchars($_GET['id']);
             $movieManager->delete($id);
-            $messageConfirmation = 'Le film a bien été supprimé';
+            $_SESSION['success'] = 'Le film a bien été supprimé';
             header('Location: /administration?page=articles');
+            // exit();
         }
     } 
     elseif ($getPage === 'comments') {
@@ -89,7 +92,5 @@ if (isset($_GET['page'])) {
         $accountLink = 'active';
     }
 }
-
-
 
 require_once '../views/' . $vue . '.php'; 

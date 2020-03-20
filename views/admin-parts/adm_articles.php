@@ -38,22 +38,22 @@
             <th>Publié</th>
             <th></th>
         </tr>
-        <thead>
+    <thead>
 
-        <tbody>
-            <?php foreach ($movies as $movie): ?>
-            <tr>
-                <td><img src="<?= $movie->getPicture() ?>" alt=""></td>
-                <td><?= $movie->getTitle() ?></td>
-                <td><?= $movie->getDateAdd() ?></td>
-                <td class="synop"><?= substr($movie->getSynopsis(),0,200) ?> ...</td>
-                <td></td>
-                <td></td>
-                <td class="icone-crud">
-                    <a href="administration?page=articles&action=update&id=<?= $movie->getId(); ?>" class="btn btn-primary" title="Modifier"><i class="fas fa-pencil-alt"></i></a> 
-                    <a href="administration?page=articles&action=delete&id=<?= $movie->getId(); ?>" class="btn btn-danger delete" title="Supprimer"><i class="fas fa-trash"></i></a>
-                </td>
-            </tr>
-            <?php endforeach ?>
-        </tbody>
+    <tbody>
+        <?php foreach ($movies as $movie): ?>
+        <tr>
+            <td><img src="<?= $movie->getPicture() ?>" alt=""></td>
+            <td><?= $movie->getTitle() ?></td>
+            <td><?= $movie->getDateAdd() ?></td>
+            <td class="synop"><?= substr($movie->getSynopsis(),0,200) ?> ...</td>
+            <td></td>
+            <td></td>
+            <td class="icone-crud">
+                <a href="administration?page=articles&action=update&id=<?= $movie->getId(); ?>" class="btn btn-primary" title="Modifier"><i class="fas fa-pencil-alt"></i></a> 
+                <a href="administration?page=articles&action=delete&id=<?= $movie->getId(); ?>" class="btn btn-danger delete" title="Supprimer"><i class="fas fa-trash"></i></a>
+            </td>
+        </tr>
+        <?php endforeach ?>
+    </tbody>
 </table>
