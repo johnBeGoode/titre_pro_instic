@@ -1,8 +1,8 @@
-<button type="button" id="button-add-content" class="btn btn-dark">Add a content</button>
+<button type="button" class="btn btn-dark button-add-content">Add a content</button>
 
-<form action="" method="post" id="form-add-content">
+<form action="" method="post" class="form-add-content">
     <label>Titre</label><br>
-    <input type="text" class="form-control" name="titre" value="<?= isset($movie) ? $movie->getTitle() : ''; ?>"><br>
+    <input type="text" class="form-control" name="titre" focus value="<?= isset($movie) ? $movie->getTitle() : ''; ?>"><br>
 
     <label>Synopsis</label><br>
     <textarea name="synopsis" id="synopsis" class="form-control"><?= isset($movie) ? $movie->getSynopsis() : ''; ?></textarea><br>
@@ -46,7 +46,7 @@
             <td><img src="<?= $movie->getPicture() ?>" alt=""></td>
             <td><?= $movie->getTitle() ?></td>
             <td><?= $movie->getDateAdd() ?></td>
-            <td class="synop"><?= substr($movie->getSynopsis(),0,200) ?> ...</td>
+            <td class="synop"><?= substr($movie->getSynopsis(),0,201) ?> ...</td>
             <td></td>
             <td></td>
             <td class="icone-crud">

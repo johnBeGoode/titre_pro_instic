@@ -32,7 +32,6 @@ if (isset($_GET['page'])) {
         $movies = $movieManager->getAllMovies();
         $articlesLink = 'active';
         $content = '../views/admin-parts/adm_articles.php';
-        $messageConfirmation = null;
 
         if (isset($_POST['submit']) && $_POST['submit'] == 'Ajouter') {
         // if (isset($_GET['action']) && $_GET['action'] == 'add' ) {
@@ -45,7 +44,6 @@ if (isset($_GET['page'])) {
             $movieManager->add($titre, $synopsis, $picture, $isPublished, $slug, $trailer, $misEnAvant);
             $_SESSION['success'] = 'Le film a bien été ajouté';
             header('Location: /administration?page=articles');
-            // exit();
         } 
         elseif (isset($_GET['action']) && $_GET['action'] == 'update') {
             $id = htmlspecialchars($_GET['id']);
@@ -62,7 +60,6 @@ if (isset($_GET['page'])) {
                 $movieManager->update($title, $synopsis, $id);
                 $_SESSION['success'] = 'Le film a bien été mis à jour';
                 header('Location: /administration?page=articles');
-                // exit();
             }
         }
         elseif (isset($_GET['action']) && $_GET['action'] == 'delete') {
@@ -70,7 +67,6 @@ if (isset($_GET['page'])) {
             $movieManager->delete($id);
             $_SESSION['success'] = 'Le film a bien été supprimé';
             header('Location: /administration?page=articles');
-            // exit();
         }
     } 
     elseif ($getPage === 'comments') {
@@ -82,7 +78,33 @@ if (isset($_GET['page'])) {
         $categories = $categoryManager->getAllCategories();
         $categoriesLink = 'active';
         $content = '../views/admin-parts/adm_categories.php';
-    } 
+
+        if (isset($_POST['submit']) && $_POST['submit'] == 'Ajouter') {
+            // if (isset($_GET['action']) && $_GET['action'] == 'add' ) {
+                $nom = htmlspecialchars($_POST['nom']);
+                $categoryManager->add($nom);
+                $_SESSION['success'] = 'La catégorie a bien été ajoutée';
+                header('Location: /administration?page=categories');
+            } 
+            elseif (isset($_GET['action']) && $_GET['action'] == 'update') {
+                $id = htmlspecialchars($_GET['id']);
+                $category = $categoryManager->getOne($id);
+    
+                if (isset($_POST['submit']) && $_POST['submit'] == 'Mettre à jour') {
+                    $nom = htmlspecialchars($_POST['nom']);
+                    $categoryManager->update($nom, $id);
+                    $_SESSION['success'] = 'La catégorie a bien été mis à jour';
+                    header('Location: /administration?page=categories');
+                }
+            }
+            elseif (isset($_GET['action']) && $_GET['action'] == 'delete') {
+                $id = htmlspecialchars($_GET['id']);
+                $categoryManager->delete($id);
+                $_SESSION['success'] = 'La catégorie a bien été supprimée';
+                header('Location: /administration?page=articles');
+            }
+        } 
+     
     elseif ($getPage === 'users') {
         $users = $userManager->getAllUsers();
         $usersLink = 'active';

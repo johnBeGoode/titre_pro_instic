@@ -1,13 +1,13 @@
 $(document).ready(function() {
 
     $('a.delete').click(function(e) {
-        let valid = confirm('Voulez-vous vraiment supprimer le film?')
+        let valid = confirm('Voulez-vous vraiment supprimer l\'élément choisi?')
         if (!valid) {
             e.preventDefault()
         }
     })
 
-    $('#button-add-content').click(function(e) {
+    $('.button-add-content').click(function(e) {
         if ($('form').is(":hidden")) {
             $('form').slideDown(500);
         }
@@ -21,7 +21,7 @@ $(document).ready(function() {
     let pageParams = window.location.search
     // let regExp = new RegExp('(?:page=articles){1}[a-z 1-9 = &]*(?:update=[0-9]+)')
     // ?: signifie parenthèses non capturantes
-    let regExp = new RegExp('(?:page=articles&){1}(?:action=update&)(?:id=[0-9]+)')
+    let regExp = new RegExp('(?:page=[a-z]+&){1}(?:action=update&)(?:id=[0-9]+)')
     // On compare l'url avec l'expression régulière et s'il y a page=articles et update = "un chiffre" alors on cache le bouton et on affiche le formulaire
     if (pageParams.match(regExp)) {
         $('button').hide()
@@ -40,14 +40,10 @@ $(document).ready(function() {
 
    $('#msg-success').delay(3000).slideUp(function(){
         $.ajax({
-            url: '../../controllers/function/unset.php', // ../../controllers/function
+            url: '/public/ajax/unset.php', // appel ajax pour éviter les répétitions de notif dans l'admin
             type: 'GET',
-            // dataType: 'script',
-            success: function(reponse, statut) {
-                alert('appel ajax réussi' + reponse)
-            },
-            error: function (resultat, statut, erreur) {
-                alert('appel ajax échoué')
+            success: function(reponse) {
+                console.log(reponse);
             }
         })
     })
