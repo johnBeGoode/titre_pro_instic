@@ -5,6 +5,7 @@ use App\EntityManager\CommentManager;
 use App\EntityManager\UserManager;
 use App\EntityManager\CategoryManager;
 use App\Entity\Category;
+use App\DBFactory;
 
 
 $title_page = "Administration Chromatic SinémA";
@@ -15,6 +16,7 @@ $commentManager = new CommentManager();
 $categoryManager = new CategoryManager();
 $userManager = new UserManager();
 $category = new Category();
+
 
 
 // $nbMovies = $movieManager->count();
@@ -33,18 +35,21 @@ if (isset($_GET['page'])) {
 
     if ($getPage === 'articles') {
         $movies = $movieManager->getAllMovies();
+        $categories = $categoryManager->getAllCategories();
         $articlesLink = 'active';
         $content = '../views/admin-parts/adm_articles.php';
 
         if (isset($_POST['submit']) && $_POST['submit'] == 'Ajouter') {
         // if (isset($_GET['action']) && $_GET['action'] == 'add' ) {
+            $movieId = DBFactory::getConnexion()->lastInsertId();
+            $movieId++;
             $titre = htmlspecialchars($_POST['titre']);
             $synopsis = htmlspecialchars($_POST['synopsis']);
-            // $picture = null; // fonctionne quand même si on supprime la ligne
             $isPublished = isset($_POST['publie']) ? 1 : 0;
+            $categ = $_POST['categories'];
             $trailer = htmlspecialchars($_POST['trailer']);
             $misEnAvant = isset($_POST['mis-en-avant']) ? 1 : 0;
-            $movieManager->add($titre, $synopsis, $picture, $isPublished, $slug, $trailer, $misEnAvant);
+            $movieManager->add($movieId, $titre, $synopsis, $picture, $isPublished, $categ, $slug, $trailer, $misEnAvant);
             $_SESSION['success'] = 'Le film a bien été ajouté';
             header('Location: /administration?page=articles');
         } 

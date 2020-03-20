@@ -13,12 +13,11 @@ class MovieManager {
         $this->db = DBFactory::getConnexion();
     }
 
-    public function add($title, $synopsis, $picture, $isPublished, $slug, $trailer, $misEnAvant) {
+    public function add($movieId, $title, $synopsis, $picture, $isPublished, $categorie, $slug, $trailer, $misEnAvant) {
         $slug = strtolower($title);
         $slug = str_replace(' ','_', $slug);
         $req = $this->db->prepare("INSERT INTO movies (title, synopsis, date_add, picture, is_published, slug, trailer, mis_en_avant) VALUES (:title, :synopsis, NOW(), :picture, :is_published, :slug, :trailer, :mis_en_avant)");
 
-        // Faire test avec un array à la place de bindValue
         $req->bindValue(':title', $title);
         $req->bindValue(':synopsis', $synopsis);
         $req->bindValue(':picture', $picture);
@@ -26,6 +25,11 @@ class MovieManager {
         $req->bindValue(':slug', $slug);
         $req->bindValue(':trailer', $trailer);
         $req->bindValue(':mis_en_avant', $misEnAvant);
+        $req->execute();
+
+        $req = $this->db->prepare("INSERT INTO movies_categories VALUES (:movieId, :categorieId)");
+        $req->bindValue(':movieId', $movieId);
+        $req->bindValue(':categorieId', $categorie);
         $req->execute();
     }
 

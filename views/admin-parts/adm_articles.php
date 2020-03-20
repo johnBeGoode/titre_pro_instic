@@ -17,16 +17,10 @@
     </select><br><br>
 
     <label>Catégorie</label><br>
-    <select name="category" id="category" multiple>
-        <option value=""></option>
-        <option value="comedie"><?= isset($category) ? $category->getName() : 'Comédie'; ?></option>
-        <option value="action"><?= isset($category) ? $category->getName() : 'Action'; ?></option>
-        <option value="drame"><?= isset($category) ? $category->getName() : 'Drame'; ?></option>
-        <option value="thriller"><?= isset($category) ? $category->getName() : 'Thriller'; ?></option>
-        <option value="horreur"><?= isset($category) ? $category->getName() : 'Horreur'; ?></option>
-        <option value="animation"><?= isset($category) ? $category->getName() : 'Animation'; ?></option>
-        <option value="documentaire"><?= isset($category) ? $category->getName() : 'Documentaire'; ?></option>
-        <option value="sf"><?= isset($category) ? $category->getName() : 'Science-Fiction'; ?></option>
+    <select name="categories" id="categories" multiple>
+        <?php foreach ($categories as $category): ?>
+            <option value="<?= $category->getId() ?>"><?= $category->getName() ?></option>
+        <?php endforeach ?>
     </select><br><br>
 
     <label>Trailer</label><br>
