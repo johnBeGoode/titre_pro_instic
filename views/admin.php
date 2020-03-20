@@ -3,7 +3,10 @@
 <div id="page-admin">
     <h1>Page d'administration</h1>
 
-    <?php if (isset($_SESSION['success'])) { ?>
+    <?php 
+    if (isset($_SESSION['success'])) { 
+                var_dump($_SESSION['success']);
+                ?>
                 <div id="msg-success" class="alert alert-success">
                     <?= $_SESSION['success'] ?>
                 </div>

@@ -1,31 +1,34 @@
 <button type="button" id="button-add-content" class="btn btn-dark">Add a content</button>
 
-<form action="" method="post" id="form-add-content">
-    <label>Titre</label><br>
-    <input type="text" class="form-control" name="titre" value="<?= isset($movie) ? $movie->getTitle() : ''; ?>"><br>
+<div class="modalBg">
+    <form action="" method="post" id="form-add-content" class="modalForm">
+        <button class="closeModalForm" type="button"><i class="fas fa-times-circle"></i></button>
+        <label>Titre</label><br>
+        <input type="text" class="form-control" name="titre" value="<?= isset($movie) ? $movie->getTitle() : ''; ?>"><br>
 
-    <label>Synopsis</label><br>
-    <textarea name="synopsis" id="synopsis" class="form-control"><?= isset($movie) ? $movie->getSynopsis() : ''; ?></textarea><br>
+        <label>Synopsis</label><br>
+        <textarea name="synopsis" id="synopsis" class="form-control"><?= isset($movie) ? $movie->getSynopsis() : ''; ?></textarea><br>
 
-    <label>Image</label><br>
-    <input type="file" name="image"><br><br>
-    
-    <label>Type</label><br>
-    <select name="type" id="type">
-        <option value="film">Film</option>
-        <option value="serie">Série</option>
-    </select><br><br>
+        <label>Image</label><br>
+        <input type="file" name="image"><br><br>
+        
+        <label>Type</label><br>
+        <select name="type" id="type">
+            <option value="film">Film</option>
+            <option value="serie">Série</option>
+        </select><br><br>
 
-    <label>Trailer</label><br>
-    <input type="text" class="form-control" name="trailer" value="<?= isset($movie) ? $movie->getTrailer() : ''; ?>"><br>
+        <label>Trailer</label><br>
+        <input type="text" class="form-control" name="trailer" value="<?= isset($movie) ? $movie->getTrailer() : ''; ?>"><br>
 
-    <label>Publié</label> <input type="checkbox" name="publie" <?= isset($movie) && $movie->getIsPublished() ? 'checked' : ''; ?>><br>
+        <label>Publié</label> <input type="checkbox" name="publie" <?= isset($movie) && $movie->getIsPublished() ? 'checked' : ''; ?>><br>
 
-    <label>Mise en avant</label> <input type="checkbox" name="mis-en-avant"><br><br>
+        <label>Mise en avant</label> <input type="checkbox" name="mis-en-avant"><br><br>
 
-    <input type="submit" name="submit" class="btn btn-primary" value="<?= isset($_GET['action']) && $_GET['action'] == 'update' ? 'Mettre à jour' : 'Ajouter'; ?>">
-    <input type="reset" class="btn btn-primary" value='Annuler'>
-</form>
+        <input type="submit" name="submit" class="btn btn-primary" value="<?= isset($_GET['action']) && $_GET['action'] == 'update' ? 'Mettre à jour' : 'Ajouter'; ?>">
+        <input type="reset" class="btn btn-primary" value='Annuler'>
+    </form>
+</div>
 
 <table class="admin-articles table table-striped">
     <thead>

@@ -8,13 +8,19 @@ $(document).ready(function() {
     })
 
     $('#button-add-content').click(function(e) {
-        if ($('form').is(":hidden")) {
-            $('form').slideDown(500);
-        }
-        else {
-            $('form').slideUp(500);
+        if ($('.modalBg').is(":hidden")) {
+            $('.modalBg').fadeIn(500,function(){
+                $('.modalForm').show(500);
+            });
         }
     })
+
+    $(".closeModalForm").click(function(){        
+        $('.modalForm').hide(500, function(){
+            $('.modalBg').fadeOut(500);
+        });
+    })
+    
 
     // windox.location renvoie les informations concernant l'url de la page
     // La propriété search renvoie le ? ainsi que les paramètres situés après le ? de l'url
@@ -40,11 +46,11 @@ $(document).ready(function() {
 
    $('#msg-success').delay(3000).slideUp(function(){
         $.ajax({
-            url: '../../controllers/function/unset.php', // ../../controllers/function
+            url: 'public/ajax/unset.php', // ../../controllers/function
             type: 'GET',
             // dataType: 'script',
             success: function(reponse, statut) {
-                alert('appel ajax réussi' + reponse)
+                console.log(reponse)
             },
             error: function (resultat, statut, erreur) {
                 alert('appel ajax échoué')

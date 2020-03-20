@@ -37,9 +37,8 @@
     }
 
     #form-add-content {
-        width: 40%;
-        margin-left: 100px;
-        display: none;
+        max-width: 600px;  
+        width: 90%;      
         label {
             font-weight: bold;
         }

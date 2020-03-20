@@ -43,7 +43,7 @@ if (isset($_GET['page'])) {
             $trailer = htmlspecialchars($_POST['trailer']);
             $misEnAvant = isset($_POST['mis-en-avant']) ? 1 : 0;
             $movieManager->add($titre, $synopsis, $picture, $isPublished, $slug, $trailer, $misEnAvant);
-            $_SESSION['success'] = 'Le film a bien été ajouté';
+            addNotif("success", 'Le film a bien été ajouté', "fa-folder-plus");
             header('Location: /administration?page=articles');
             // exit();
         } 
@@ -60,7 +60,7 @@ if (isset($_GET['page'])) {
                 // $trailer = htmlspecialchars($_POST['trailer']);
                 // $misEnAvant = isset($_POST['mis-en-avant']) ? 1 : 0;
                 $movieManager->update($title, $synopsis, $id);
-                $_SESSION['success'] = 'Le film a bien été mis à jour';
+                addNotif("success", 'Le film a bien été mis à jour', "fa-edit");
                 header('Location: /administration?page=articles');
                 // exit();
             }
@@ -68,7 +68,7 @@ if (isset($_GET['page'])) {
         elseif (isset($_GET['action']) && $_GET['action'] == 'delete') {
             $id = htmlspecialchars($_GET['id']);
             $movieManager->delete($id);
-            $_SESSION['success'] = 'Le film a bien été supprimé';
+            addNotif("alert", 'Le film a bien été supprimé', "fa-times");            
             header('Location: /administration?page=articles');
             // exit();
         }
