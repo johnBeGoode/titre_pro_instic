@@ -97,4 +97,14 @@ class MovieManager {
 
         return $movie;
     }
+
+    public function getMoviesByCategory($categoriesId) {
+        $sql = "SELECT DISTINCT COUNT(movie_id) FROM movies_categories WHERE Categorie_id = :categoriesId";
+        $req = $this->db->prepare($sql);
+        $req->bindValue(':categoriesId', $categoriesId);
+        $req->execute();
+        $countByCategory = $req->fetchColumn();
+
+        return $countByCategory; 
+    }
 }

@@ -53,7 +53,5 @@ class CategoryManager {
         $this->db->exec("DELETE FROM categories WHERE id = " . (int)$id);
     }
 
-    public function getMoviesByCategory() {
-        
-    }
+   
 }

@@ -4,6 +4,7 @@ use App\EntityManager\MovieManager;
 use App\EntityManager\CommentManager;
 use App\EntityManager\UserManager;
 use App\EntityManager\CategoryManager;
+use App\Entity\Category;
 
 
 $title_page = "Administration Chromatic SinémA";
@@ -13,6 +14,8 @@ $movieManager = new MovieManager();
 $commentManager = new CommentManager();
 $categoryManager = new CategoryManager();
 $userManager = new UserManager();
+$category = new Category();
+
 
 // $nbMovies = $movieManager->count();
 
@@ -78,6 +81,7 @@ if (isset($_GET['page'])) {
         $categories = $categoryManager->getAllCategories();
         $categoriesLink = 'active';
         $content = '../views/admin-parts/adm_categories.php';
+        
 
         if (isset($_POST['submit']) && $_POST['submit'] == 'Ajouter') {
             // if (isset($_GET['action']) && $_GET['action'] == 'add' ) {
