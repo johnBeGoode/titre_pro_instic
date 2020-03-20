@@ -7,6 +7,7 @@ $(document).ready(function() {
         }
     })
 
+    /*************gestion de la modal************/
     $('#button-add-content').click(function(e) {
         if ($('.modalBg').is(":hidden")) {
             $('.modalBg').fadeIn(500,function(){
@@ -20,6 +21,7 @@ $(document).ready(function() {
             $('.modalBg').fadeOut(500);
         });
     })
+    /********************************************/
     
 
     // windox.location renvoie les informations concernant l'url de la page
@@ -42,19 +44,6 @@ $(document).ready(function() {
         let regExp = new RegExp('&action=update&id=[0-9]+')
         let newUrl = pageParams.replace(regExp, '')
         document.location.href = newUrl
-   })
-
-   $('#msg-success').delay(3000).slideUp(function(){
-        $.ajax({
-            url: 'public/ajax/unset.php', // ../../controllers/function
-            type: 'GET',
-            // dataType: 'script',
-            success: function(reponse, statut) {
-                console.log(reponse)
-            },
-            error: function (resultat, statut, erreur) {
-                alert('appel ajax échoué')
-            }
-        })
-    })
+   })   
+    
 })

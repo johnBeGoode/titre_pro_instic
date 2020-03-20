@@ -57,6 +57,6 @@ function envoiMail() {
 //     $req->closeCursor();
 // }
 
-$jsFiles = ['form.js'];
+$jsFiles = ['form.js',"notifsjs"];
 
 require_once '../views/' . $vue . '.php';

@@ -34,5 +34,7 @@
             <a href="/connexion" class="btn btn-primary"><?= isset($_SESSION['connected']) ? 'Admin' : 'Se connecter' ?></a>
         </div>
     </header>
+
+    <?php require_once 'notifs.php'; ?>
     
    

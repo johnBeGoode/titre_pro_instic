@@ -1,6 +1,7 @@
 <?php
 $title_page = 'Page de connexion';
 $desc_page = 'Identification pour accéder aux différentes sessions';
+$jsFiles = ['notifs.js'];
 // -----TRAITEMENT ---
 
 function is_connected():bool {
@@ -26,7 +27,9 @@ if (isset($_POST['login']) && !empty($_POST['login']) && isset($_POST['password'
     if ($_POST['login'] === 'John' && $_POST['password'] === 'Doe') {
         session_start();
         // On stocke une valeur pour que ça renvoie true
+        $_SESSION['success'] = array();
         $_SESSION['connected'] = 1;
+        addNotif("success", 'Benvenue dans la matrice Mr. '.$_POST['login'], "fa-user-secret");
         header('Location: /administration?page=articles');
         exit();
     }

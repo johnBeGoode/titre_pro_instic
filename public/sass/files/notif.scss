@@ -1,0 +1,32 @@
+.notifs {
+    position: fixed;
+    top: 100px;
+    right: 15px;
+    width: 250px;        
+    text-align: center;
+    .notif{
+        display: none;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 10px 25px;
+        border: 2px solid black;
+        box-shadow: 2px 2px 4px gray;
+        border-radius: 10px;
+        &.notif-success{
+            background-color: lightgreen;
+        }
+        &.notif-alert{
+            background-color: orange;
+        }
+        div{
+            width: 80%;
+        }
+        .notifIcon{
+            text-align: center;
+            width: 15%;
+            font-size: 35px;
+        }
+
+    }
+}

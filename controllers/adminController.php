@@ -14,10 +14,7 @@ $commentManager = new CommentManager();
 $categoryManager = new CategoryManager();
 $userManager = new UserManager();
 
-// $nbMovies = $movieManager->count();
-
-// $scriptJS = '/public/js/admin.js';
-$jsFiles = ['admin.js'];
+$jsFiles = ['admin.js','notifs.js'];
 
 $accountLink = null;
 $articlesLink = null;

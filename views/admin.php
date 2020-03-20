@@ -1,16 +1,7 @@
 <?php require_once 'include-parts/header.php'; ?>
 
 <div id="page-admin">
-    <h1>Page d'administration</h1>
-
-    <?php 
-    if (isset($_SESSION['success'])) { 
-                var_dump($_SESSION['success']);
-                ?>
-                <div id="msg-success" class="alert alert-success">
-                    <?= $_SESSION['success'] ?>
-                </div>
-    <?php } ?>
+    <h1>Page d'administration</h1>  
 
     <nav>
         <ul class="tabs">
