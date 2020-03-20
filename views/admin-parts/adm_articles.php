@@ -17,9 +17,14 @@
     </select><br><br>
 
     <label>Catégorie</label><br>
-    <select name="categories" id="categories" multiple>
+    <select name="categories[]" id="categories" multiple>
         <?php foreach ($categories as $category): ?>
-            <option value="<?= $category->getId() ?>"><?= $category->getName() ?></option>
+            <?php 
+            $attrSelected = '';
+            if(in_array($category->getId(),$movieCategories)) {
+                $attrSelected = 'selected';
+            } ?>
+            <option value="<?= $category->getId() ?>"<?= $attrSelected; ?>><?= $category->getName() ?></option>
         <?php endforeach ?>
     </select><br><br>
 

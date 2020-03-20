@@ -13,7 +13,7 @@ class MovieManager {
         $this->db = DBFactory::getConnexion();
     }
 
-    public function add($movieId, $title, $synopsis, $picture, $isPublished, $categorie, $slug, $trailer, $misEnAvant) {
+    public function add($title, $synopsis, $picture, $isPublished, $categories, $trailer, $misEnAvant) {
         $slug = strtolower($title);
         $slug = str_replace(' ','_', $slug);
         $req = $this->db->prepare("INSERT INTO movies (title, synopsis, date_add, picture, is_published, slug, trailer, mis_en_avant) VALUES (:title, :synopsis, NOW(), :picture, :is_published, :slug, :trailer, :mis_en_avant)");
@@ -27,13 +27,17 @@ class MovieManager {
         $req->bindValue(':mis_en_avant', $misEnAvant);
         $req->execute();
 
-        $req = $this->db->prepare("INSERT INTO movies_categories VALUES (:movieId, :categorieId)");
-        $req->bindValue(':movieId', $movieId);
-        $req->bindValue(':categorieId', $categorie);
-        $req->execute();
+        $movieId = $this->db->lastInsertId();
+
+        foreach ($categories as $category) {
+            $req = $this->db->prepare("INSERT INTO movies_categories VALUES (:movieId, :categorieId)");
+            $req->bindValue(':movieId', $movieId);
+            $req->bindValue(':categorieId', $category);
+            $req->execute();
+        }
     }
 
-    public function update($title, $synopsis, $id) {
+    public function update($title, $synopsis, $categories, $id) {
         $req = $this->db->prepare("UPDATE movies SET title = :title, synopsis = :synopsis WHERE id = :id");
 
         $req->bindValue(':title', $title);
@@ -43,6 +47,18 @@ class MovieManager {
         // $req->bindValue(':is_published', $movie->getIsPublished());
         // $req->bindValue(':slug', $movie->getSlug());
         $req->execute();
+
+        // tout vider de la table movie_categories qui concerne le films en question
+        $req = $this->db->prepare("DELETE FROM movies_categories WHERE Movie_id=:movie_id");
+        $req->bindValue(':movie_id', $id);
+        $req->execute();
+        // Et on les remet
+        foreach ($categories as $category) {
+            $req = $this->db->prepare("INSERT INTO movies_categories VALUES (:movieId, :categorieId)");
+            $req->bindValue(':movieId', $id);
+            $req->bindValue(':categorieId', $category);
+            $req->execute();
+        }
     }
 
     // public function update(Movie $movie) {
@@ -59,6 +75,7 @@ class MovieManager {
     // }
 
     public function delete($id) {
+        // $this->db->exec("DELETE FROM movies_categories WHERE Movie_id = " . (int)$id);
         $this->db->exec("DELETE FROM movies WHERE id = " . (int)$id);
     }
 
@@ -110,5 +127,15 @@ class MovieManager {
         $countByCategory = $req->fetchColumn();
 
         return $countByCategory; 
+    }
+
+    public function getCategoriesForAMovie($idMovie) {
+        $sql = "SELECT categorie_id FROM movies_categories WHERE Movie_id = :movieId";
+        $req = $this->db->prepare($sql);
+        $req->bindValue(':movieId', (int)$idMovie);
+        $req->execute();
+        $result = $req->fetchAll(\PDO::FETCH_COLUMN, 0);
+
+        return $result;
     }
 }

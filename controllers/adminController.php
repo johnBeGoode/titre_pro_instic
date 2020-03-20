@@ -41,31 +41,32 @@ if (isset($_GET['page'])) {
 
         if (isset($_POST['submit']) && $_POST['submit'] == 'Ajouter') {
         // if (isset($_GET['action']) && $_GET['action'] == 'add' ) {
-            $movieId = DBFactory::getConnexion()->lastInsertId();
-            $movieId++;
+            $picture = null;
             $titre = htmlspecialchars($_POST['titre']);
             $synopsis = htmlspecialchars($_POST['synopsis']);
             $isPublished = isset($_POST['publie']) ? 1 : 0;
-            $categ = $_POST['categories'];
+            $categories = $_POST['categories'];
             $trailer = htmlspecialchars($_POST['trailer']);
             $misEnAvant = isset($_POST['mis-en-avant']) ? 1 : 0;
-            $movieManager->add($movieId, $titre, $synopsis, $picture, $isPublished, $categ, $slug, $trailer, $misEnAvant);
+            $movieManager->add($titre, $synopsis, $picture, $isPublished, $categories, $trailer, $misEnAvant);
             $_SESSION['success'] = 'Le film a bien été ajouté';
             header('Location: /administration?page=articles');
         } 
         elseif (isset($_GET['action']) && $_GET['action'] == 'update') {
             $id = htmlspecialchars($_GET['id']);
             $movie = $movieManager->getOne($id);
+            $movieCategories = $movieManager->getCategoriesForAMovie($id);
 
             if (isset($_POST['submit']) && $_POST['submit'] == 'Mettre à jour') {
                 $title = htmlspecialchars($_POST['titre']);
                 $synopsis = htmlspecialchars($_POST['synopsis']);
+                $categoriesId = $_POST['categories'];
                 // $picture = null; // fonctionne quand même si on supprime la ligne
                 // $isPublished = isset($_POST['publie']) ? 1 : 0;
                 // $slug = htmlspecialchars($_POST['slug']);
                 // $trailer = htmlspecialchars($_POST['trailer']);
                 // $misEnAvant = isset($_POST['mis-en-avant']) ? 1 : 0;
-                $movieManager->update($title, $synopsis, $id);
+                $movieManager->update($title, $synopsis, $categoriesId, $id);
                 $_SESSION['success'] = 'Le film a bien été mis à jour';
                 header('Location: /administration?page=articles');
             }
