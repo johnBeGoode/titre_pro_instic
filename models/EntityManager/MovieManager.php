@@ -37,15 +37,16 @@ class MovieManager {
         }
     }
 
-    public function update($title, $synopsis, $categories, $id) {
-        $req = $this->db->prepare("UPDATE movies SET title = :title, synopsis = :synopsis WHERE id = :id");
+    public function update($title, $synopsis, $picture, $categories, $trailer, $isPublished, $misEnAvant, $id) {
+        $req = $this->db->prepare("UPDATE movies SET title = :title, synopsis = :synopsis, picture = :picture, trailer = :trailer, is_published = :is_published, mis_en_avant = :mis_en_avant WHERE id = :id");
 
         $req->bindValue(':title', $title);
         $req->bindValue(':synopsis', $synopsis);
+        $req->bindValue(':picture', $picture);
+        $req->bindValue(':trailer', $trailer);
+        $req->bindValue(':is_published', $isPublished);
+        $req->bindValue(':mis_en_avant', $misEnAvant);
         $req->bindValue(':id', $id);
-        // $req->bindValue(':picture', $movie->getPicture());
-        // $req->bindValue(':is_published', $movie->getIsPublished());
-        // $req->bindValue(':slug', $movie->getSlug());
         $req->execute();
 
         // tout vider de la table movie_categories qui concerne le films en question
@@ -112,7 +113,7 @@ class MovieManager {
     public function getOne($id) {
         $sql = "SELECT * FROM movies WHERE id = :id";
         $req = $this->db->prepare($sql);
-        $req->bindValue(':id', (int)$id, \PDO::PARAM_INT);
+        $req->bindValue(':id', $id, \PDO::PARAM_INT);
         $req->execute();
         $movie = $req->fetchObject('App\Entity\Movie');
 

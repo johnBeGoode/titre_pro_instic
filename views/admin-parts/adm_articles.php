@@ -2,7 +2,7 @@
 
 <form action="" method="post" class="form-add-content">
     <label>Titre</label><br>
-    <input type="text" class="form-control" name="titre" focus value="<?= isset($movie) ? $movie->getTitle() : ''; ?>"><br>
+    <input type="text" class="form-control" name="titre" value="<?= isset($movie) ? $movie->getTitle() : ''; ?>"><br>
 
     <label>Synopsis</label><br>
     <textarea name="synopsis" id="synopsis" class="form-control"><?= isset($movie) ? $movie->getSynopsis() : ''; ?></textarea><br>
@@ -21,10 +21,10 @@
         <?php foreach ($categories as $category): ?>
             <?php 
             $attrSelected = '';
-            if(in_array($category->getId(),$movieCategories)) {
+            if(in_array($category->getId(), $movieCategories)) {
                 $attrSelected = 'selected';
             } ?>
-            <option value="<?= $category->getId() ?>"<?= $attrSelected; ?>><?= $category->getName() ?></option>
+            <option value="<?= $category->getId() ?>" <?= $attrSelected; ?>><?= $category->getName() ?></option>
         <?php endforeach ?>
     </select><br><br>
 
@@ -50,7 +50,7 @@
             <th>Publié</th>
             <th></th>
         </tr>
-    <thead>
+    </thead>
 
     <tbody>
         <?php foreach ($movies as $movie): ?>

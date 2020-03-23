@@ -30,4 +30,11 @@ class UserManager {
         return $datas;
     }
 
+    public function getAllRoles() {
+        $sql = "SELECT DISTINCT role FROM users";
+        $req = $this->db->query($sql);
+        $roles = $req->fetchAll();
+
+        return $roles;
+    }
 }

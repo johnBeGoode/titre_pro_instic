@@ -13,21 +13,21 @@ class CommentManager {
         $this->db = DBFactory::getConnexion();
     }
 
-    public function add(Comment $comment) {
-        $req = $this->db->prepare("INSERT INTO comments (comment, date_add, movie_id, user_id) VALUES (:comment, NOW(), :movie_id, :user_id");
+    public function add($comment, $movieSelected, $user = 1) {
+        $req = $this->db->prepare("INSERT INTO comments (comment, date_add, movie_id, user_id) VALUES (:comment, NOW(), :movie_id, :user_id)");
 
-        $req->bindValue(':comment', $comment->getComment());
-        $req->bindValue(':movie_id', $comment->getMovieId());
-        $req->bindValue(':user_id', $comment->getUserId());
+        $req->bindValue(':comment', $comment);
+        $req->bindValue(':movie_id', $movieSelected);
+        $req->bindValue(':user_id', $user);
 
         $req->execute();
     }
 
-    public function update(Comment $comment) {
-        $req = $this->db->prepare("UPDATE comments SET comment = :comment, WHERE id = :id");
+    public function update($comment, $id) {
+        $req = $this->db->prepare("UPDATE comments SET comment = :comment WHERE id = :id");
 
-        $req->bindValue(':comment', $comment->getComment());
-        $req->bindValue(':id', $comment->getId(), \PDO::PARAM_INT);
+        $req->bindValue(':comment', $comment);
+        $req->bindValue(':id', $id);
 
         $req->execute();
     }
@@ -58,18 +58,13 @@ class CommentManager {
         return $datas;
     }
 
-    // public function getOne($id) {
-    //     return $this->db->query("SELECT * FROM comments WHERE id=" . (int)$id);
-    // }
+    public function getOne($id) {
+        $sql = "SELECT * FROM comments WHERE id = :id";
+        $req = $this->db->prepare($sql);
+        $req->bindValue(':id', $id, \PDO::PARAM_INT);
+        $req->execute();
+        $comment = $req->fetchObject('App\Entity\Comment');
 
-    public function getUserName(int $userId) {
-
-        // $sql = "SELECT users.name FROM users INNER JOIN comments ON users.id = comments.user_id WHERE users.id = :userId";
-        // $req = $this->db->prepare($sql);
-        // $req->bindValue(':userId', $userId, \PDO::PARAM_INT);
-        // $req->execute();
-        // $data = $req->fetch();
-
-        // return $data;
+        return $comment;
     }
 }

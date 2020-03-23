@@ -23,7 +23,7 @@ class CategoryManager {
     public function getOne($id) {
         $sql = "SELECT * FROM categories WHERE id = :id";
         $req = $this->db->prepare($sql);
-        $req->bindValue(':id', (int)$id, \PDO::PARAM_INT);
+        $req->bindValue(':id', $id, \PDO::PARAM_INT);
         $req->execute();
         $category = $req->fetchObject('App\Entity\Category');
 
@@ -43,7 +43,6 @@ class CategoryManager {
 
     public function update($nom, $id) {
         $req = $this->db->prepare("UPDATE categories SET name = :name WHERE id = :id");
-
         $req->bindValue(':name', $nom);
         $req->bindValue(':id', $id);
         $req->execute();

@@ -11,7 +11,6 @@
 
     <nav>
         <ul class="tabs">
-            <li><a href="administration?page=mon_compte" class="<?= $accountLink; ?>">Mon compte</a></li>
             <li><a href="administration?page=articles" class="<?= $articlesLink; ?>">Articles</a></li>
             <li><a href="administration?page=categories" class="<?= $categoriesLink; ?>">Categories</a></li>
             <li><a href="administration?page=comments" class="<?= $commentsLink; ?>">Commentaires</a></li>
