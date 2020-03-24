@@ -11,7 +11,7 @@ class UserManager {
         $this->db = DBFactory::getConnexion();
     }
 
-    public function getUser(int $id){
+    public function getUser($id){
         $sql = "SELECT * FROM users WHERE id = :id";
         $req = $this->db->prepare($sql);        
         $req->bindValue(':id', $id, \PDO::PARAM_INT);
@@ -30,11 +30,27 @@ class UserManager {
         return $datas;
     }
 
-    public function getAllRoles() {
-        $sql = "SELECT DISTINCT role FROM users";
-        $req = $this->db->query($sql);
-        $roles = $req->fetchAll();
+    public function add($nom, $pass, $mail, $role) {
+        $sql = "INSERT INTO users (name, password, role, email, date_registration) VALUES (:nom, :password, :role, :email, NOW())";
+        $req = $this->db->prepare($sql);
+        $req->bindValue(':nom', $nom);
+        $req->bindValue(':password', $pass);
+        $req->bindValue(':email', $mail);
+        $req->bindValue(':role', $role);
+        $req->execute();
+    }
 
-        return $roles;
+    public function update($nom, $password, $email, $role, $id) {
+        $req = $this->db->prepare("UPDATE users SET name = :nom, password = :password, role = :role, email = :email WHERE id = :id");
+        $req->bindValue(':name', $nom);
+        $req->bindValue(':password', $password);
+        $req->bindValue(':email', $email);
+        $req->bindValue(':role', $role);
+        $req->bindValue(':id', $id);
+        $req->execute();
+    }
+
+    public function delete($id) {
+        $this->db->exec("DELETE FROM users WHERE id = " . (int)$id);
     }
 }

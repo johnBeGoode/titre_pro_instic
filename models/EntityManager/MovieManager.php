@@ -62,19 +62,6 @@ class MovieManager {
         }
     }
 
-    // public function update(Movie $movie) {
-    //     $req = $this->db->prepare("UPDATE movies SET title = :title, synopsis = :synopsis, picture = :picture, is_published = :is_published, slug = :slug WHERE id = :id");
-
-    //     $req->bindValue(':title', $movie->getTitle());
-    //     $req->bindValue(':synopsis', $movie->getSynopsis());
-    //     $req->bindValue(':picture', $movie->getPicture());
-    //     $req->bindValue(':is_published', $movie->getIsPublished());
-    //     $req->bindValue(':slug', $movie->getSlug());
-    //     $req->bindValue(':id', $movie->getId(), \PDO::PARAM_INT);
-
-    //     $req->execute();
-    // }
-
     public function delete($id) {
         // $this->db->exec("DELETE FROM movies_categories WHERE Movie_id = " . (int)$id);
         $this->db->exec("DELETE FROM movies WHERE id = " . (int)$id);

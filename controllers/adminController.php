@@ -40,7 +40,6 @@ if (isset($_GET['page'])) {
         $content = '../views/admin-parts/adm_articles.php';
 
         if (isset($_POST['submit']) && $_POST['submit'] == 'Ajouter') {
-            $picture = null;
             $titre = htmlspecialchars($_POST['titre']);
             $synopsis = htmlspecialchars($_POST['synopsis']);
             $picture = null;
@@ -49,7 +48,7 @@ if (isset($_GET['page'])) {
             $trailer = htmlspecialchars($_POST['trailer']);
             $misEnAvant = isset($_POST['mis-en-avant']) ? 1 : 0;
             $movieManager->add($titre, $synopsis, $picture, $isPublished, $categories, $trailer, $misEnAvant);
-            $_SESSION['success'] = 'Le film a bien été ajouté';
+            $_SESSION['success'] = 'Le nouveau film a bien été ajouté';
             header('Location: /administration?page=articles');
         } 
         elseif (isset($_GET['action']) && $_GET['action'] == 'update') {
@@ -66,14 +65,14 @@ if (isset($_GET['page'])) {
                 $isPublished = isset($_POST['publie']) ? 1 : 0;
                 $misEnAvant = isset($_POST['mis-en-avant']) ? 1 : 0;
                 $movieManager->update($title, $synopsis, $picture, $categoriesId, $trailer, $isPublished, $misEnAvant, $id);
-                $_SESSION['success'] = 'Le film a bien été mis à jour';
+                $_SESSION['success'] = 'Le film a été mis à jour';
                 header('Location: /administration?page=articles');
             }
         }
         elseif (isset($_GET['action']) && $_GET['action'] == 'delete') {
             $id = htmlspecialchars($_GET['id']);
             $movieManager->delete($id);
-            $_SESSION['success'] = 'Le film a bien été supprimé';
+            $_SESSION['success'] = 'Le film a été supprimé';
             header('Location: /administration?page=articles');
         }
     } 
@@ -90,7 +89,7 @@ if (isset($_GET['page'])) {
             $comment = htmlspecialchars($_POST['comment']);
             $movieSelected = htmlspecialchars($_POST['movieList']);
             $commentManager->add($comment, $movieSelected); // $user définit par défaut à 1. A rajouter ou pas?
-            $_SESSION['success'] = 'Votre commentaire a bien été ajouté';
+            $_SESSION['success'] = 'Le nouveau commentaire a bien été ajouté';
             header('Location: /administration?page=comments');
         }
         elseif (isset($_GET['action']) && $_GET['action'] == 'update') {
@@ -100,14 +99,14 @@ if (isset($_GET['page'])) {
             if (isset($_POST['submit']) && $_POST['submit'] == 'Mettre à jour') {
                 $comment = htmlspecialchars($_POST['comment']);
                 $commentManager->update($comment, $id);
-                $_SESSION['success'] = 'Votre commentaire a bien été mis à jour';
+                $_SESSION['success'] = 'Le commentaire a été mis à jour';
                 header('Location: /administration?page=comments');
             }
         }
         elseif (isset($_GET['action']) && $_GET['action'] == 'delete') {
             $id = htmlspecialchars($_GET['id']);
             $commentManager->delete($id);
-            $_SESSION['success'] = 'Le commentaire a bien été supprimé';
+            $_SESSION['success'] = 'Le commentaire a été supprimé';
             header('Location: /administration?page=comments');
         }
     } 
@@ -123,7 +122,7 @@ if (isset($_GET['page'])) {
         if (isset($_POST['submit']) && $_POST['submit'] == 'Ajouter') {
                 $nom = htmlspecialchars($_POST['nom']);
                 $categoryManager->add($nom);
-                $_SESSION['success'] = 'La catégorie a bien été ajoutée';
+                $_SESSION['success'] = 'La nouvelle catégorie a bien été ajoutée';
                 header('Location: /administration?page=categories');
             } 
         elseif (isset($_GET['action']) && $_GET['action'] == 'update') {
@@ -133,14 +132,14 @@ if (isset($_GET['page'])) {
             if (isset($_POST['submit']) && $_POST['submit'] == 'Mettre à jour') {
                 $nom = htmlspecialchars($_POST['nom']);
                 $categoryManager->update($nom, $id);
-                $_SESSION['success'] = 'La catégorie a bien été mis à jour';
+                $_SESSION['success'] = 'La catégorie a été mise à jour';
                 header('Location: /administration?page=categories');
             }
         }
         elseif (isset($_GET['action']) && $_GET['action'] == 'delete') {
             $id = htmlspecialchars($_GET['id']);
             $categoryManager->delete($id);
-            $_SESSION['success'] = 'La catégorie a bien été supprimée';
+            $_SESSION['success'] = 'La catégorie a été supprimée';
             header('Location: /administration?page=articles');
         }
     } 
@@ -152,7 +151,51 @@ if (isset($_GET['page'])) {
         $users = $userManager->getAllUsers();
         $usersLink = 'active';
         $content = '../views/admin-parts/adm_users.php';
-        $roles = $userManager->getAllroles();
+
+        if (isset($_POST['submit']) && $_POST['submit'] == 'Ajouter') {
+            $userName = htmlspecialchars($_POST['username']);
+            $password = '';
+            $email = htmlspecialchars($_POST['email']);
+            $role = $_POST['role'];
+
+            if (htmlspecialchars($_POST['password2']) !== htmlspecialchars($_POST['password1'])) {
+                $_SESSION['error'] = 'Les mots de passe sont différents';
+                $_SESSION['inputs'] = $_POST;
+            }
+            if (htmlspecialchars($_POST['password2']) == htmlspecialchars($_POST['password1'])) {
+                $password = htmlspecialchars($_POST['password2']);
+                $userManager->add($userName, $password, $email, $role);
+                $_SESSION['success'] = 'Le nouvel utilisateur a bien été ajouté';
+                header('Location: /administration?page=users');
+            }
+        }
+        elseif (isset($_GET['action']) && $_GET['action'] == 'update') {
+            $id = htmlspecialchars($_GET['id']);
+            $user = $userManager->getUser($id);
+        
+            if (isset($_POST['submit']) && $_POST['submit'] == 'Mettre à jour') {
+                $userName = htmlspecialchars($_POST['username']);
+                $password = '';
+                $email = htmlspecialchars($_POST['email']);
+                $role = htmlspecialchars($_POST['role']);
+                
+                if (htmlspecialchars($_POST['password2']) !== htmlspecialchars($_POST['password1'])) {
+                    $_SESSION['error'] = 'Les mots de passe sont différents';
+                    $_SESSION['inputs'] = $_POST;
+                }
+                if (htmlspecialchars($_POST['password2']) == htmlspecialchars($_POST['password1'])) {
+                    $password = htmlspecialchars($_POST['password2']);
+                    $userManager->update($userName, $password, $email, $role, $id);                     $_SESSION['success'] = 'L\'utilisateur a été mis à jour';
+                    header('Location: /administration?page=users');
+                }
+            }
+        }
+        elseif (isset($_GET['action']) && $_GET['action'] == 'delete') {
+            $id = htmlspecialchars($_GET['id']);
+            $userManager->delete($id);
+            $_SESSION['success'] = 'L\'utilisateur a bien été supprimé';
+            header('Location: /administration?page=users');
+        }
     }
 }
 

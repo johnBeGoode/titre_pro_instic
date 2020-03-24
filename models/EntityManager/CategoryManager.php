@@ -51,6 +51,4 @@ class CategoryManager {
     public function delete($id) {
         $this->db->exec("DELETE FROM categories WHERE id = " . (int)$id);
     }
-
-   
 }

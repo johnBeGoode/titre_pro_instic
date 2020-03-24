@@ -8,6 +8,11 @@
                     <?= $_SESSION['success'] ?>
                 </div>
     <?php } ?>
+    <?php if (isset($_SESSION['error'])) { ?>
+                <div id="msg-error" class="alert alert-danger">
+                    <?= $_SESSION['error'] ?>
+                </div>
+    <?php } ?>
 
     <nav>
         <ul class="tabs">

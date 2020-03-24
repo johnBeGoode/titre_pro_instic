@@ -1,14 +1,30 @@
 <button type="button" class="btn btn-dark button-add-content">Add a user</button>
 
 <form action="" method="post" class="form-add-content">
-    <label>User</label><br>
-    <input type="text" name="user" class="form-control"><br><br>
+    <label>UserName</label><br>
+    <input type="text" name="username" class="form-control" value="<?= isset($_SESSION['inputs']['username']) ? $_SESSION['inputs']['username'] : isset($user) ? $user->getName() : ''; ?>"><br>
+
+    <label>Password</label><br>
+    <input type="password" name="password1" class="form-control"><br>
+
+    <label>Confirm Password</label><br>
+    <input type="password" name="password2" class="form-control"><br>
+
+    <label>Email</label><br>
+    <input type="text" name="email" class="form-control" value="<?= isset($_SESSION['inputs']['email']) ? $_SESSION['inputs']['email'] : isset($user) ? $user->getEmail() : ''; ?>"><br>
+
+    <label>Avatar</label><br>
+    <input type="file" name="avatar"><br><br>
 
     <label>Rôle</label><br>
-    <select name="roleList" id="roleList">
-        <?php foreach ($roles as $role) { ?>
-            <!-- <option value="<?//= $user-> getId(); ?>"><?//= $user->getRole(); ?></option> -->
-            <option value="<?= $role['role']; ?>"><?= $role['role']; ?></option>
+    <select name="role" id="role">
+        <?php foreach ($users as $user) { ?>
+            <?php
+            $attrSelected = '';
+            if (isset($_SESSION['inputs']['role'])) {
+                $attrSelected = 'selected';
+            } ?>
+            <option value="<?= $user->getRole(); ?>" <?= $attrSelected; ?>><?= $user->getRole(); ?></option>
         <?php } ?>
     </select>
     <br><br><br>
