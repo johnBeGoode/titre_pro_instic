@@ -19,6 +19,24 @@
                 <li><a href="#">A propos</a></li>
             </ul>
         </div>
+
+        <div class="div_footer">
+            <h5>Catégories</h5>
+            <ul id="categories-footer">
+                <div>
+                    <li><a href="">Comédie</a></li>
+                    <li><a href="">Action</a></li>
+                    <li><a href="">Drame</a></li>
+                    <li><a href="">Thriller</a></li>
+                </div>
+                <div id="part2">
+                    <li><a href="">Horreur</a></li>
+                    <li><a href="">Animation</a></li>
+                    <li><a href="">Documentaire</a></li>
+                    <li><a href="">Science-Fiction</a></li>
+                </div>
+            </ul>
+        </div>
     </div>
 
     <div id="reseau_social"> 
@@ -49,7 +67,5 @@ if(isset($jsFiles)):
 endif; 
 ?>
 
-<!-- Ancienne méthode avec le exit() dans le controller -->
-<?//php UNSET($_SESSION['success']); ?> 
 </body>
 </html>

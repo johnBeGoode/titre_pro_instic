@@ -1,6 +1,7 @@
 {
     "routes":{
         "":                     "home",
+        "categorie":            "categorie",
         "contact":              "contact",
         "article/{slug}/{id}":  "article",        
         "article/{id}":         "article", 

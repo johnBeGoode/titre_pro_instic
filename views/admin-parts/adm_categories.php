@@ -22,7 +22,7 @@
         <?php foreach ($categories as $category): ?>
         <tr>
             <td><?= $category->getName() ?></td>
-            <td><?= $movieManager->getMoviesByCategory($category->getId()); ?></td>
+            <td><?= $movieManager->getNumberOfMoviesByCategory($category->getId()); ?></td>
             <td class="icone-crud">
                 <a href="administration?page=categories&action=update&id=<?= $category->getId(); ?>" class="btn btn-primary" title="Modifier"><i class="fas fa-pencil-alt"></i></a> 
                 <a href="administration?page=categories&action=delete&id=<?= $category->getId(); ?>" class="btn btn-danger delete" title="Supprimer"><i class="fas fa-trash"></i></a>

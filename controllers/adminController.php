@@ -157,6 +157,31 @@ if (isset($_GET['page'])) {
             $password = '';
             $email = htmlspecialchars($_POST['email']);
             $role = $_POST['role'];
+            $avatar = '';
+            
+            // ---------------------------
+            // PARTIE RECUP IMAGE AVATAR
+            if (isset($_FILES['avatar'])) {
+                // var_dump($_FILES);
+                // exit();
+                // On récupère l'image du user
+                $avatar = basename($_FILES['avatar']['name']);
+                // On récupère l'extension du fichier
+                $extension = pathinfo($avatar, PATHINFO_EXTENSION);
+                $authorizedExtensions = ['jpg', 'jpeg', 'png'];
+                $uploadedFilePath = '/public/images/avatars/' . $avatar;
+                if (in_array($extension, $authorizedExtensions)) {
+                    if ($extension == 'jpg' || $extension == 'jpeg') {
+                        // imagejpeg($_FILES['avatar']['tmp_name'], $uploadedFilePath);
+                        move_uploaded_file($_FILES['avatar']['tmp_name'], $uploadedFilePath);
+                    }
+                    else {
+                        // imagepng($_FILES['avatar']['tmp_name'], $uploadedFilePath);
+                        move_uploaded_file($_FILES['avatar']['tmp_name'], $uploadedFilePath);
+                    }
+                }
+            }
+            // -------------------------------
 
             if (htmlspecialchars($_POST['password2']) !== htmlspecialchars($_POST['password1'])) {
                 $_SESSION['error'] = 'Les mots de passe sont différents';
@@ -185,7 +210,8 @@ if (isset($_GET['page'])) {
                 }
                 if (htmlspecialchars($_POST['password2']) == htmlspecialchars($_POST['password1'])) {
                     $password = htmlspecialchars($_POST['password2']);
-                    $userManager->update($userName, $password, $email, $role, $id);                     $_SESSION['success'] = 'L\'utilisateur a été mis à jour';
+                    $userManager->update($userName, $password, $email, $role, $id);
+                    $_SESSION['success'] = 'L\'utilisateur a été mis à jour';
                     header('Location: /administration?page=users');
                 }
             }
@@ -198,5 +224,7 @@ if (isset($_GET['page'])) {
         }
     }
 }
+
+
 
 require_once '../views/' . $vue . '.php'; 
