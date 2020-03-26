@@ -1,6 +1,14 @@
 <?php
+use App\EntityManager\CategoryManager;
+
+$categoryManager = new CategoryManager();
+
 $title_page = 'Page de connexion';
 $desc_page = 'Identification pour accéder aux différentes sessions';
+
+$allCategories = $categoryManager->getAllCategories();
+
+
 // -----TRAITEMENT ---
 
 function is_connected():bool {

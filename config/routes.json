@@ -1,17 +1,17 @@
 {
     "routes":{
-        "":                     "home",
-        "categorie":            "categorie",
-        "contact":              "contact",
-        "article/{slug}/{id}":  "article",        
-        "article/{id}":         "article", 
-        "connexion":            "login",
-        "administration":       "admin",
-        "deconnexion":          "deconnexion"        
+        "":                         "home",
+        "categorie/{genre}/{id}":   "categorie",
+        "contact":                  "contact",
+        "article/{slug}/{id}":      "article",
+        "connexion":                "login",
+        "administration":           "admin",
+        "deconnexion":              "deconnexion"        
     },  
     
     "regexParam":{
         "{slug}":  "(.+)",
-        "{id}":    "([0-9]+)"  
+        "{id}":    "([0-9]+)",
+        "{genre}": "(.+)"
     }
 }

@@ -117,14 +117,14 @@ class MovieManager {
         return $countByCategory; 
     }
 
-    public function getMoviesByCategory($categoriesId) {
-        $sql = "SELECT movie_id FROM movies_categories WHERE Categorie_id = :categoriesId";
+    public function getMoviesByCategory($idCategory) {
+        $sql =  "SELECT * FROM movies INNER JOIN movies_categories ON movies.id = movies_categories.Movie_id WHERE movies_categories.Categorie_id = :idCategory";
         $req = $this->db->prepare($sql);
-        $req->bindValue(':categoriesId', $categoriesId);
+        $req->bindValue(':idCategory', $idCategory);
         $req->execute();
-        $movieByCategory = $req->fetchAll();
+        $results = $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Movie');
 
-        return $movieByCategory; 
+        return $results;
     }
 
     public function getCategoriesForAMovie($idMovie) {

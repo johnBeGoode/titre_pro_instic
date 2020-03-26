@@ -1,4 +1,9 @@
-<?php 
+<?php
+use App\EntityManager\CategoryManager;
+
+$categoryManager = new CategoryManager();
+$allCategories = $categoryManager->getAllCategories();
+
 $title_page = "Contact Chromatic SinémA";
 $desc_page = "Page de contact pour toutes suggestions";
 

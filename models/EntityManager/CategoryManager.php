@@ -47,7 +47,7 @@ class CategoryManager {
         $req->bindValue(':id', $id);
         $req->execute();
     }
-
+    
     public function delete($id) {
         $this->db->exec("DELETE FROM categories WHERE id = " . (int)$id);
     }

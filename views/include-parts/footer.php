@@ -22,20 +22,24 @@
 
         <div class="div_footer">
             <h5>Catégories</h5>
-            <ul id="categories-footer">
-                <div>
-                    <li><a href="">Comédie</a></li>
-                    <li><a href="">Action</a></li>
-                    <li><a href="">Drame</a></li>
-                    <li><a href="">Thriller</a></li>
-                </div>
-                <div id="part2">
-                    <li><a href="">Horreur</a></li>
-                    <li><a href="">Animation</a></li>
-                    <li><a href="">Documentaire</a></li>
-                    <li><a href="">Science-Fiction</a></li>
-                </div>
-            </ul>
+                <ul id="categories-footer">
+                    <?php 
+                    define('NB_PAR_COL', 4); // nb de catégories par colonne
+                    $i = 0; 
+                    ?>
+                    <?php foreach ($allCategories as $category): ?>
+                        <?php if ($i % NB_PAR_COL == 0) {
+                            if ($i > 0) {
+                                echo '</div>';
+                            }
+                            echo '<div>'; 
+                        } 
+                        echo '<li><a href="/categorie/' . strtolower($category->getName()) . '/' .  $category->getId() . '">' . $category->getName() . '</a></li>'; 
+                        $i++;
+                        ?>
+                    <?php endforeach; ?>
+                    </div>
+                </ul>
         </div>
     </div>
 

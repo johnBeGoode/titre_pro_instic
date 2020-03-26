@@ -28,6 +28,9 @@ $commentsLink = null;
 $categoriesLink = null;
 $usersLink = null;
 
+$allCategories = $categoryManager->getAllCategories(); // Pour affichage dans footer
+
+
 if (isset($_GET['page'])) {
     $getPage = htmlspecialchars($_GET['page']);
 
@@ -169,7 +172,7 @@ if (isset($_GET['page'])) {
                 // On récupère l'extension du fichier
                 $extension = pathinfo($avatar, PATHINFO_EXTENSION);
                 $authorizedExtensions = ['jpg', 'jpeg', 'png'];
-                $uploadedFilePath = '/public/images/avatars/' . $avatar;
+                $uploadedFilePath = '../public/images/avatars/' . $avatar;
                 if (in_array($extension, $authorizedExtensions)) {
                     if ($extension == 'jpg' || $extension == 'jpeg') {
                         // imagejpeg($_FILES['avatar']['tmp_name'], $uploadedFilePath);
@@ -178,6 +181,7 @@ if (isset($_GET['page'])) {
                     else {
                         // imagepng($_FILES['avatar']['tmp_name'], $uploadedFilePath);
                         move_uploaded_file($_FILES['avatar']['tmp_name'], $uploadedFilePath);
+                        // var_dump($uploadedFilePath);die();
                     }
                 }
             }

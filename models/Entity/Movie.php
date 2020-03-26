@@ -12,7 +12,7 @@ class Movie {
     protected $is_published;
     protected $slug;
     protected $trailer;
-    protected $mise_en_avant;
+    protected $mis_en_avant;
 
 
     // Getters
@@ -53,7 +53,7 @@ class Movie {
     }
 
     public function getMiseEnAvant() {
-        if ($this->mise_en_avant === '1') {
+        if ($this->mis_en_avant === '1') {
             return true;
         }
         return false;
