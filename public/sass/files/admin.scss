@@ -71,6 +71,14 @@
                 }
             }
         }
+        &.admin-users {
+            tbody {
+                img {
+                    width: 50px;
+                    height: auto;
+                }
+            }
+        }
     }
 }
 

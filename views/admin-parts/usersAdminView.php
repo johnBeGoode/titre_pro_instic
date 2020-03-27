@@ -48,9 +48,15 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($users as $user): ?>
+        <?php 
+        foreach ($users as $user): 
+            $avatar = $user->getAvatar();
+            if ($avatar == '') {
+                $avatar = '/public/images/avatars/avatarpardefaut.jpg';
+            }
+        ?>
         <tr>
-            <td><img src="<?= $user->getAvatar() ?>" alt=""></td>
+            <td><img src="<?= $avatar; ?>" alt="avatar"></td>
             <td><?= $user->getName() ?></td>
             <td><?= $user->getPassword() ?></td>
             <td><?= $user->getEmail() ?></td>

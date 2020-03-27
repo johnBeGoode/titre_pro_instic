@@ -30,9 +30,10 @@ class UserManager {
         return $datas;
     }
 
-    public function add($nom, $pass, $mail, $role) {
-        $sql = "INSERT INTO users (name, password, role, email, date_registration) VALUES (:nom, :password, :role, :email, NOW())";
+    public function add($avatar, $nom, $pass, $mail, $role) {
+        $sql = "INSERT INTO users (avatar, name, password, role, email, date_registration) VALUES (:avatar, :nom, :password, :role, :email, NOW())";
         $req = $this->db->prepare($sql);
+        $req->bindValue(':avatar', $avatar);
         $req->bindValue(':nom', $nom);
         $req->bindValue(':password', $pass);
         $req->bindValue(':email', $mail);

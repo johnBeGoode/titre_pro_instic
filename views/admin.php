@@ -14,14 +14,12 @@
                 </div>
     <?php } ?>
 
-  
-
     <nav>
         <ul class="tabs">
-            <li><a href="administration?page=articles" class="<?= $articlesLink; ?>">Articles</a></li>
-            <li><a href="administration?page=categories" class="<?= $categoriesLink; ?>">Categories</a></li>
-            <li><a href="administration?page=comments" class="<?= $commentsLink; ?>">Commentaires</a></li>
-            <li><a href="administration?page=users" class="<?= $usersLink; ?>">Utilisateurs</a></li>
+            <li><a href="administration?page=articles" class="<?= $linkActiveNav['articles']; ?>">Movies</a></li>
+            <li><a href="administration?page=categories" class="<?= $linkActiveNav['categories']; ?>">Categories</a></li>
+            <li><a href="administration?page=comments" class="<?= $linkActiveNav['comments']; ?>">Commentaires</a></li>
+            <li><a href="administration?page=users" class="<?= $linkActiveNav['users']; ?>">Utilisateurs</a></li>
             <li><a href="/deconnexion">Deconnexion</a></li>
         </ul>
     </nav>
