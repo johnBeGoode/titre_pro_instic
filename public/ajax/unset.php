@@ -7,6 +7,6 @@ if (isset($_SESSION['success'])) {
     echo 'Pas de répétitions des notifications';
 }
 
-if (isset($_SESSION['error'])) {
-    unset($_SESSION['error']);
+if (isset($_SESSION['errors'])) {
+    unset($_SESSION['errors']);
 }

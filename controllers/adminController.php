@@ -161,37 +161,46 @@ if (isset($_GET['page'])) {
             $email = htmlspecialchars($_POST['email']);
             $role = $_POST['role'];
             $avatar = '';
+            $errors = [];
             
             // ---------------------------
             // PARTIE RECUP IMAGE AVATAR
             if (isset($_FILES['avatar'])) {
-                // var_dump($_FILES);
-                // exit();
                 // On récupère l'image du user
                 $avatar = basename($_FILES['avatar']['name']);
+                // On récupère sa taille
+                $size = filesize($_FILES['avatar']['tmp_name']);
+                $maxSize = 300000;
                 // On récupère l'extension du fichier
                 $extension = pathinfo($avatar, PATHINFO_EXTENSION);
                 $authorizedExtensions = ['jpg', 'jpeg', 'png'];
                 $uploadedFilePath = '../public/images/avatars/' . $avatar;
+
+                if ($size < $maxSize) {
+                    $errors[] = 'Taille de l\'image trop grande';
+                }
+
                 if (in_array($extension, $authorizedExtensions)) {
                     if ($extension == 'jpg' || $extension == 'jpeg') {
-                        // imagejpeg($_FILES['avatar']['tmp_name'], $uploadedFilePath);
                         move_uploaded_file($_FILES['avatar']['tmp_name'], $uploadedFilePath);
                     }
                     else {
-                        // imagepng($_FILES['avatar']['tmp_name'], $uploadedFilePath);
                         move_uploaded_file($_FILES['avatar']['tmp_name'], $uploadedFilePath);
-                        // var_dump($uploadedFilePath);die();
                     }
+                }
+                else {
+                    $errors[] = 'Format de l\'image non accepté';
                 }
             }
             // -------------------------------
 
             if (htmlspecialchars($_POST['password2']) !== htmlspecialchars($_POST['password1'])) {
-                $_SESSION['error'] = 'Les mots de passe sont différents';
+                $errors[] = "Mot de passe différents";
+                $_SESSION['errors'] = $errors;
                 $_SESSION['inputs'] = $_POST;
+                // header('Location: /administration?page=users'); // pour afficher les erreurs
             }
-            if (htmlspecialchars($_POST['password2']) == htmlspecialchars($_POST['password1'])) {
+            if (htmlspecialchars($_POST['password2']) == htmlspecialchars($_POST['password1']) && empty($errors)) {
                 $password = htmlspecialchars($_POST['password2']);
                 $userManager->add($userName, $password, $email, $role);
                 $_SESSION['success'] = 'Le nouvel utilisateur a bien été ajouté';

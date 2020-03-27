@@ -1,6 +1,6 @@
 <button type="button" class="btn btn-dark button-add-content">Add a user</button>
 
-<form action="" method="post" class="form-add-content">
+<form action="" method="post" enctype="multipart/form-data" class="form-add-content">
     <label>UserName</label><br>
     <input type="text" name="username" class="form-control" value="<?= isset($_SESSION['inputs']['username']) ? $_SESSION['inputs']['username'] : isset($user) ? $user->getName() : ''; ?>"><br>
 
@@ -12,9 +12,12 @@
 
     <label>Email</label><br>
     <input type="text" name="email" class="form-control" value="<?= isset($_SESSION['inputs']['email']) ? $_SESSION['inputs']['email'] : isset($user) ? $user->getEmail() : ''; ?>"><br>
+    
+    <!-- Pour limiter la taille du fichier -->
+    <input type="hidden" name="MAX_FILE_SIZE" value="200000" />
 
     <label>Avatar</label><br>
-    <input type="file" name="avatar"><br><br>
+    <input type="file" name="avatar" accept="image/png, image/jpeg, impage/jpg"><br><br>
 
     <label>Rôle</label><br>
     <select name="role" id="role">

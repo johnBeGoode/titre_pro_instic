@@ -26,19 +26,21 @@
                     <?php 
                     define('NB_PAR_COL', 4); // nb de catégories par colonne
                     $i = 0; 
-                    ?>
-                    <?php foreach ($allCategories as $category): ?>
-                        <?php if ($i % NB_PAR_COL == 0) {
+                    foreach ($allCategories as $category):
+                        if ($i % NB_PAR_COL == 0) {
                             if ($i > 0) {
                                 echo '</div>';
                             }
                             echo '<div>'; 
                         } 
-                        echo '<li><a href="/categorie/' . strtolower($category->getName()) . '/' .  $category->getId() . '">' . $category->getName() . '</a></li>'; 
+                    ?>
+                        <li><a href="/categorie/<?= strtolower($category->getName()); ?>/<?= $category->getId(); ?>"><?= $category->getName(); ?></a></li> 
+                    <?php
                         $i++;
-                        ?>
-                    <?php endforeach; ?>
-                    </div>
+                    endforeach; 
+                    ?>
+                    <!-- fermeture seconde div -->
+                    </div> 
                 </ul>
         </div>
     </div>

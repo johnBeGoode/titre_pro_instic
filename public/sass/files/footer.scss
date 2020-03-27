@@ -21,7 +21,9 @@ footer {
                 list-style: none;
                 &#categories-footer {
                     display: flex;
-                    
+                    div {
+                        margin-right: 40px;
+                    }
                 }
                 li {
                     font-size: 0.9rem;
