@@ -8,9 +8,9 @@
                     <?= $_SESSION['success'] ?>
                 </div>
     <?php } ?>
-    <?php if (isset($_SESSION['errors'])) { ?>
+    <?php if (isset($_SESSION['erreurs'])) { ?>
                 <div id="msg-error" class="alert alert-danger">
-                    <?= implode('<br>', $_SESSION['errors']) ?>
+                    <?= implode('<br>', $_SESSION['erreurs']) ?>
                 </div>
     <?php } ?>
 
