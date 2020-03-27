@@ -8,11 +8,7 @@
                     <?= $_SESSION['success'] ?>
                 </div>
     <?php } ?>
-    <?php if (isset($_SESSION['erreurs'])) { ?>
-                <div id="msg-error" class="alert alert-danger">
-                    <?= implode('<br>', $_SESSION['erreurs']) ?>
-                </div>
-    <?php } ?>
+  
 
     <nav>
         <ul class="tabs">

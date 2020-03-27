@@ -12,23 +12,28 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Ajouter') {
     $email = htmlspecialchars($_POST['email']);
     $role = $_POST['role'];
     $avatar = '';
-    $erreurs = [];
+    $erreurs = ['form' => [], 
+                'upload' => []];
     
     if (htmlspecialchars($_POST['password2']) !== htmlspecialchars($_POST['password1'])) {
-        $erreurs[] = "Mot de passe différents";
+        $erreurs['form'][] = "Mot de passe différents";
+    } elseif (empty($_POST['password1']) && empty($_POST['password2'])) {
+        $erreurs['form'][] = "Mot de passe à renseigner";
     } else {
         $password = password_hash(htmlspecialchars($_POST['password2']), PASSWORD_DEFAULT);
     }
-
-    if (!empty($_FILES['avatar']['name'])) {
-        // var_dump($_FILES);
-        // die('shit');
-        uploadFile($_FILES, $erreurs);
-        $avatar = '/public/images/avatars/' . $_FILES['avatar']['name'];
-    }
-
-    if (empty($erreurs)) {
-        $userManager->add($avatar, $userName, $password, $email, $role);
+   die('shit');
+    if (empty($erreurs['form'])) {
+     
+        $userId = $userManager->add($avatar, $userName, $password, $email, $role); // fait l'ajout et le return
+        
+        if (!empty($_FILES['avatar']['name'])) {
+            $uploadInfos = uploadFile($_FILES, $erreurs, $userId);
+            $avatar = $uploadInfos['uploadFilePath']; 
+            $erreurs = $uploadInfos['erreurs'];
+            // var_dump($erreurs); die();
+            $userManager->updateAvatar($userId, $avatar);
+        }
         $_SESSION['success'] = 'Le nouvel utilisateur a bien été ajouté';
         header('Location: /administration?page=users');
     } else {
@@ -36,6 +41,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Ajouter') {
         $_SESSION['inputs'] = $_POST;
         header('Location: /administration?page=users');
     }
+    
 }
 
 elseif (isset($_GET['action']) && $_GET['action'] == 'update') {

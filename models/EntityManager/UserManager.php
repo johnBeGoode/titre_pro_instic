@@ -39,6 +39,9 @@ class UserManager {
         $req->bindValue(':email', $mail);
         $req->bindValue(':role', $role);
         $req->execute();
+
+        $userId = $this->db->lastInsertId();
+        return $userId;
     }
 
     public function update($nom, $password, $email, $role, $id) {
@@ -47,6 +50,13 @@ class UserManager {
         $req->bindValue(':password', $password);
         $req->bindValue(':email', $email);
         $req->bindValue(':role', $role);
+        $req->bindValue(':id', $id);
+        $req->execute();
+    }
+
+    public function updateAvatar($id, $avatar) {
+        $req = $this->db->prepare("UPDATE users SET avatar = :avatar WHERE id = :id");
+        $req->bindValue(':avatar', $avatar);
         $req->bindValue(':id', $id);
         $req->execute();
     }
