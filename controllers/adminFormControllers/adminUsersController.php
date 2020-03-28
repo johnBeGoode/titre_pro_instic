@@ -2,6 +2,7 @@
 use App\EntityManager\UserManager;
 $userManager = new UserManager();
 
+define("MIN_LENGTH_PASSWORD", 7);
 $users = $userManager->getAllUsers();
 $linkActiveNav['users'] = 'active';
 $content = '../views/admin-parts/usersAdminView.php';
@@ -12,36 +13,31 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Ajouter') {
     $email = htmlspecialchars($_POST['email']);
     $role = $_POST['role'];
     $avatar = '';
-    $erreurs = ['form' => [], 
-                'upload' => []];
+    $GLOBALS['userFormErrors'] = [];
     
-    if (htmlspecialchars($_POST['password2']) !== htmlspecialchars($_POST['password1'])) {
-        $erreurs['form'][] = "Mot de passe différents";
-    } elseif (empty($_POST['password1']) && empty($_POST['password2'])) {
-        $erreurs['form'][] = "Mot de passe à renseigner";
-    } else {
-        $password = password_hash(htmlspecialchars($_POST['password2']), PASSWORD_DEFAULT);
-    }
-   die('shit');
-    if (empty($erreurs['form'])) {
-     
-        $userId = $userManager->add($avatar, $userName, $password, $email, $role); // fait l'ajout et le return
-        
+    $userName   = verifUserNameInput($_POST["username"]);
+    $password   = verifPasswordInput($_POST["password1"], $_POST["password2"]);
+    $email      = verifEmailInput($email);
+ 
+    if (count($GLOBALS['userFormErrors'])==0 && $userName && $password && $email) {        
+        $userId = $userManager->add($avatar, $userName, $password, $email, $role); 
+
         if (!empty($_FILES['avatar']['name'])) {
-            $uploadInfos = uploadFile($_FILES, $erreurs, $userId);
-            $avatar = $uploadInfos['uploadFilePath']; 
-            $erreurs = $uploadInfos['erreurs'];
-            // var_dump($erreurs); die();
-            $userManager->updateAvatar($userId, $avatar);
+            $avatarUrl = uploadFile($_FILES, $userId);             
+            if(empty($GLOBALS['userFormErrors'])){
+                $userManager->updateAvatar($userId, $avatarUrl);
+            }else{
+                setErrorsAndSavePostInputs();                
+            }                    
         }
-        $_SESSION['success'] = 'Le nouvel utilisateur a bien été ajouté';
-        header('Location: /administration?page=users');
+
+        if($userId){
+            $_SESSION['success'] = 'Le nouvel utilisateur a bien été ajouté'; 
+        }
     } else {
-        $_SESSION['erreurs'] = $erreurs;
-        $_SESSION['inputs'] = $_POST;
-        header('Location: /administration?page=users');
-    }
-    
+        setErrorsAndSavePostInputs(); 
+    }  
+    header('Location: /administration?page=users'); 
 }
 
 elseif (isset($_GET['action']) && $_GET['action'] == 'update') {
@@ -73,3 +69,44 @@ elseif (isset($_GET['action']) && $_GET['action'] == 'delete') {
     header('Location: /administration?page=users');
 }
 
+function verifUsernameInput($username){
+    if (empty($username)) {
+        $GLOBALS['userFormErrors'][] = "Nom utilisateur vide !";
+    } elseif(strlen($username)<7) {
+        $GLOBALS['userFormErrors'][] = "Le nom utilisateur doit contenir au moins 4 lettres !";
+    }else{
+        return $username;
+    }    
+    return false;
+}
+
+function verifPasswordInput($pass1, $pass2){
+    if ($pass1 !== $pass2) {
+        $GLOBALS['userFormErrors'][] = "Mot de passe différents";
+    } elseif (empty($pass1) && empty($pass2)) {
+        $GLOBALS['userFormErrors'][] = "Mot de passe à renseigner";
+    } else {
+        if(strlen($pass2)<MIN_LENGTH_PASSWORD){
+            $GLOBALS['userFormErrors'][] = "Le mot de passe doit contenir ".MIN_LENGTH_PASSWORD." caracteres minimum !";
+        }else{
+            return password_hash(htmlspecialchars($pass2), PASSWORD_DEFAULT);
+        }
+    }
+    return false;
+}
+
+function verifEmailInput($email){
+    if (empty($email)) {
+        $GLOBALS['userFormErrors'][] = "Adresse email vide !";
+    } elseif(!preg_match('/^[a-z_.\-0-9]+@[a-z.]+/',$email)) {
+        $GLOBALS['userFormErrors'][] = "Votre adresse email n'est pas conforme !";
+    }else{
+        return $email;
+    }    
+    return false;
+}
+
+function setErrorsAndSavePostInputs(){
+    $_SESSION['erreurs'] = $GLOBALS['userFormErrors'];
+    $_SESSION['formInput'] = $_POST;      
+}
