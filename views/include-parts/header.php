@@ -30,7 +30,7 @@
             </nav>
         </div>
         <div id="button">
-            <a href="" class="btn btn-primary">Créer un compte</a>
+            <a href="/account-creating" class="btn btn-primary">Créer un compte</a>
             <a href="/connexion" class="btn btn-primary"><?= isset($_SESSION['connected']) ? 'Admin' : 'Se connecter' ?></a>
         </div>
     </header>

@@ -1,25 +1,33 @@
 #page-categories {
     h1 {
-        margin-left: 10px;
+        // margin-left: 10px;
+        text-align: center;
+        margin-bottom: 40px;
     }
-    .oneMovie {
-        width: 600px;
-        height: 260px;
-        margin: 50px;
+    section {
+        @include gradeOrange;
+        @include boxShadowAround;
+        width: 60%;
+        margin: auto;
         display: flex;
-        align-items: center;
-        
-        img {
-            width: 190px;
-            height: 255px;
-        }
-        p {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-left: 40px;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-bottom: 150px;
+        .oneMovie {
+            width: 200px;
+            height: auto;
+            margin: 50px;
+            text-align: center;            
+            img {
+                width: 190px;
+                height: 255px;
+            }
             a {
-                color: black;
+                color: rgb(61, 60, 60);
+                font-size: 1.1rem;
+                font-weight: bold;
             }
         }
     }
 }
+ 

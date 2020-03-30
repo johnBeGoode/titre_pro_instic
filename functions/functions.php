@@ -1,4 +1,25 @@
 <?php
+function is_connected():bool {
+    // Si la session n'est pas débuté alors on la démarre
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    return !empty($_SESSION['connected']);
+}
+
+// ------------------------
+// ------------------------
+
+function force_user_connected():void {
+    if (!is_connected()) {
+        header('Location: /connexion');
+        exit();
+    }
+}
+
+// ------------------------
+// ------------------------
+
 function uploadFile($file, $newUserId) {
     // On récupère l'image du user
     $avatar = basename($file['avatar']['name']);
@@ -25,7 +46,58 @@ function uploadFile($file, $newUserId) {
     else {
         $GLOBALS['userFormErrors'][] = 'Format de l\'image '.$extension.' non accepté';
     }
+}
 
-    
-    
+// ------------------------
+// ------------------------
+
+function verifUsernameInput($username){
+    if (empty($username)) {
+        $GLOBALS['userFormErrors'][] = "Nom utilisateur vide !";
+    } elseif (strlen($username) < 4) {
+        $GLOBALS['userFormErrors'][] = "Le nom utilisateur doit contenir au moins 4 lettres !";
+    } else {
+        return $username;
+    }    
+    return false;
+}
+
+// ------------------------
+// ------------------------
+
+function verifPasswordInput($pass1, $pass2){
+    if ($pass1 !== $pass2) {
+        $GLOBALS['userFormErrors'][] = "Mot de passe différents";
+    } elseif (empty($pass1) && empty($pass2)) {
+        $GLOBALS['userFormErrors'][] = "Mot de passe à renseigner";
+    } else {
+        if(strlen($pass2)<MIN_LENGTH_PASSWORD){
+            $GLOBALS['userFormErrors'][] = "Le mot de passe doit contenir ".MIN_LENGTH_PASSWORD." caracteres minimum !";
+        }else{
+            return password_hash(htmlspecialchars($pass2), PASSWORD_DEFAULT);
+        }
+    }
+    return false;
+}
+
+// ------------------------
+// ------------------------
+
+function verifEmailInput($email){
+    if (empty($email)) {
+        $GLOBALS['userFormErrors'][] = "Adresse email vide !";
+    } elseif(!preg_match('/^[a-z_.\-0-9]+@[a-z.]+/',$email)) {
+        $GLOBALS['userFormErrors'][] = "Votre adresse email n'est pas valide !";
+    }else{
+        return $email;
+    }    
+    return false;
+}
+
+// ------------------------
+// ------------------------
+
+function setErrorsAndSavePostInputs(){
+    $_SESSION['erreurs'] = $GLOBALS['userFormErrors'];
+    $_SESSION['formInput'] = $_POST;    
 }

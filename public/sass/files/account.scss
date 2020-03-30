@@ -1,9 +1,16 @@
-#page-login {
+#page-account {
     .form-signin {
         width: 100%;
         max-width: 400px;
         padding: 15px;
         margin: auto;
+        label {
+            font-weight: bold;
+            span {
+                font-size: 0.7rem;
+                color: gray;
+            }
+        }
         .form-control {
             position: relative;
             box-sizing: border-box;
@@ -14,8 +21,11 @@
                 z-index: 2;
             }
         }
-        input[type="text"] {
+        input[type="text"], input[type="password"] {
             margin-bottom: -1px;
+        }
+        input[name="email"] {
+            margin-bottom: 30px;
         }
     }
     footer {

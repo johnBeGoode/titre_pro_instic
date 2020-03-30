@@ -1,5 +1,6 @@
 <?php
 use App\EntityManager\CategoryManager;
+// require_once '../functions/functions.php';
 
 $categoryManager = new CategoryManager();
 
@@ -8,26 +9,10 @@ $desc_page = 'Identification pour accéder aux différentes sessions';
 
 $allCategories = $categoryManager->getAllCategories();
 
-
-// -----TRAITEMENT ---
-
-function is_connected():bool {
-    // Si la session n'est pas débuté alors on la démarre
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
-    return !empty($_SESSION['connected']);
-}
-
-function force_user_connected():void {
-    if (!is_connected()) {
-        header('Location: /connexion');
-        exit();
-    }
-}    
-
-
 $error = null;
+
+// -----------------------------
+// CONNEXION EN TANT QU'ADMIN
 
 if (isset($_POST['login']) && !empty($_POST['login']) && isset($_POST['password']) && !empty($_POST['password'])) {
 
@@ -47,6 +32,13 @@ if (is_connected()) {
     header('Location: /administration?page=articles');
     exit();
 }
+
+// -----------------------------
+// CONNEXION EN TANT QU'ADMIN
+
+
 ?>
+
+
 
 <?php require_once '../views/' . $vue . '.php'; ?>

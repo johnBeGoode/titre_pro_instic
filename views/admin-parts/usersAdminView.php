@@ -1,9 +1,9 @@
 <?php 
 
-if(isset($_SESSION['erreurs'])){
-    var_dump($_SESSION['erreurs']);        
-    var_dump($_SESSION['formInput']);
-}
+// if(isset($_SESSION['erreurs'])){
+//     var_dump($_SESSION['erreurs']);        
+//     var_dump($_SESSION['formInput']);
+// }
     
 ?>
 

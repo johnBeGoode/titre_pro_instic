@@ -8,6 +8,12 @@
                     <?= $_SESSION['success'] ?>
                 </div>
     <?php } ?>
+
+    <?php if (isset($_SESSION['erreurs'])) { ?>
+                <div id="msg-success" class="alert alert-danger">
+                    <?= implode('<br>', $_SESSION['erreurs']) ?>
+                </div>
+    <?php } ?>
   
 
     <nav>
