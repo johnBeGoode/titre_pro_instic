@@ -38,6 +38,9 @@ class MovieManager {
     }
 
     public function update($title, $synopsis, $picture, $categories, $trailer, $isPublished, $misEnAvant, $id) {
+        $slug = strtolower($title);
+        $slug = str_replace(' ','_', $slug);
+        
         $req = $this->db->prepare("UPDATE movies SET title = :title, synopsis = :synopsis, picture = :picture, trailer = :trailer, is_published = :is_published, mis_en_avant = :mis_en_avant WHERE id = :id");
 
         $req->bindValue(':title', $title);

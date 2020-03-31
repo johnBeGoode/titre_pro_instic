@@ -1,6 +1,6 @@
 <button type="button" class="btn btn-dark button-add-content">Add a content</button>
 
-<form action="" method="post" class="form-add-content">
+<form action="" method="post" enctype="multipart/form-data" class="form-add-content">
     <label>Titre</label><br>
     <input type="text" class="form-control" name="titre" value="<?= isset($movie) ? $movie->getTitle() : ''; ?>"><br>
 
@@ -8,7 +8,7 @@
     <textarea name="synopsis" id="synopsis" class="form-control"><?= isset($movie) ? $movie->getSynopsis() : ''; ?></textarea><br>
 
     <label>Image</label><br>
-    <input type="file" name="image"><br><br>
+    <input type="file" name="picture" accept="image/png, image/jpeg, impage/jpg"><br><br>
     
     <label>Type</label><br>
     <select name="type" id="type">

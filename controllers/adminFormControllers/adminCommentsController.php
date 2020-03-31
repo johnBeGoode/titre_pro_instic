@@ -7,7 +7,7 @@ $movieManager = new MovieManager();
  $movies = $movieManager->getAllMovies();
  $comments = $commentManager->getAllComments();
  $linkActiveNav['comments'] = 'active'; 
- $content = '../views/admin-parts/commentsAdminView.php';
+ $content = '../views/admin-parts/adminComments.php';
 
  if (isset($_POST['submit']) && $_POST['submit'] == 'Ajouter') {
      $comment = htmlspecialchars($_POST['comment']);

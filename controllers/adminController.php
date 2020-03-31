@@ -1,16 +1,12 @@
 <?php 
 error_reporting(E_ALL);
 use App\EntityManager\CategoryManager;
-// use App\Entity\Category;
 use App\DBFactory;
 
 $categoryManager = new CategoryManager();
 
 $title_page = "Administration Chromatic SinémA";
 $desc_page = "Gestion de tous les articles, films, commentaires et utilisateurs du site";
-
-// $category = new Category();
-// $nbMovies = $movieManager->count();
 
 $jsFiles = ['admin.js'];
 

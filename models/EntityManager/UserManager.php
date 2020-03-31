@@ -30,26 +30,27 @@ class UserManager {
         return $datas;
     }
 
-    public function add($avatar, $nom, $pass, $mail, $role) {
-        $sql = "INSERT INTO users (avatar, name, password, role, email, date_registration) VALUES (:avatar, :nom, :password, :role, :email, NOW())";
+    public function add($avatar, $nom, $password, $email, $role) {
+        $sql = "INSERT INTO users (avatar, nom, pass, rol, email, date_registration) VALUES (:avatar, :nom, :pass, :rol, :email, NOW())";
         $req = $this->db->prepare($sql);
         $req->bindValue(':avatar', $avatar);
         $req->bindValue(':nom', $nom);
-        $req->bindValue(':password', $pass);
-        $req->bindValue(':email', $mail);
-        $req->bindValue(':role', $role);
+        $req->bindValue(':pass', $password);
+        $req->bindValue(':email', $email);
+        $req->bindValue(':rol', $role);
         $req->execute();
 
         $userId = $this->db->lastInsertId();
         return $userId;
     }
 
-    public function update($nom, $password, $email, $role, $id) {
-        $req = $this->db->prepare("UPDATE users SET name = :nom, password = :password, role = :role, email = :email WHERE id = :id");
-        $req->bindValue(':name', $nom);
-        $req->bindValue(':password', $password);
+    public function update($avatar, $nom, $password, $email, $role, $id) {
+        $req = $this->db->prepare("UPDATE users SET avatar = :avatar, nom = :nom, pass = :pass, rol = :rol, email = :email WHERE id = :id");
+        $req->bindValue(':avatar', $avatar);
+        $req->bindValue(':nom', $nom);
+        $req->bindValue(':pass', $password);
         $req->bindValue(':email', $email);
-        $req->bindValue(':role', $role);
+        $req->bindValue(':rol', $role);
         $req->bindValue(':id', $id);
         $req->execute();
     }
@@ -64,4 +65,9 @@ class UserManager {
     public function delete($id) {
         $this->db->exec("DELETE FROM users WHERE id = " . (int)$id);
     }
+
+    // public function distinctRoles() {
+    //     $req = $this->db->query("SELECT DISTINCT rol FROM users");
+    //     return $req->fetchAll();
+    // }
 }

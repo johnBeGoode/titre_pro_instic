@@ -4,7 +4,7 @@ $movieManager = new MovieManager();
 
 $categories = $categoryManager->getAllCategories();
 $linkActiveNav['categories'] = 'active';
-$content = '../views/admin-parts/categoriesAdminView.php';
+$content = '../views/admin-parts/adminCategories.php';
 
 if (isset($_POST['submit']) && $_POST['submit'] == 'Ajouter') {
         $nom = htmlspecialchars($_POST['nom']);

@@ -51,6 +51,23 @@ function uploadFile($file, $newUserId) {
 // ------------------------
 // ------------------------
 
+function uploadMoviePicture ($file) {
+    $pictureName = basename($file['picture']['name']);
+    $tempPicture = $file['picture']['tmp_name'];
+    $extension = pathinfo($pictureName, PATHINFO_EXTENSION);
+    $authorizedExtensions = ['jpg', 'jpeg', 'png'];
+    $uploadedFilePath = '../public/images/movies/' . $pictureName;
+    // Enregistrement image sur le serveur
+    if (in_array($extension, $authorizedExtensions)) {
+        move_uploaded_file($tempPicture, $uploadedFilePath);
+    }
+    return '/public/images/movies/' . $pictureName;
+}
+
+
+// ------------------------
+// ------------------------
+
 function verifUsernameInput($username){
     if (empty($username)) {
         $GLOBALS['userFormErrors'][] = "Nom utilisateur vide !";

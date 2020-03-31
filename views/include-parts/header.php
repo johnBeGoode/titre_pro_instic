@@ -9,7 +9,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="/public/images/spiral.ico">
     <script src="https://kit.fontawesome.com/1f7564e144.js"></script>
     <meta name="description" content="<?= $desc_page; ?>"/>
-    <meta name="author" content="Jonathan Martin"/>
+    <!-- <meta name="author" content="Jonathan Martin"/> BALISE OBSOLETE -->
 </head>
 <body>
     <header>

@@ -6,9 +6,9 @@ class User {
 
     protected $id;
     protected $avatar;
-    protected $name;
-    protected $password;
-    protected $role;
+    protected $nom;
+    protected $pass;
+    protected $rol;
     protected $email;
     protected $date_registration;
 
@@ -23,15 +23,15 @@ class User {
     }
 
     public function getName() {
-        return $this->name;
+        return $this->nom;
     }
 
     public function getPassword() {
-        return $this->password;
+        return $this->pass;
     }
 
     public function getRole() {
-        return $this->role;
+        return $this->rol;
     }
 
     public function getEmail() {
