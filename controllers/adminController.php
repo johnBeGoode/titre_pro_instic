@@ -1,7 +1,7 @@
 <?php 
 error_reporting(E_ALL);
-use App\EntityManager\CategoryManager;
 use App\DBFactory;
+use App\EntityManager\CategoryManager;
 
 $categoryManager = new CategoryManager();
 

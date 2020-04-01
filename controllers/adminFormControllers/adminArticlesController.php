@@ -4,6 +4,7 @@ $movieManager = new MovieManager();
 
 $movies = $movieManager->getAllMovies();
 $categories = $categoryManager->getAllCategories();
+
 $linkActiveNav['articles'] = 'active'; 
 $content = '../views/admin-parts/adminArticles.php';
 

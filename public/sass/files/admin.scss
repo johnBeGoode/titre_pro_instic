@@ -51,24 +51,20 @@
         margin: auto;
         margin-top: 50px;
         text-align: center;
-        &.admin-articles {
-            thead {
-                text-align: center;
+        thead {
+            text-align: center;
+        }
+        tbody {
+            img {
+                width: 60px;
+                height: 80px;
             }
-            tbody {
-                img {
-                    width: 60px;
-                    height: 80px;
-                }
-            }
-            td {
-                padding: 3px;
-                &.synop {
-                    width: 500px;
-                }
-                &.icone-crud {
-                    vertical-align: middle;
-                }
+        }
+        td {
+            padding: 3px;
+            vertical-align: middle;
+            &.synop {
+                width: 500px;
             }
         }
         &.admin-users {

@@ -5,7 +5,7 @@
             <ul>
                 <li><a href="#">Recrutement</a></li>
                 <li><a href="#">Presse</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="/contact">Contact</a></li>
                 <li><a href="#">Partenaires</a></li>
             </ul>
         </div>

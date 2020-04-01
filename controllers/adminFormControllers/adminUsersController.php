@@ -1,6 +1,5 @@
 <?php
 use App\EntityManager\UserManager;
-// require_once '../functions/functions.php';
 
 $userManager = new UserManager();
 

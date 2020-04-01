@@ -58,9 +58,9 @@
             <td><img src="<?= $movie->getPicture() ?>" alt=""></td>
             <td><?= $movie->getTitle() ?></td>
             <td><?= $movie->getDateAdd() ?></td>
-            <td class="synop"><?= substr($movie->getSynopsis(),0,201) ?> ...</td>
-            <td></td>
-            <td></td>
+            <td class="synop"><?= substr($movie->getSynopsis(),0,202) ?> ...</td>
+            <td><?= $movieManager->getNbCommentsForaMovie($movie->getId()); ?></td>
+            <td><?= $movie->getIsPublished() ? 'oui' : 'non'; ?></td>
             <td class="icone-crud">
                 <a href="administration?page=articles&action=update&id=<?= $movie->getId(); ?>" class="btn btn-primary" title="Modifier"><i class="fas fa-pencil-alt"></i></a> 
                 <a href="administration?page=articles&action=delete&id=<?= $movie->getId(); ?>" class="btn btn-danger delete" title="Supprimer"><i class="fas fa-trash"></i></a>

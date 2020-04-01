@@ -68,4 +68,15 @@
             }
         }
     }
+    #votre-commentaire {
+        width: 20%;
+        display: flex;
+        margin-left: 21%;
+        img {
+            margin-right: 5px;
+        }
+        form {
+            width: 100%;
+        }
+    }
 }

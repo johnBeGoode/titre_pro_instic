@@ -139,4 +139,14 @@ class MovieManager {
 
         return $result;
     }
+
+    public function getNbCommentsForaMovie($idMovie) {
+        $sql = "SELECT COUNT(id) FROM comments WHERE movie_id = :movieId";
+        $req = $this->db->prepare($sql);
+        $req->bindValue(':movieId', (int)$idMovie);
+        $req->execute();
+        $result = $req->fetchColumn();
+
+        return $result;
+    }
 }
