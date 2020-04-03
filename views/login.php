@@ -1,14 +1,14 @@
 <?php require_once 'include-parts/header.php'; ?>
 
 <?php if ($error): ?>
-    <div class="alert alert-danger text-center">
+    <div id="msg-error" class="alert alert-danger text-center">
         <?= $error; ?>
     </div>
  <?php endif ?>
 
  <!-- Message de création de compte ok -->
  <?php if (isset($_SESSION['success'])): ?>
-    <div class="alert alert-success text-center">
+    <div id="msg-success" class="alert alert-success text-center">
         <?= $_SESSION['success']; ?>
     </div>
  <?php endif; ?>

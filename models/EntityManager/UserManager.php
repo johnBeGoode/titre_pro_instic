@@ -11,6 +11,16 @@ class UserManager {
         $this->db = DBFactory::getConnexion();
     }
 
+    public function userAuth($username, $password) {
+        $sql = "SELECT nom, pass, rol FROM users WHERE nom = :nom AND pass = :pass";
+        $req = $this->db->prepare($sql);
+        $req->bindValue(':nom', $username);
+        $req->bindValue(':pass', $password);
+        $req->execute();
+
+        return $req->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
     public function getUser($id){
         $sql = "SELECT * FROM users WHERE id = :id";
         $req = $this->db->prepare($sql);        
@@ -36,8 +46,8 @@ class UserManager {
         $req->bindValue(':avatar', $avatar);
         $req->bindValue(':nom', $nom);
         $req->bindValue(':pass', $password);
-        $req->bindValue(':email', $email);
         $req->bindValue(':rol', $role);
+        $req->bindValue(':email', $email);
         $req->execute();
 
         $userId = $this->db->lastInsertId();

@@ -21,7 +21,7 @@
             <label>Choisissez votre avatar: <span>(facultatif)</span></label><br>
             <input type="file" name="avatar" accept="image/png, image/jpeg, impage/jpg">
 
-            <input type="submit" class="btn btn-lg btn-primary btn-block mt-5" value="Créer">
+            <input type="submit" name="submit" class="btn btn-lg btn-primary btn-block mt-5" value="Créer">
         </form>
         <?php require_once 'include-parts/footer.php'; ?>
     </div>

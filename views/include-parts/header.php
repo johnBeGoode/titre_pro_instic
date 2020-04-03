@@ -9,7 +9,6 @@
     <link rel="shortcut icon" type="image/x-icon" href="/public/images/spiral.ico">
     <script src="https://kit.fontawesome.com/1f7564e144.js"></script>
     <meta name="description" content="<?= $desc_page; ?>"/>
-    <!-- <meta name="author" content="Jonathan Martin"/> BALISE OBSOLETE -->
 </head>
 <body>
     <header>
@@ -30,8 +29,8 @@
             </nav>
         </div>
         <div id="button">
-            <a href="/account-creating" class="btn btn-primary">Créer un compte</a>
-            <a href="/connexion" class="btn btn-primary"><?= isset($_SESSION['connected']) ? 'Admin' : 'Se connecter' ?></a>
+            <a href="<?= isset($_SESSION['connected']) ? '/' : '/account-creating'; ?>" class="<?= isset($_SESSION['connected']) ? null : 'btn btn-primary';?>"><?= isset($_SESSION['connected']) ? 'Bienvenue ' . $_SESSION['nom'] : 'Créer un compte'; ?></a>
+            <a href="<?= isset($_SESSION['connected']) ? '/deconnexion' : '/connexion'; ?>" class="<?= isset($_SESSION['connected']) && $_SESSION['connected'] == 2 ? 'btn btn-danger' : 'btn btn-primary'; ?>"><?= isset($_SESSION['connected']) && $_SESSION['connected'] == 1 ? 'Admin' : isset($_SESSION['connected']) && $_SESSION['connected'] == 2 ? 'logOut' : 'Se connecter'; ?></a>
         </div>
     </header>
     

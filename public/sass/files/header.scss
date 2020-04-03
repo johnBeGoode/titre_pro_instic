@@ -39,6 +39,15 @@ header {
             } 
         }
     }
+    #button {
+        a {
+            color: $white;
+            margin-left: 10px;
+            &:hover {
+                color: $colorHoverLink;
+            }
+        }
+    }
 }
 
 
