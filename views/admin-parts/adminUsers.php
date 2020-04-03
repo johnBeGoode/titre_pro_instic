@@ -19,15 +19,17 @@
 
     <label>Rôle</label><br>
     <select name="role" id="role">
-        <?php foreach ($users as $user) { ?>
-            <?php
-            $attrSelected = '';
-            if (isset($_SESSION['inputs']['role'])) {
-                $attrSelected = 'selected';
-            } ?>
-            <!-- rajouter value dans la balise <option> -->
-            <option value="<?= $user->getId(); ?>" <?= $attrSelected; ?>><?= $user->getRole(); ?></option> 
-        <?php } ?>
+    <?php 
+    $adminSelected = '';
+    $userSelected = '';
+    if (isset($user) && $user->getRole() == 'Admin') {
+        $adminSelected = 'selected';
+    } 
+    else {
+        $userSelected = 'selected'; 
+    }?>
+        <option value="Admin" <?= $adminSelected; ?>>Admin</option> 
+        <option value="User"  <?= $userSelected; ?> >User</option> 
     </select>
     <br><br><br>
     <input type="submit" name="submit" class="btn btn-primary" value="<?= isset($_GET['action']) && $_GET['action'] == 'update' ? 'Mettre à jour' : 'Ajouter'; ?>">

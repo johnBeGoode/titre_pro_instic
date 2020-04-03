@@ -1,4 +1,6 @@
 <?php
+// inclure la classe User avant le session_start pour stocker la class dans la globale SESSION
+require_once '../models/Entity/User.php';
 session_start(); // lancement global
 error_reporting(E_ALL);
 require_once("../models/Autoloader.php");

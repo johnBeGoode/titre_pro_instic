@@ -5,6 +5,7 @@ use App\EntityManager\UserManager;
 $categoryManager = new CategoryManager();
 $userManager = new UserManager();
 
+
 $title_page = 'Page de connexion';
 $desc_page = 'Identification pour accéder aux différentes sessions';
 
@@ -15,40 +16,24 @@ $error = null;
 
 if (isset($_POST['login']) && !empty($_POST['login']) && isset($_POST['password']) && !empty($_POST['password'])) {
 
-    $username = $_POST['login'];
-    // $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $password = $_POST['password'];
-
-    $authentification = $userManager->userAuth($username, $password);
-    $adminRole = $authentification[0]['rol'];
-    $_SESSION['role'] = $adminRole; // Besoin pour retourner sur admin qd on est sur une autre page
-    $_SESSION['nom'] = $username;
+    $user = $userManager->getUserbyName($_POST['login']);
+    $authentification = password_verify($_POST['password'], $user->getPassword());
 
     if ($authentification) {
-        if ($adminRole == 'Admin') {
-            session_start();
-            // On stocke une valeur pour que ça renvoie true
-            $_SESSION['connected'] = 1;
+        
+        $_SESSION['user'] = $user;
+        $role = $user->getRole();
+
+        if ($role == 'Admin') {
             header('Location: /administration?page=articles');
-            exit();
         }
         else {
-            session_start();
-            // On stocke une valeur pour que ça renvoie true
-            $_SESSION['connected'] = 2;
             header('Location: /');
-            exit();
         }
     }
     else {
         $error = 'Identifiants incorrects';
     }
-}
-
-// Pour retourner sur la partie admin qd on est sur une autre page
-if (is_connected() && $_SESSION['role'] == 'Admin') {
-    header('Location: /administration?page=articles');
-    exit();
 }
 ?>
 

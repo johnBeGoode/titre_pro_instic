@@ -29,9 +29,21 @@
             </nav>
         </div>
         <div id="button">
-            <a href="<?= isset($_SESSION['connected']) ? '/' : '/account-creating'; ?>" class="<?= isset($_SESSION['connected']) ? null : 'btn btn-primary';?>"><?= isset($_SESSION['connected']) ? 'Bienvenue ' . $_SESSION['nom'] : 'Créer un compte'; ?></a>
-            <a href="<?= isset($_SESSION['connected']) ? '/deconnexion' : '/connexion'; ?>" class="<?= isset($_SESSION['connected']) && $_SESSION['connected'] == 2 ? 'btn btn-danger' : 'btn btn-primary'; ?>"><?= isset($_SESSION['connected']) && $_SESSION['connected'] == 1 ? 'Admin' : isset($_SESSION['connected']) && $_SESSION['connected'] == 2 ? 'logOut' : 'Se connecter'; ?></a>
+            <?php
+            if (isset($_SESSION['user']) && $_SESSION['user']->getRole() == 'Admin'): ?>
+                <a href="/">Bienvenue <?= $_SESSION['user']->getName(); ?></a>
+                <a href="/administration?page=articles" class="btn btn-primary">Admin</a>
+            <?php 
+            elseif(isset($_SESSION['user']) && $_SESSION['user']->getRole() == 'User'): ?>
+                <a href="/">Bienvenue <?= $_SESSION['user']->getName(); ?></a>
+                <a href="/deconnexion" class="btn btn-danger">LogOut</a>
+            <?php else: ?>
+                <a href="/account-creating">Créer un compte</a>
+                <a href="/connexion" class="btn btn-primary">Se connecter</a>
+            <?php endif; ?>
         </div>
     </header>
+    <?php
+    ?>
     
    

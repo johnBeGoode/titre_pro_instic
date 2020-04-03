@@ -11,16 +11,15 @@ class UserManager {
         $this->db = DBFactory::getConnexion();
     }
 
-    public function userAuth($username, $password) {
-        $sql = "SELECT nom, pass, rol FROM users WHERE nom = :nom AND pass = :pass";
+    public function getUserbyName($username) {
+        $sql = "SELECT * FROM users WHERE nom = :nom";
         $req = $this->db->prepare($sql);
         $req->bindValue(':nom', $username);
-        $req->bindValue(':pass', $password);
         $req->execute();
 
-        return $req->fetchAll(\PDO::FETCH_ASSOC);
-    }
-
+        return $req->fetchObject('App\Entity\User');
+    } 
+    
     public function getUser($id){
         $sql = "SELECT * FROM users WHERE id = :id";
         $req = $this->db->prepare($sql);        
@@ -41,17 +40,27 @@ class UserManager {
     }
 
     public function add($avatar, $nom, $password, $email, $role) {
-        $sql = "INSERT INTO users (avatar, nom, pass, rol, email, date_registration) VALUES (:avatar, :nom, :pass, :rol, :email, NOW())";
-        $req = $this->db->prepare($sql);
-        $req->bindValue(':avatar', $avatar);
-        $req->bindValue(':nom', $nom);
-        $req->bindValue(':pass', $password);
-        $req->bindValue(':rol', $role);
-        $req->bindValue(':email', $email);
-        $req->execute();
+        try {
+            $sql = "INSERT INTO users (avatar, nom, pass, rol, email, date_registration) VALUES (:avatar, :nom, :pass, :rol, :email, NOW())";
+            $req = $this->db->prepare($sql);
+            $req->bindValue(':avatar', $avatar);
+            $req->bindValue(':nom', $nom);
+            $req->bindValue(':pass', $password);
+            $req->bindValue(':rol', $role);
+            $req->bindValue(':email', $email);
+            $req->execute();
 
-        $userId = $this->db->lastInsertId();
-        return $userId;
+            $userId = $this->db->lastInsertId();
+            return $userId;
+         } 
+         catch (\PDOException $e) {
+            if ($e->errorInfo[1] == 1062) {
+                return 'Nom déjà existant';
+            } else {
+               print($e->getMessage());
+            }
+         }
+       
     }
 
     public function update($avatar, $nom, $password, $email, $role, $id) {

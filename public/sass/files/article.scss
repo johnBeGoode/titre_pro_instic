@@ -69,14 +69,16 @@
         }
     }
     #votre-commentaire {
-        width: 20%;
+        width: 80%;
         display: flex;
         margin-left: 21%;
         img {
             margin-right: 5px;
         }
         form {
-            width: 100%;
+            input[type="text"] {
+                 width: 75%;
+            }
         }
     }
 }

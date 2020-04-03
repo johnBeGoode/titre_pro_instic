@@ -39,6 +39,7 @@
         <img width="40" height="40" src="https://cdn-media.rtl.fr/cache/2PpqxPwR6N73Rre1l6OYkA/880v587-0/online/image/2015/0115/7776220912_avatar-2-a-ete-repousse-a-2017.jpg" alt="">
         <form action="" method="post">
             <input type="text" name="comment" class="form-control" placeholder="Votre commentaire">
+            <input type="submit" name="submit" value="OK">
         </form>
     </section>
 </div>

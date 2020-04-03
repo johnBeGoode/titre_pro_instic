@@ -6,6 +6,7 @@
     </div>
  <?php endif ?>
 
+ 
  <!-- Message de création de compte ok -->
  <?php if (isset($_SESSION['success'])): ?>
     <div id="msg-success" class="alert alert-success text-center">
