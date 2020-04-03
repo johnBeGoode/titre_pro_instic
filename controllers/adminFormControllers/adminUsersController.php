@@ -10,7 +10,7 @@ $content = '../views/admin-parts/adminUsers.php';
 
 if (isset($_POST['submit']) && $_POST['submit'] == 'Ajouter') {
     $role = $_POST['role'];
-    $avatar = '';
+    $avatar = '/public/images/avatars/avatarpardefaut.jpg';
     $GLOBALS['userFormErrors'] = [];
     $userName   = verifUserNameInput($_POST["username"]);
     $password   = verifPasswordInput($_POST["password1"], $_POST["password2"]);

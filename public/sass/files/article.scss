@@ -76,8 +76,10 @@
             margin-right: 5px;
         }
         form {
+            width: 100%;
             input[type="text"] {
                  width: 75%;
+                 display:inline-block;
             }
         }
     }

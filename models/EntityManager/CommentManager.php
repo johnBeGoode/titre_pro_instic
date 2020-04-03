@@ -13,12 +13,12 @@ class CommentManager {
         $this->db = DBFactory::getConnexion();
     }
 
-    public function add($comment, $movieSelected, $user = 1) {
+    public function add($comment, $movieId, $userId) {
         $req = $this->db->prepare("INSERT INTO comments (comment, date_add, movie_id, user_id) VALUES (:comment, NOW(), :movie_id, :user_id)");
 
         $req->bindValue(':comment', $comment);
-        $req->bindValue(':movie_id', $movieSelected);
-        $req->bindValue(':user_id', $user);
+        $req->bindValue(':movie_id', $movieId);
+        $req->bindValue(':user_id', $userId);
 
         $req->execute();
     }

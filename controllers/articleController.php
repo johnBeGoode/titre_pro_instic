@@ -15,12 +15,25 @@ $movie = $movieManager->getOne($vars['id']);
 
 $comments = $commentManager->getAllCommentsForMovie($vars['id']);
 
+
 if ($vars['slug'] === $movie->getSlug() && $movie->getIsPublished()) {
     $title_page = 'Article '. $movie->getTitle();
     $desc_page = "Fiche détaillé et commentaires utilisateurs";
+
+    if (isset($_POST['submit'])) {
+        $comment = $_POST['comment'];
+        $movieId = $movie->getId();
+        $userId = $_SESSION['user']->getId();
+    
+        $commentManager->add($comment, $movieId, $userId);
+        header('Location: /article/' . $movie->getSlug() . '/' . $movieId);
+    }
+
     require_once '../views/' . $vue . '.php';
 }
 else {    
     Router::badUrl();
 }
+
+
 
