@@ -25,10 +25,8 @@ class UserManager {
         $req = $this->db->prepare($sql);        
         $req->bindValue(':id', $id, \PDO::PARAM_INT);
         $req->execute();
-        //$data = $req->fetchAll(\PDO::FETCH_OBJ);
-        $data = $req->fetchObject('App\Entity\User');
 
-        return $data;
+        return $req->fetchObject('App\Entity\User');
     }
 
     public function getAllUsers() {
@@ -55,12 +53,12 @@ class UserManager {
          } 
          catch (\PDOException $e) {
             if ($e->errorInfo[1] == 1062) {
-                return 'Nom déjà existant';
-            } else {
-               print($e->getMessage());
+                $GLOBALS['userFormErrors'][] = 'Pseudo déjà existant, veuillez en choisir un autre !';
             }
-         }
-       
+            else {
+                print($e->getMessage());
+            }
+        }  
     }
 
     public function update($avatar, $nom, $password, $email, $role, $id) {
@@ -84,9 +82,4 @@ class UserManager {
     public function delete($id) {
         $this->db->exec("DELETE FROM users WHERE id = " . (int)$id);
     }
-
-    // public function distinctRoles() {
-    //     $req = $this->db->query("SELECT DISTINCT rol FROM users");
-    //     return $req->fetchAll();
-    // }
 }

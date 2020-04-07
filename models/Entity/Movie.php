@@ -52,7 +52,7 @@ class Movie {
         return $this->trailer;
     }
 
-    public function getMiseEnAvant() {
+    public function getMisEnAvant() {
         if ($this->mis_en_avant === '1') {
             return true;
         }

@@ -11,13 +11,15 @@ $desc_page = 'Identification pour accéder aux différentes sessions';
 
 $allCategories = $categoryManager->getAllCategories();
 $jsFiles = ['login.js'];
-$error = null;
+// $error = null;
 
 
 if (isset($_POST['login']) && !empty($_POST['login']) && isset($_POST['password']) && !empty($_POST['password'])) {
 
     $user = $userManager->getUserbyName($_POST['login']);
-    $authentification = password_verify($_POST['password'], $user->getPassword());
+    if ($user) {
+        $authentification = password_verify($_POST['password'], $user->getPassword());
+    }
 
     if ($authentification) {
         
@@ -32,7 +34,7 @@ if (isset($_POST['login']) && !empty($_POST['login']) && isset($_POST['password'
         }
     }
     else {
-        $error = 'Identifiants incorrects';
+        $_SESSION['error'] = 'Identifiants incorrects';
     }
 }
 ?>

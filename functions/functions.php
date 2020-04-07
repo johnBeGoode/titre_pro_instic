@@ -36,9 +36,11 @@ function uploadFile($file, $newUserId) {
     if (in_array($extension, $authorizedExtensions)) {
         if ($size > $maxSize) {
             $GLOBALS['userFormErrors'][] = 'Taille de l\'image trop grande, votre fichier fait '.$size.' octets alors que le maximum autorisé est de '.$maxSize.' octets !';
-        }else if(empty($temp_name)) {
+        }
+        else if(empty($temp_name)) {
             $GLOBALS['userFormErrors'][] = "Le serveur php a rencontré un probleme lors de l'upload du fichier !";
-        }else {
+        }
+        else {
             move_uploaded_file($file['avatar']['tmp_name'], $uploadedFilePath);
             return '/public/images/avatars/' . $newUserId . '.' . $extension;
         }  
@@ -103,11 +105,14 @@ function verifPasswordInput($pass1, $pass2){
 function verifEmailInput($email){
     if (empty($email)) {
         $GLOBALS['userFormErrors'][] = "Adresse email vide !";
-    } elseif(!preg_match('/^[a-z_.\-0-9]+@[a-z.]+/',$email)) {
+    } 
+    elseif(!preg_match('/^[a-z_.\-0-9]+@[a-z.]+/',$email)) {
         $GLOBALS['userFormErrors'][] = "Votre adresse email n'est pas valide !";
-    }else{
+    }
+    else{
         return $email;
-    }    
+    }
+      
     return false;
 }
 

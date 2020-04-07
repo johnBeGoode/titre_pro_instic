@@ -6,21 +6,19 @@ use App\EntityManager\UserManager;
 $categoryManager = new CategoryManager();
 $userManager = new UserManager();
 
-$title_page = 'Create a account';
-$desc_page = 'For creating a new account';
-
+$title_page = 'Créer un compte';
+$desc_page = 'Création de compte utilisateur';
 $jsFiles = ['login.js'];
 
 $allCategories = $categoryManager->getAllCategories(); // Pour affichage dans footer
-define("MIN_LENGTH_PASSWORD", 7);
 
+define("MIN_LENGTH_PASSWORD", 7);
 
 if (isset($_POST['submit'])) {
     $username = verifUsernameInput($_POST['username']);
     $password = verifPasswordInput($_POST['password1'], $_POST['password2']);
     $email = verifEmailInput($_POST['email']);
     $avatar = '';
-    $GLOBALS['userFormErrors'] = [];
     $role = 'User';
    
     if (empty($GLOBALS['userFormErrors']) && $username && $password && $email) {
@@ -29,14 +27,14 @@ if (isset($_POST['submit'])) {
         if (!empty($_FILES['avatar']['name'])) {
             $avatarUrl = uploadFile($_FILES, $newUserId);
             if (empty($GLOBALS['userFormErrors'])) {
-                updateAvatar($newUserId, $avatarUrl);
+                $userManager->updateAvatar($newUserId, $avatarUrl);
             } 
             else {
                 setErrorsAndSavePostInputs();
             }
         }
 
-        if (is_int($newUserId)) {
+        if ($newUserId) {
             $_SESSION['success'] = 'Votre compte a bien été créé, veuillez vous connecter svp';
             header('Location: /connexion');
         } 
@@ -48,7 +46,6 @@ if (isset($_POST['submit'])) {
     else {
         setErrorsAndSavePostInputs();
     }
-  
 }
 
 require_once '../views/' . $vue . '.php';

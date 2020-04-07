@@ -47,6 +47,6 @@
     <?php else: ?>
         <a href="/connexion">Vous devez être connecté pour poster un commentaire.</a>
     <?php endif; ?>
-  
+    
 </div>
 <?php require_once 'include-parts/footer.php'; ?>
