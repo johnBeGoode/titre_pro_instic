@@ -16,7 +16,7 @@ $movie = $movieManager->getOne($vars['id']);
 $comments = $commentManager->getAllCommentsForMovie($vars['id']);
 
 
-if ($vars['slug'] === $movie->getSlug() && $movie->getIsPublished()) {
+if ($vars['slug'] == $movie->getSlug() && ($movie->getIsPublished() || $movie->getMisEnAvant())) {
     $title_page = 'Article '. $movie->getTitle();
     $desc_page = "Fiche détaillé et commentaires utilisateurs";
 

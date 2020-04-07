@@ -1,5 +1,9 @@
 #carouselExampleCaptions {
     @include boxShadowAround;
+    img {
+        width: auto;
+        height: auto;
+    }
 }
 
 #home {

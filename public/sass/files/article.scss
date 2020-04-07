@@ -71,16 +71,24 @@
     #votre-commentaire {
         width: 80%;
         display: flex;
-        margin-left: 21%;
+        margin-left: 20%;
         img {
             margin-right: 5px;
         }
         form {
-            width: 100%;
+            width: 50%;
             input[type="text"] {
                  width: 75%;
                  display:inline-block;
             }
+        }
+    }
+    #linkConnectComment {
+        margin-left: 100px;
+        font-size: x-large;
+        color: black;
+        &:hover {
+            color: darkorange;
         }
     }
 }

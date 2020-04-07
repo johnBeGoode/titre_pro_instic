@@ -41,11 +41,11 @@
             <img width="40" height="40" src="<?= $_SESSION['user']->getAvatar(); ?>" alt="avatar de <?= $_SESSION['user']->getName(); ?>">
             <form action="" method="post">
                 <input type="text" name="comment" class="form-control" placeholder="Votre commentaire">
-                <input type="submit" name="submit" value="OK">
+                <input type="submit" name="submit" class="btn btn-dark" value="Envoyer">
             </form>
         </section>
     <?php else: ?>
-        <a href="/connexion">Vous devez être connecté pour poster un commentaire.</a>
+        <a id="linkConnectComment" href="/connexion">Vous devez être connecté pour poster un commentaire.</a>
     <?php endif; ?>
     
 </div>

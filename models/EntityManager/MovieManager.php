@@ -66,7 +66,6 @@ class MovieManager {
     }
 
     public function delete($id) {
-        // $this->db->exec("DELETE FROM movies_categories WHERE Movie_id = " . (int)$id);
         $this->db->exec("DELETE FROM movies WHERE id = " . (int)$id);
     }
 
@@ -77,17 +76,15 @@ class MovieManager {
     public function getAllMovies() {
         $sql = "SELECT * FROM movies ORDER BY date_add DESC";
         $req = $this->db->query($sql);
-        $datas = $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Movie');
 
-        return $datas;
+        return $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Movie');
     }
 
     public function getAllMoviesPublished() {
         $sql = "SELECT * FROM movies WHERE is_published = 1 ORDER BY date_add DESC";
         $req = $this->db->query($sql);
-        $datas = $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Movie');
 
-        return $datas;
+        return $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Movie');
     }
 
     public function getNbMovies(int $nb) {
@@ -95,9 +92,15 @@ class MovieManager {
         $req = $this->db->prepare($sql);        
         $req->bindValue(':nb_max', $nb, \PDO::PARAM_INT);
         $req->execute();
-        $datas = $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Movie');
 
-        return $datas;
+        return $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Movie');
+    }
+
+    public function getMoviesMisenAvant() {
+        $sql = "SELECT * FROM movies WHERE mis_en_avant = 1 ORDER BY date_add DESC";
+        $req = $this->db->query($sql);
+
+        return $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Movie');
     }
 
     public function getOne($id) {
@@ -105,9 +108,8 @@ class MovieManager {
         $req = $this->db->prepare($sql);
         $req->bindValue(':id', $id, \PDO::PARAM_INT);
         $req->execute();
-        $movie = $req->fetchObject('App\Entity\Movie');
 
-        return $movie;
+        return $req->fetchObject('App\Entity\Movie');
     }
 
     public function getNumberOfMoviesByCategory($categoriesId) {
@@ -115,9 +117,8 @@ class MovieManager {
         $req = $this->db->prepare($sql);
         $req->bindValue(':categoriesId', $categoriesId);
         $req->execute();
-        $countByCategory = $req->fetchColumn();
 
-        return $countByCategory; 
+        return $req->fetchColumn();
     }
 
     public function getMoviesByCategory($idCategory) {
@@ -125,9 +126,8 @@ class MovieManager {
         $req = $this->db->prepare($sql);
         $req->bindValue(':idCategory', $idCategory);
         $req->execute();
-        $results = $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Movie');
 
-        return $results;
+        return $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Movie');
     }
 
     public function getCategoriesForAMovie($idMovie) {
@@ -135,9 +135,8 @@ class MovieManager {
         $req = $this->db->prepare($sql);
         $req->bindValue(':movieId', (int)$idMovie);
         $req->execute();
-        $result = $req->fetchAll(\PDO::FETCH_COLUMN, 0);
 
-        return $result;
+        return $req->fetchAll(\PDO::FETCH_COLUMN, 0);
     }
 
     public function getNbCommentsForaMovie($idMovie) {
@@ -145,8 +144,7 @@ class MovieManager {
         $req = $this->db->prepare($sql);
         $req->bindValue(':movieId', (int)$idMovie);
         $req->execute();
-        $result = $req->fetchColumn();
-
-        return $result;
+        
+        return $req->fetchColumn();
     }
 }
