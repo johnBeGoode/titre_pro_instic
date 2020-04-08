@@ -19,6 +19,9 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Ajouter') {
 
     if (!empty($_FILES['picture']['name'])) {
         $pictureUrl = uploadMoviePicture($_FILES);
+        if (!empty($_FILES['misenavant']['name'])) {
+            uploadMisEnAvant($_FILES);
+        }
         $movieManager->add($titre, $synopsis, $pictureUrl, $isPublished, $categories, $trailer, $misEnAvant);
     }
 
@@ -43,9 +46,18 @@ elseif (isset($_GET['action']) && $_GET['action'] == 'update') {
         $misEnAvant = isset($_POST['mis-en-avant']) ? 1 : 0;
         $picture = $movie->getPicture();
 
-        if (!empty($_FILES['picture']['name'])) {
+        if (!empty($_FILES['picture']['name']) && !empty($_FILES['misenavant']['name'])) {
+            uploadMisEnAvant($_FILES);
             $pictureUrl = uploadMoviePicture($_FILES);
             $movieManager->update($title, $synopsis, $pictureUrl, $categoriesId, $trailer, $isPublished, $misEnAvant, $id);
+        }
+        elseif (!empty($_FILES['picture']['name']) && empty($_FILES['misenavant']['name'])) {
+            $pictureUrl = uploadMoviePicture($_FILES);
+            $movieManager->update($title, $synopsis, $pictureUrl, $categoriesId, $trailer, $isPublished, $misEnAvant, $id);
+        }
+        elseif (!empty($_FILES['misenavant']['name']) && empty($_FILES['picture']['name']) ) {
+            uploadMisEnAvant($_FILES);
+            $movieManager->update($title, $synopsis, $picture, $categoriesId, $trailer, $isPublished, $misEnAvant, $id);
         }
         else {
             $movieManager->update($title, $synopsis, $picture, $categoriesId, $trailer, $isPublished, $misEnAvant, $id);

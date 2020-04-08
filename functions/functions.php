@@ -66,6 +66,19 @@ function uploadMoviePicture ($file) {
     return '/public/images/movies/' . $pictureName;
 }
 
+function uploadMisEnAvant ($file) {
+    $pictureName = basename($file['misenavant']['name']);
+    $tempPicture = $file['misenavant']['tmp_name'];
+    $extension = pathinfo($pictureName, PATHINFO_EXTENSION);
+    $authorizedExtensions = ['jpg', 'jpeg', 'png'];
+    $uploadedFilePath = '../public/images/caroussel/' . $pictureName;
+    // Enregistrement image sur le serveur
+    if (in_array($extension, $authorizedExtensions)) {
+        move_uploaded_file($tempPicture, $uploadedFilePath);
+    }
+    return '/public/images/caroussel/' . $pictureName;
+}
+
 
 // ------------------------
 // ------------------------

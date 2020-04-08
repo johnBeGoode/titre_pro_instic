@@ -17,5 +17,4 @@ $jsFiles = ['home.js','caroussel.js']; // Tableau si on veut charger plusieurs f
 $moviesMisEnAvant = $movieManager->getMoviesMisenAvant();
 
 
-
 require_once '../views/' . $vue . '.php';

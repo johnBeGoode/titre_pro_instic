@@ -46,10 +46,10 @@
     </div>
 
     <div id="reseau_social"> 
-        <a href="#"><img id ="logofb" class="logo_rs" src="/public/images/ico_fb.png" alt="facebook"></a>
-        <a href="#"><img class="logo_rs" src="/public/images/ico_in.png" alt="linkedin"></a>
-        <a href="#"><img class="logo_rs" src="/public/images/ico_insta.png" alt="instagram"></a>
-        <a href="#"><img class="logo_rs" src="/public/images/ico_twitter.png" alt="twitter"></a>
+        <a href="#"><img id ="logofb" class="logo_rs" src="/public/images/icones/ico_fb.png" alt="facebook"></a>
+        <a href="#"><img class="logo_rs" src="/public/images/icones/ico_in.png" alt="linkedin"></a>
+        <a href="#"><img class="logo_rs" src="/public/images/icones/ico_insta.png" alt="instagram"></a>
+        <a href="#"><img class="logo_rs" src="/public/images/icones/ico_twitter.png" alt="twitter"></a>
     </div>
 
     <div id="copyright">
