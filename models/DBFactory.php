@@ -3,15 +3,20 @@ namespace App;
 
 class DBFactory {
 
-    private static $database = array(
-        'hostname' => 'localhost',
-        'database' => 'appjohn',
-        'login' => 'root',
-        'password' => ''
-    );
+    private static $dbFile = __DIR__ . '/../config/database.json';
 
     public static function getConnexion() {
-        $db = new \PDO('mysql:host=' . self::$database['hostname'] . ';dbname=' .  self::$database['database'] . ';charset=utf8', self::$database['login'], self::$database['password']);
+        $dbFile = file_get_contents(self::$dbFile);
+        $dbDatas = json_decode($dbFile, true);
+        if ($dbDatas['online'] == true) {
+            $dbDatas = $dbDatas['prod'];
+        }
+        else {
+            $dbDatas = $dbDatas['local'];
+        }
+        
+        $db = new \PDO('mysql:host=' . $dbDatas['host'] . ';dbname=' .  $dbDatas['dbname'] . ';charset=utf8', $dbDatas['login'], $dbDatas['password']);
+
         $db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
         return $db;

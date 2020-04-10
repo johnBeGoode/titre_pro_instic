@@ -37,7 +37,7 @@ $(document).ready(function() {
                 let pageParams = window.location.search
                 let regExp = new RegExp('&action=update&id=[0-9]+')
                 let newUrl = pageParams.replace(regExp, '')
-                // document.location.href = newUrl
+                document.location.href = newUrl
                 $.ajax({
                     url: '/public/ajax/unsetSessionInputsWithCancel.php',
                     type: 'GET'

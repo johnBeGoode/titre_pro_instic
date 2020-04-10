@@ -1,3 +1,8 @@
+#Activation du module de réécriture d'url
 RewriteEngine On
 
+# Règle de réécriture, $1 = ce qui a été capturé dans la regExp, QSA autorise les parametres en GET
 RewriteRule ^(.*)$ public/index.php?url=$1 [QSA,L]
+
+#TOUT CE QU'ON TAPE VA VERS INDEX.php
+#PROTEGE TOUTE LA RACINE DU SITE

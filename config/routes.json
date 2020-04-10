@@ -5,7 +5,7 @@
         "contact":                  "contact",
         "article/{slug}/{id}":      "article",
         "connexion":                "login",
-        "account-creating":          "account",
+        "account-creating":         "account",
         "administration":           "admin",
         "deconnexion":              "deconnexion"        
     },  
