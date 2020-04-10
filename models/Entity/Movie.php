@@ -65,7 +65,7 @@ class Movie {
         echo '<iframe src="https://www.youtube.com/embed/' . $this->getTrailer() . '?controls=0&autoplay=1&mute=1&loop=1&playlist=' . $this->getTrailer() . '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="trailer"></iframe>';
     }
 
-    // Fct trailer sur la page du film en question
+    // Fct trailer sur la page du film
     public function getVideoArticle() {
         echo '<iframe width="560" height="315" src="https://www.youtube.com/embed/' . $this->getTrailer() . '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
     }

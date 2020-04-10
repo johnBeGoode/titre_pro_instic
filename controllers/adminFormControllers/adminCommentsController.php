@@ -13,7 +13,8 @@ $content = '../views/admin-parts/adminComments.php';
 if (isset($_POST['submit']) && $_POST['submit'] == 'Ajouter') {
     $comment = htmlspecialchars($_POST['comment']);
     $movieSelected = htmlspecialchars($_POST['movieList']);
-    $commentManager->add($comment, $movieSelected); // $user définit par défaut à 1. A rajouter ou pas?
+    $userId = $_SESSION['user']->getId(); // A CHECKER
+    $commentManager->add($comment, $movieSelected, $userId);
     $_SESSION['success'] = 'Le nouveau commentaire a bien été ajouté';
     header('Location: /administration?page=comments');
 }

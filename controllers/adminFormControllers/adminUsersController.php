@@ -11,20 +11,20 @@ $content = '../views/admin-parts/adminUsers.php';
 if (isset($_POST['submit']) && $_POST['submit'] == 'Ajouter') {
     $role = $_POST['role'];
     $avatar = '/public/images/avatars/avatarpardefaut.jpg';
-    $GLOBALS['userFormErrors'] = [];
+    $GLOBALS['userFormErrors'] = []; // Nécessaire de déclarer ??
     $userName   = verifUserNameInput($_POST["username"]);
     $password   = verifPasswordInput($_POST["password1"], $_POST["password2"]);
     $email      = verifEmailInput($_POST['email']);
  
-    if (count($GLOBALS['userFormErrors'])==0 && $userName && $password && $email) {        
+    if (count($GLOBALS['userFormErrors']) == 0 && $userName && $password && $email) {        
         $userId = $userManager->add($avatar, $userName, $password, $email, $role); 
 
         if (!empty($_FILES['avatar']['name'])) {
             $avatarUrl = uploadFile($_FILES, $userId);             
-            if(empty($GLOBALS['userFormErrors'])){
+            if (empty($GLOBALS['userFormErrors'])) {
                 $userManager->updateAvatar($userId, $avatarUrl);
             }
-            else{
+            else {
                 setErrorsAndSavePostInputs();                
             }                    
         }
@@ -53,18 +53,24 @@ elseif (isset($_GET['action']) && $_GET['action'] == 'update') {
         $email      = verifEmailInput($_POST['email']);
         $role       = $_POST['role'];
 
-        if (!empty($_FILES['avatar']['name'])) {
-            unlink('..' . $avatar);
-            $avatarUrl = uploadFile($_FILES, $id); // gérer la suppression de l'ancienne image
-            $userManager->update($avatarUrl, $userName, $password, $email, $role, $id);
+        if (empty($GLOBALS['userFormErrors'])) {
+            if (!empty($_FILES['avatar']['name'])) {
+                unlink('..' . $avatar); // gérer la suppression de l'ancienne image
+                $avatarUrl = uploadFile($_FILES, $id); 
+                $userManager->update($avatarUrl, $userName, $password, $email, $role, $id);
+            }
+            else {
+                $userManager->update($avatar, $userName, $password, $email, $role, $id);
+            }
+    
+            $_SESSION['success'] = 'L\'utilisateur a été mis à jour';
         }
         else {
-            $userManager->update($avatar, $userName, $password, $email, $role, $id);
+            setErrorsAndSavePostInputs();
         }
-
-        $_SESSION['success'] = 'L\'utilisateur a été mis à jour';
-        header('Location: /administration?page=users');
-    }   
+        
+        header('Location: /administration?page=users');     
+    }
 }
 
 // -------------------------

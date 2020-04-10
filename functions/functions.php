@@ -8,7 +8,6 @@ function is_connected():bool {
 }
 
 // ------------------------
-// ------------------------
 
 function force_user_connected():void {
     if (!is_connected()) {
@@ -17,7 +16,6 @@ function force_user_connected():void {
     }
 }
 
-// ------------------------
 // ------------------------
 
 function uploadFile($file, $newUserId) {
@@ -46,11 +44,10 @@ function uploadFile($file, $newUserId) {
         }  
     }
     else {
-        $GLOBALS['userFormErrors'][] = 'Format de l\'image '.$extension.' non accepté';
+        $GLOBALS['userFormErrors'][] = 'Format de l\'image ' . $extension . ' non accepté';
     }
 }
 
-// ------------------------
 // ------------------------
 
 function uploadMoviePicture ($file) {
@@ -63,8 +60,11 @@ function uploadMoviePicture ($file) {
     if (in_array($extension, $authorizedExtensions)) {
         move_uploaded_file($tempPicture, $uploadedFilePath);
     }
+
     return '/public/images/movies/' . $pictureName;
 }
+
+// ------------------------
 
 function uploadMisEnAvant ($file) {
     $pictureName = basename($file['misenavant']['name']);
@@ -76,63 +76,65 @@ function uploadMisEnAvant ($file) {
     if (in_array($extension, $authorizedExtensions)) {
         move_uploaded_file($tempPicture, $uploadedFilePath);
     }
-    return '/public/images/caroussel/' . $pictureName;
 }
 
-
-// ------------------------
 // ------------------------
 
-function verifUsernameInput($username){
+function verifUsernameInput($username) {
     if (empty($username)) {
         $GLOBALS['userFormErrors'][] = "Nom utilisateur vide !";
-    } elseif (strlen($username) < 4) {
+    } 
+    elseif (strlen($username) < 4) {
         $GLOBALS['userFormErrors'][] = "Le nom utilisateur doit contenir au moins 4 lettres !";
-    } else {
+    } 
+    else {
         return $username;
     }    
+
     return false;
 }
 
 // ------------------------
-// ------------------------
 
-function verifPasswordInput($pass1, $pass2){
+function verifPasswordInput($pass1, $pass2) {
     if ($pass1 !== $pass2) {
         $GLOBALS['userFormErrors'][] = "Mot de passe différents";
-    } elseif (empty($pass1) && empty($pass2)) {
+    } 
+    elseif (empty($pass1) && empty($pass2)) {
         $GLOBALS['userFormErrors'][] = "Mot de passe à renseigner";
-    } else {
-        if(strlen($pass2)<MIN_LENGTH_PASSWORD){
-            $GLOBALS['userFormErrors'][] = "Le mot de passe doit contenir ".MIN_LENGTH_PASSWORD." caracteres minimum !";
-        }else{
+    } 
+    else {
+        if (strlen($pass2) < MIN_LENGTH_PASSWORD) {
+            $GLOBALS['userFormErrors'][] = "Le mot de passe doit contenir " . MIN_LENGTH_PASSWORD . " caracteres minimum !";
+        }
+        else {
             return password_hash(htmlspecialchars($pass2), PASSWORD_DEFAULT);
         }
     }
+
     return false;
 }
 
 // ------------------------
-// ------------------------
 
-function verifEmailInput($email){
+function verifEmailInput($email) {
     if (empty($email)) {
         $GLOBALS['userFormErrors'][] = "Adresse email vide !";
     } 
-    elseif(!preg_match('/^[a-z_.\-0-9]+@[a-z.]+/',$email)) {
+    // elseif (!preg_match('/^[a-z_.\-0-9]+@[a-z.]+/', $email)) {
+    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $GLOBALS['userFormErrors'][] = "Votre adresse email n'est pas valide !";
     }
-    else{
+    else {
         return $email;
     }
-      
+
     return false;
 }
 
 // ------------------------
-// ------------------------
 
-function setErrorsAndSavePostInputs(){
+function setErrorsAndSavePostInputs() {
     $_SESSION['erreurs'] = $GLOBALS['userFormErrors'];
     $_SESSION['formInput'] = $_POST;    
 }
