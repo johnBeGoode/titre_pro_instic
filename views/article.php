@@ -38,7 +38,13 @@
     <?php
     if (isset($_SESSION['user'])): ?>
         <section id="votre-commentaire">
-            <img width="40" height="40" src="<?= $_SESSION['user']->getAvatar(); ?>" alt="avatar de <?= $_SESSION['user']->getName(); ?>">
+            <?php
+            $avatar = $_SESSION['user']->getAvatar();
+            if ($avatar == '') {
+                $avatar = '/public/images/avatars/avatarpardefaut.jpg';
+            } 
+            ?>
+            <img width="40" height="40" src="<?= $avatar; ?>" alt="avatar de <?= $_SESSION['user']->getName(); ?>">
             <form action="" method="post">
                 <input type="text" name="comment" class="form-control" placeholder="Votre commentaire">
                 <input type="submit" name="submit" class="btn btn-dark" value="Envoyer">

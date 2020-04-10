@@ -1,4 +1,4 @@
 $(document).ready(function() {
-    $('.carousel-item:first').addClass('active');
-    $('li:first-child').addClass('active');
+    $('.carousel-inner div:first-child').addClass('active');
+    $('.carousel-indicators li:first-child').addClass('active');
 })

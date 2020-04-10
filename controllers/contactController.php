@@ -41,6 +41,7 @@ if (isset($_POST['submit'])) {
         $_POST['message'] = stripslashes($_POST['message']);
         mail($to, $sujet, $message, $header); // headers permet de rajouter des arguments à notre mail
         $_SESSION['success'] = 1;
+        unset($_SESSION['formInput']);
         header('Location: /contact'); // si redirection impossible d'accéder à contact
     }
 }
