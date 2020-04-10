@@ -1,6 +1,7 @@
 <?php
 namespace App\Entity;
 use App\EntityManager\UserManager;
+use App\EntityManager\MovieManager;
 use DateTime;
 
 class Comment {
@@ -28,6 +29,11 @@ class Comment {
 
     public function getMovieId() {
         return $this->movie_id;
+    }
+
+    public function getMovie() {
+        $movieManager = new MovieManager();
+        return $movieManager->getOne($this->movie_id );
     }
 
     public function getUserId() {        

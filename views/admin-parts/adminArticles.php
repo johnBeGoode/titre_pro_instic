@@ -1,47 +1,48 @@
 <button type="button" class="btn btn-dark button-add-content">Add a content</button>
 
-<form action="" method="post" enctype="multipart/form-data" class="form-add-content">
-    <label>Titre</label><br>
-    <input type="text" class="form-control" name="titre" value="<?= isset($movie) ? $movie->getTitle() : ''; ?>"><br>
+<div class="bg-my-modal">
+    <form action="" method="post" enctype="multipart/form-data" class="form-add-content my-modal">
+        <label>Titre</label><br>
+        <input type="text" class="form-control" name="titre" value="<?= isset($movie) ? $movie->getTitle() : ''; ?>"><br>
 
-    <label>Synopsis</label><br>
-    <textarea name="synopsis" id="synopsis" class="form-control"><?= isset($movie) ? $movie->getSynopsis() : ''; ?></textarea><br>
+        <label>Synopsis</label><br>
+        <textarea name="synopsis" id="synopsis" class="form-control"><?= isset($movie) ? $movie->getSynopsis() : ''; ?></textarea><br>
 
-    <label>Image</label><br>
-    <input type="file" name="picture" accept="image/png, image/jpeg, image/jpg"><br><br>
-    
-    <label>Type</label><br>
-    <select name="type" id="type">
-        <option value="film">Film</option>
-        <option value="serie">Série</option>
-    </select><br><br>
+        <label>Image</label><br>
+        <input type="file" name="picture" accept="image/png, image/jpeg, image/jpg"><br><br>
+        
+        <label>Type</label><br>
+        <select name="type" id="type">
+            <option value="film">Film</option>
+            <option value="serie">Série</option>
+        </select><br><br>
 
-    <label>Catégorie</label><br>
-    <select name="categories[]" id="categories" multiple>
-        <?php foreach ($categories as $category): ?>
-            <?php 
-            $attrSelected = '';
-            if(in_array($category->getId(), $movieCategories)) {
-                $attrSelected = 'selected';
-            } ?>
-            <option value="<?= $category->getId() ?>" <?= $attrSelected; ?>><?= $category->getName() ?></option>
-        <?php endforeach ?>
-    </select><br><br>
+        <label>Catégorie</label><br>
+        <select name="categories[]" id="categories" multiple>
+            <?php foreach ($categories as $category): ?>
+                <?php 
+                $attrSelected = '';
+                if(in_array($category->getId(), $movieCategories)) {
+                    $attrSelected = 'selected';
+                } ?>
+                <option value="<?= $category->getId() ?>" <?= $attrSelected; ?>><?= $category->getName() ?></option>
+            <?php endforeach ?>
+        </select><br><br>
 
-    <label>Trailer</label><br>
-    <input type="text" class="form-control" name="trailer" value="<?= isset($movie) ? $movie->getTrailer() : ''; ?>"><br>
+        <label>Trailer</label><br>
+        <input type="text" class="form-control" name="trailer" value="<?= isset($movie) ? $movie->getTrailer() : ''; ?>"><br>
 
-    <label>Publié</label> <input type="checkbox" name="publie" <?= isset($movie) && $movie->getIsPublished() ? 'checked' : ''; ?>><br>
+        <label>Publié</label> <input type="checkbox" name="publie" <?= isset($movie) && $movie->getIsPublished() ? 'checked' : ''; ?>><br>
 
-    <label>Mise en avant</label> <input type="checkbox" name="mis-en-avant" <?= isset($movie) && $movie->getMisEnAvant() ? 'checked' : ''; ?>><br><br>
+        <label>Mise en avant</label> <input type="checkbox" name="mis-en-avant" <?= isset($movie) && $movie->getMisEnAvant() ? 'checked' : ''; ?>><br><br>
 
-    <label>Image de mise en avant</label><br>
-    <input type="file" name="misenavant" accept="image/png, image/jpeg, image/jpg"><br><br>
+        <label>Image de mise en avant</label><br>
+        <input type="file" name="misenavant" accept="image/png, image/jpeg, image/jpg"><br><br>
 
-    <input type="submit" name="submit" class="btn btn-primary" value="<?= isset($_GET['action']) && $_GET['action'] == 'update' ? 'Mettre à jour' : 'Ajouter'; ?>">
-    <input type="reset" class="btn btn-primary" value='Annuler'>
-</form>
-
+        <input type="submit" name="submit" class="btn btn-primary" value="<?= isset($_GET['action']) && $_GET['action'] == 'update' ? 'Mettre à jour' : 'Ajouter'; ?>">
+        <input type="reset" class="btn btn-primary" value='Annuler'>
+    </form>
+</div>
 <table class="admin-articles table table-striped">
     <thead>
         <tr>

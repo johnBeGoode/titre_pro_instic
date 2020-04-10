@@ -77,9 +77,12 @@
         }
         form {
             width: 50%;
-            input[type="text"] {
-                 width: 75%;
-                 display:inline-block;
+            input {
+                vertical-align: middle;
+                &[type="text"] {
+                    width: 75%;
+                    display:inline-block;
+                }
             }
         }
     }
