@@ -12,6 +12,7 @@
     form {
         @include gradeGray;
         @include boxShadowAround;
+        position: relative;
         margin: 100px auto;
         padding: 50px;
         textarea {
@@ -25,6 +26,12 @@
             margin-bottom: 15px;
             border-radius: 5px;
             border-color: lightgray;
+        }
+        img {
+            width: 260px;
+            position: absolute;
+            top: 10px;
+            right: 20px;
         }
     }
 }

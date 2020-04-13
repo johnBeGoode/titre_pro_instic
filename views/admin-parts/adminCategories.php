@@ -5,8 +5,8 @@
         <label>Nom</label><br>
         <input type="text" name="nom" class="form-control" value="<?= isset($category) ? $category->getName() : ''; ?>"><br><br>
 
-        <input type="submit" name="submit" class="btn btn-primary" value="<?= isset($_GET['action']) && $_GET['action'] == 'update' ? 'Mettre à jour' : 'Ajouter'; ?>">
-        <input type="reset" class="btn btn-primary" value='Annuler'>
+        <input type="submit" name="submit" class="btn btn-dark" value="<?= isset($_GET['action']) && $_GET['action'] == 'update' ? 'Mettre à jour' : 'Ajouter'; ?>">
+        <input type="reset" class="btn btn-dark" value='Annuler'>
     </form>
 </div>
 

@@ -10,7 +10,8 @@ $title_page = 'Page de connexion';
 $desc_page = 'Identification pour accéder aux différentes sessions';
 
 $allCategories = $categoryManager->getAllCategories();
-$jsFiles = ['login.js'];
+// $jsFiles = ['login.js'];
+$jsFiles = ['hideNotif.js'];
 // $error = null;
 
 

@@ -7,7 +7,8 @@ $allCategories = $categoryManager->getAllCategories();
 $title_page = "Contact Chromatic SinémA";
 $desc_page = "Page de contact pour toutes suggestions";
 
-$jsFiles = ['form.js', 'contact.js'];
+// $jsFiles = ['form.js', 'contact.js'];
+$jsFiles = ['form.js', 'hideNotif.js'];
 // $errors = [];
 // $GLOBALS['userFormErrors'] = [];
 

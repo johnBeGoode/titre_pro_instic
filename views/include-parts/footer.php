@@ -1,20 +1,20 @@
 <footer>
     <div id="links">
         <div class="div_footer">
-            <h5>Azerty</h5>
+            <h5>Plan</h5>
             <ul>
-                <li><a href="#">Recrutement</a></li>
-                <li><a href="#">Presse</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="#">Partenaires</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Séries</a></li>
+                <li><a href="/contact">Podcasts</a></li>
+                <li><a href="#">Contact</a></li>
             </ul>
         </div>
 
         <div class="div_footer">
-            <h5>Bzerty</h5>
+            <h5>Chromatic</h5>
             <ul>
-                <li><a href="#">Références</a></li> 
-                <li><a href="#">CGU</a></li>
+                <li><a href="#">Recrutement</a></li> 
+                <li><a href="#">Partenaires</a></li>
                 <li><a href="#">Mentions légales</a></li>
                 <li><a href="#">A propos</a></li>
             </ul>
@@ -54,7 +54,7 @@
 
     <div id="copyright">
         <img src="https://cdn.svgporn.com/logos/chromatic-icon.svg" alt="">
-        Chromatic Sinéma, All Rights Reserved, 2020
+        Chromatic Siné, All Rights Reserved, 2020
     </div>
 </footer>
 

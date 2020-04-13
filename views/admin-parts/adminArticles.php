@@ -32,15 +32,15 @@
         <label>Trailer</label><br>
         <input type="text" class="form-control" name="trailer" value="<?= isset($movie) ? $movie->getTrailer() : ''; ?>"><br>
 
-        <label>Publié</label> <input type="checkbox" name="publie" <?= isset($movie) && $movie->getIsPublished() ? 'checked' : ''; ?>><br>
+        <label>Publié</label> <input type="checkbox" name="publie" <?= isset($movie) && $movie->getIsPublished() ? 'checked' : ''; ?>>
 
-        <label>Mise en avant</label> <input type="checkbox" name="mis-en-avant" <?= isset($movie) && $movie->getMisEnAvant() ? 'checked' : ''; ?>><br><br>
+        <label class="ml-3">Mise en avant</label> <input type="checkbox" name="mis-en-avant" <?= isset($movie) && $movie->getMisEnAvant() ? 'checked' : ''; ?>><br><br>
 
         <label>Image de mise en avant</label><br>
-        <input type="file" name="misenavant" accept="image/png, image/jpeg, image/jpg"><br><br>
+        <input type="file" name="misenavant" accept="image/png, image/jpeg, image/jpg"><br><br><br>
 
-        <input type="submit" name="submit" class="btn btn-primary" value="<?= isset($_GET['action']) && $_GET['action'] == 'update' ? 'Mettre à jour' : 'Ajouter'; ?>">
-        <input type="reset" class="btn btn-primary" value='Annuler'>
+        <input type="submit" name="submit" class="btn btn-dark" value="<?= isset($_GET['action']) && $_GET['action'] == 'update' ? 'Mettre à jour' : 'Ajouter'; ?>">
+        <input type="reset" class="btn btn-dark" value='Annuler'>
     </form>
 </div>
 <table class="admin-articles table table-striped">

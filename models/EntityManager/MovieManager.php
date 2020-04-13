@@ -122,7 +122,7 @@ class MovieManager {
     }
 
     public function getMoviesByCategory($idCategory) {
-        $sql =  "SELECT * FROM movies INNER JOIN movies_categories ON movies.id = movies_categories.Movie_id WHERE movies_categories.Categorie_id = :idCategory";
+        $sql =  "SELECT * FROM movies INNER JOIN movies_categories ON movies.id = movies_categories.Movie_id WHERE (is_published = 1 OR mis_en_avant = 1) AND movies_categories.Categorie_id = :idCategory";
         $req = $this->db->prepare($sql);
         $req->bindValue(':idCategory', $idCategory);
         $req->execute();

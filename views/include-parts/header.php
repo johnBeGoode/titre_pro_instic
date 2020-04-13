@@ -8,14 +8,15 @@
     <link rel="stylesheet" href="/public/styles.css">
     <link rel="shortcut icon" type="image/x-icon" href="/public/images/icones/spiral.ico">
     <script src="https://kit.fontawesome.com/1f7564e144.js"></script>
-    <meta name="description" content="<?= $desc_page; ?>"/>
+    <meta name="description" content="<?= $desc_page; ?>">
+    <?= isset($baliseMetaRobots) ? $baliseMetaRobots : null; ?>
 </head>
 <body>
     <header>
         <a href="/">
             <div id="logo_header">
                 <img src="https://cdn.svgporn.com/logos/chromatic-icon.svg" alt="logo blog" id="logo_image">
-                <p>Chromatic SinemA</p>
+                <p>Chromatic Siné</p>
             </div>
         </a>
         <div id="menu">
@@ -32,14 +33,14 @@
             <?php
             if (isset($_SESSION['user']) && $_SESSION['user']->getRole() == 'Admin'): ?>
                 <a href="/">Bienvenue <?= $_SESSION['user']->getName(); ?></a>
-                <a href="/administration?page=articles" class="btn btn-primary">Admin</a>
+                <a href="/administration?page=articles" class="btn btn-dark">Admin</a>
             <?php 
             elseif(isset($_SESSION['user']) && $_SESSION['user']->getRole() == 'User'): ?>
                 <a href="/">Bienvenue <?= $_SESSION['user']->getName(); ?></a>
                 <a href="/deconnexion" class="btn btn-danger">LogOut</a>
             <?php else: ?>
                 <a href="/account-creating">Créer un compte</a>
-                <a href="/connexion" class="btn btn-primary">Se connecter</a>
+                <a href="/connexion" class="btn btn-dark">Se connecter</a>
             <?php endif; ?>
         </div>
     </header>

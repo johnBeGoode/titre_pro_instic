@@ -8,7 +8,8 @@ $userManager = new UserManager();
 
 $title_page = 'Créer un compte';
 $desc_page = 'Création de compte utilisateur';
-$jsFiles = ['login.js'];
+// $jsFiles = ['login.js'];
+$jsFiles = ['hideNotif.js'];
 
 $allCategories = $categoryManager->getAllCategories(); // Pour affichage dans footer
 
