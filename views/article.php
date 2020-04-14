@@ -12,8 +12,15 @@
         </div>
         <div>
             <h2><?= $movie->getTitle(); ?></h2>
-            <p>Ajouté le <?= $movie->getDateAdd(); ?></p><br>
-            <p><span>Synopsis:</span>  <br> <?= $movie->getSynopsis(); ?></p>
+            <p class="date">Ajouté le <?= $movie->getDateAdd(); ?></p><br>
+            <div id="categories">
+                <?php foreach ($allCategories as $category): ?>
+                        <?php if (in_array($category->getId(), $catForThisMovie)): ?>
+                            <div class="category badge badge-dark"><?= $category->getName(); ?></div>
+                        <?php endif; ?>   
+                <?php endforeach; ?>
+            </div>
+            <p><span>Synopsis:</span> <br> <?= $movie->getSynopsis(); ?></p>
         </div>
     </article>
 

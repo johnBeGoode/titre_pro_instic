@@ -19,16 +19,27 @@
         margin: 0 100px;
         margin-bottom: 200px;
         padding: 50px;
-        div:nth-child(2) {
-            padding: 0 50px;    
-            span {
-                font-weight: bold;
-            }
-        }
         .thumbnail {
             img {
                 width: 300px;
                 height: 400px;
+            }
+        }    
+        div:nth-child(2) {
+            padding: 0 50px;  
+            .date {
+                margin-bottom: -15px;
+            }  
+            #categories {
+                margin-bottom: 40px;
+                .category {
+                    padding: 5px 10px;
+                    width: auto;
+                    font-size: 0.7rem;
+                }
+            }
+            span {
+                font-weight: bold;
             }
         }
     }

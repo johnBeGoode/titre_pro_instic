@@ -14,7 +14,7 @@
                         <img src="<?= $movie->getPicture(); ?>" alt="<?= $movie->getSlug(); ?>">
                     </div>
                 </a>
-                <div class="article_content">
+                <div class="article-content">
                     <a href="<?= $urlArticle ?>">
                         <h2><?= $movie->getTitle(); ?></h2>
                     </a>

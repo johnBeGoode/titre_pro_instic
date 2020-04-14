@@ -59,10 +59,6 @@ class Movie {
         return false;
     }
 
-    public function getCategories() {
-        // A ECRIRE
-    }
-
     // Mettre mute=1 pour lancer l'autoplay (paramètre autoplay=1)
     // Fct miniature trailer sur page principale
     public function getVideo() {
