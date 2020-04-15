@@ -12,6 +12,7 @@
     form {
         @include gradeGray;
         @include boxShadowAround;
+        min-width: 670px;
         position: relative;
         margin: 100px auto;
         padding: 50px;

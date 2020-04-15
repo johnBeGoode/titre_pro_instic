@@ -2,7 +2,7 @@ footer {
     @include gradeDark;
     @include boxShadowAround;
     color: $white;
-    width: 100%;
+    width: 100%; // Nécessaire pour les pages où le footer n'est pas positionné tout en bas par manque de contenu
     height: 300px;
     position: relative;
     margin-top: 50px;

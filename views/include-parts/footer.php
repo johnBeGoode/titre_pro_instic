@@ -3,10 +3,10 @@
         <div class="div_footer">
             <h5>Plan</h5>
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="#">Séries</a></li>
-                <li><a href="/contact">Podcasts</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#">Podcasts</a></li>
+                <li><a href="/contact">Contact</a></li>
             </ul>
         </div>
 
