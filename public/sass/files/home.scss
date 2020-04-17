@@ -21,6 +21,9 @@
             margin-bottom: 80px;
             width: 525px;
             position: relative;
+            // &:last-child {
+            //     margin-right: auto; // Pour caler le dernier film tout à gauche quand affichage impaire et retréci
+            // }
             .thumbnail {
                 width: 180px;            
                 height: 250px;
@@ -31,7 +34,7 @@
             }
             .article-content {
                 width: 350px;
-                margin-left: 30px;
+                padding: 0 20px;
                 h2 {
                     font-size: 1.5em;
                     display: inline-block;
@@ -61,5 +64,20 @@
             }
         }
     }
+}
+
+@media screen and (max-width: $phone) {
+    #home {
+        margin-top: 40px;
+        section.articles {
+            article {
+                justify-content: center;
+                flex-wrap: wrap;
+                .thumbnail {
+                    margin-bottom: 30px;
+                }
+            }
+        }
+    }    
 }
 

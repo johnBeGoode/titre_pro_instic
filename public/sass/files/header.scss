@@ -48,8 +48,65 @@ header {
             }
         }
     }
+    #menu-burger {
+        display: none;
+        background-color: transparent;
+        width: 55px;
+    }
 }
 
+
+@media screen and (max-width: $tablet) {
+    header {
+        div#logo_header {
+            p {
+                display: none;
+            }
+        }
+        #menu {
+            width: 50%;
+        }
+    }  
+}
+
+
+@media screen and (max-width: $phone) {
+    header {
+        justify-content: space-between;
+        padding: 0 15px;
+        #menu {
+            display: none;
+            background-color: black;
+            width: 100%;
+            height: auto;
+            position: absolute;
+            right: 0;
+            top: 80px;
+            left: 0;
+            z-index: 10;
+
+            nav {
+                ul {
+                    display: block;
+                    text-align: center;
+                    li {
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+        }
+        #menu-burger {
+            display: block;
+        }
+        #button {
+            text-align: center;
+        }
+    }
+}
+
+@media screen and (max-width: $tabletPortrait) {
+    
+}
 
 
 

@@ -43,6 +43,9 @@
                 <a href="/connexion" class="btn btn-dark">Se connecter</a>
             <?php endif; ?>
         </div>
+        <button id="menu-burger">
+            <img src="public/images/burger.svg" alt="menu burger">
+        </button>
     </header>
     <?php
     ?>

@@ -3,17 +3,16 @@ footer {
     @include boxShadowAround;
     color: $white;
     width: 100%; // Nécessaire pour les pages où le footer n'est pas positionné tout en bas par manque de contenu
-    height: 300px;
     position: relative;
     margin-top: 50px;
+    padding: 20px;
     #links {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        width: 50%;
-        height: 250px;
+       display: inline-block;
+       vertical-align: top;
         .div_footer {
-            height: 165px;
+            display: inline-block;
+            vertical-align: top;
+            margin: 0 20px;
             h5 {
                 color: $colorTitleF;
             }
@@ -40,15 +39,13 @@ footer {
         }
     }
     #reseau_social {
-        position: absolute;
-        right: 5%;
-        top: 15%;
-        width: 18%;
-        display: flex;
-        justify-content: space-around;
+        float: right;
+        a {
+            margin: 0 20px;
+        }
         #logofb {
-            width: 35px;
-            height: 35px;
+            width: 30px;
+            height: 30px;
         }
         .logo_rs {
             width: 30px;
@@ -57,14 +54,38 @@ footer {
     }
     #copyright {
         font-size: 0.8em;
-        position: absolute;
-        bottom: 1%;
-        left: 50%;
-        transform: translateX(-50%);
+        text-align: center;
+        margin-top: 60px;
         img {
             width: 20px;
             height: 20px;
             vertical-align: text-top;
         }
+    }
+}
+
+@media screen and (max-width: $tablet) {
+    footer {
+        #links {
+            width: 100%;
+            text-align: center; // ici cela fonctionne car en mode inline-block
+            .div_footer {
+                margin-right: 50px;
+                h5 {
+                    margin-bottom: 30px;
+                }
+                ul {
+                    padding: 0;
+                    div {
+                        margin: 0 20px !important;
+                    }
+                }
+            }
+        }
+        #reseau_social {
+            width: 100%;
+            text-align: center;
+            margin: 50px 0; 
+        }    
     }
 }
