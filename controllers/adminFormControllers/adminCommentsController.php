@@ -15,7 +15,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Ajouter') {
     $commentManager->add($comment, $movieSelected, $userId);
     $_SESSION['success'] = 'Le nouveau commentaire a bien été ajouté';
     header('Location: /administration?page=comments');
-}
+} 
 elseif (isset($_GET['action']) && $_GET['action'] == 'update') {
     $id = htmlspecialchars($_GET['id']);
     $comment = $commentManager->getOne($id);

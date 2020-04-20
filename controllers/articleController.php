@@ -24,7 +24,7 @@ if ($vars['slug'] == $movie->getSlug() && ($movie->getIsPublished() || $movie->g
         $comment = $_POST['comment'];
         $movieId = $movie->getId();
         $userId = $_SESSION['user']->getId();
-    
+
         $commentManager->add($comment, $movieId, $userId);
         header('Location: /article/' . $movie->getSlug() . '/' . $movieId);
     }
@@ -34,6 +34,3 @@ if ($vars['slug'] == $movie->getSlug() && ($movie->getIsPublished() || $movie->g
 else {    
     Router::badUrl();
 }
-
-
-

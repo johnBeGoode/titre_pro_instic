@@ -16,7 +16,9 @@ class MovieManager {
     public function add($title, $synopsis, $picture, $isPublished, $categories, $trailer, $misEnAvant) {
         $slug = strtolower($title);
         $slug = str_replace(' ','_', $slug);
-        $req = $this->db->prepare("INSERT INTO movies (title, synopsis, date_add, picture, is_published, slug, trailer, mis_en_avant) VALUES (:title, :synopsis, NOW(), :picture, :is_published, :slug, :trailer, :mis_en_avant)");
+
+        $sql = "INSERT INTO movies (title, synopsis, date_add, picture, is_published, slug, trailer, mis_en_avant) VALUES (:title, :synopsis, NOW(), :picture, :is_published, :slug, :trailer, :mis_en_avant)";
+        $req = $this->db->prepare($sql);
 
         $req->bindValue(':title', $title);
         $req->bindValue(':synopsis', $synopsis);
@@ -41,7 +43,8 @@ class MovieManager {
         $slug = strtolower($title);
         $slug = str_replace(' ','_', $slug);
         
-        $req = $this->db->prepare("UPDATE movies SET title = :title, synopsis = :synopsis, picture = :picture, trailer = :trailer, is_published = :is_published, mis_en_avant = :mis_en_avant WHERE id = :id");
+        $sql = "UPDATE movies SET title = :title, synopsis = :synopsis, picture = :picture, trailer = :trailer, is_published = :is_published, mis_en_avant = :mis_en_avant WHERE id = :id";
+        $req = $this->db->prepare($sql);
 
         $req->bindValue(':title', $title);
         $req->bindValue(':synopsis', $synopsis);
@@ -66,11 +69,14 @@ class MovieManager {
     }
 
     public function delete($id) {
-        $this->db->exec("DELETE FROM movies WHERE id = " . (int)$id);
+        $sql = "DELETE FROM movies WHERE id = " . (int)$id;
+        $this->db->exec($sql);
     }
 
     public function count() {
-        return $this->db->query("SELECT COUNT(id) FROM movies")->fetchColumn();
+        $sql = "SELECT COUNT(id) FROM movies";
+        
+        return $this->db->query($sql)->fetchColumn();
     }
 
     public function getAllMovies() {
@@ -113,7 +119,7 @@ class MovieManager {
     }
 
     public function getNumberOfMoviesByCategory($categoriesId) {
-        $sql = "SELECT DISTINCT COUNT(movie_id) FROM movies_categories WHERE Categorie_id = :categoriesId";
+        $sql = "SELECT DISTINCT COUNT(movie_id) FROM movies_categories INNER JOIN movies ON movies.id = movies_categories.Movie_id WHERE Categorie_id = :categoriesId AND (is_published = 1 OR mis_en_avant = 1) ";
         $req = $this->db->prepare($sql);
         $req->bindValue(':categoriesId', $categoriesId);
         $req->execute();

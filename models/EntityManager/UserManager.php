@@ -32,9 +32,8 @@ class UserManager {
     public function getAllUsers() {
         $sql = "SELECT * FROM users ORDER BY date_registration DESC";
         $req = $this->db->query($sql);
-        $datas = $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\User');
-
-        return $datas;
+        
+        return $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\User');
     }
 
     public function add($avatar, $nom, $password, $email, $role) {
@@ -48,9 +47,8 @@ class UserManager {
             $req->bindValue(':email', $email);
             $req->execute();
 
-            $userId = $this->db->lastInsertId();
-            return $userId;
-         } 
+            return $this->db->lastInsertId();
+         }
          catch (\PDOException $e) {
             if ($e->errorInfo[1] == 1062) {
                 $GLOBALS['userFormErrors'][] = 'Pseudo déjà existant, veuillez en choisir un autre !';
@@ -62,7 +60,8 @@ class UserManager {
     }
 
     public function update($avatar, $nom, $password, $email, $role, $id) {
-        $req = $this->db->prepare("UPDATE users SET avatar = :avatar, nom = :nom, pass = :pass, rol = :rol, email = :email WHERE id = :id");
+        $sql = "UPDATE users SET avatar = :avatar, nom = :nom, pass = :pass, rol = :rol, email = :email WHERE id = :id";
+        $req = $this->db->prepare($sql);
         $req->bindValue(':avatar', $avatar);
         $req->bindValue(':nom', $nom);
         $req->bindValue(':pass', $password);
@@ -73,13 +72,15 @@ class UserManager {
     }
 
     public function updateAvatar($id, $avatar) {
-        $req = $this->db->prepare("UPDATE users SET avatar = :avatar WHERE id = :id");
+        $sql = "UPDATE users SET avatar = :avatar WHERE id = :id";
+        $req = $this->db->prepare($sql);
         $req->bindValue(':avatar', $avatar);
         $req->bindValue(':id', $id);
         $req->execute();
     }
 
     public function delete($id) {
-        $this->db->exec("DELETE FROM users WHERE id = " . (int)$id);
+        $sql = "DELETE FROM users WHERE id = " . (int)$id;
+        $this->db->exec($sql);
     }
 }

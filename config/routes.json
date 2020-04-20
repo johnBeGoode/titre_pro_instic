@@ -1,5 +1,5 @@
 {
-    "routes":{
+    "routes": {
         "":                         "home",
         "categorie/{genre}/{id}":   "categorie",
         "contact":                  "contact",
@@ -10,7 +10,7 @@
         "deconnexion":              "deconnexion"        
     },  
     
-    "regexParam":{
+    "regexParam": {
         "{slug}":  "(.+)",
         "{id}":    "([0-9]+)",
         "{genre}": "(.+)"

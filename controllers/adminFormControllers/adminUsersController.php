@@ -35,7 +35,8 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Ajouter') {
     } 
     else {
         setErrorsAndSavePostInputs(); 
-    }  
+    }
+      
     header('Location: /administration?page=users'); 
 }
 

@@ -12,8 +12,7 @@ class Comment {
     protected $movie_id;
     protected $user_id;
 
-
-    // Getters
+    
     public function getId() {
         return $this->id;
     }

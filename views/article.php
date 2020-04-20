@@ -40,26 +40,26 @@
             </div>
         </div>
         <?php endforeach; ?>
+
+        <?php if (isset($_SESSION['user'])): ?>
+            <div id="votre-commentaire">
+                <?php
+                $avatar = $_SESSION['user']->getAvatar();
+                if ($avatar == '') {
+                    $avatar = '/public/images/avatars/avatarpardefaut.jpg';
+                } 
+                ?>
+                <img width="40" height="40" src="<?= $avatar; ?>" alt="avatar de <?= $_SESSION['user']->getName(); ?>">
+                <form action="" method="post">
+                    <input type="text" name="comment" class="form-control" placeholder="Votre commentaire">
+                    <input type="submit" name="submit" class="btn btn-dark" value="Envoyer">
+                </form>
+            </div>
+        <?php else: ?>
+            <a id="linkConnectComment" href="/connexion">Vous devez être connecté pour poster un commentaire.</a>
+        <?php endif; ?>
     </section>
 
-    <?php
-    if (isset($_SESSION['user'])): ?>
-        <section id="votre-commentaire">
-            <?php
-            $avatar = $_SESSION['user']->getAvatar();
-            if ($avatar == '') {
-                $avatar = '/public/images/avatars/avatarpardefaut.jpg';
-            } 
-            ?>
-            <img width="40" height="40" src="<?= $avatar; ?>" alt="avatar de <?= $_SESSION['user']->getName(); ?>">
-            <form action="" method="post">
-                <input type="text" name="comment" class="form-control" placeholder="Votre commentaire">
-                <input type="submit" name="submit" class="btn btn-dark" value="Envoyer">
-            </form>
-        </section>
-    <?php else: ?>
-        <a id="linkConnectComment" href="/connexion">Vous devez être connecté pour poster un commentaire.</a>
-    <?php endif; ?>
-    
+
 </div>
 <?php require_once 'include-parts/footer.php'; ?>

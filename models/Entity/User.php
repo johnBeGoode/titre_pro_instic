@@ -12,8 +12,7 @@ class User {
     protected $email;
     protected $date_registration;
 
-    
-    // Getters
+
     public function getId() {
         return $this->id;
     }

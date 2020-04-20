@@ -1,23 +1,22 @@
 <?php
 use App\EntityManager\CategoryManager;
 use App\EntityManager\UserManager;
+use App\EntityManager\MovieManager;
 
 $categoryManager = new CategoryManager();
 $userManager = new UserManager();
-
+$movieManager = new MovieManager();
 
 $title_page = 'Page de connexion';
 $desc_page = 'Identification pour accéder aux différentes sessions';
 
 $allCategories = $categoryManager->getAllCategories();
-// $jsFiles = ['login.js'];
-$jsFiles = ['hideNotif.js'];
-// $error = null;
 
+$jsFiles = ['hideNotif.js'];
 
 if (isset($_POST['login']) && !empty($_POST['login']) && isset($_POST['password']) && !empty($_POST['password'])) {
-
     $user = $userManager->getUserbyName($_POST['login']);
+
     if ($user) {
         $authentification = password_verify($_POST['password'], $user->getPassword());
     }
@@ -38,6 +37,5 @@ if (isset($_POST['login']) && !empty($_POST['login']) && isset($_POST['password'
         $_SESSION['error'] = 'Identifiants incorrects';
     }
 }
-?>
 
-<?php require_once '../views/' . $vue . '.php'; ?>
+require_once '../views/' . $vue . '.php';

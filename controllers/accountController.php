@@ -2,13 +2,15 @@
 error_reporting(E_ALL);
 use App\EntityManager\CategoryManager;
 use App\EntityManager\UserManager;
+use App\EntityManager\MovieManager;
 
 $categoryManager = new CategoryManager();
 $userManager = new UserManager();
+$movieManager = new MovieManager();
 
 $title_page = 'Créer un compte';
 $desc_page = 'Création de compte utilisateur';
-// $jsFiles = ['login.js'];
+
 $jsFiles = ['hideNotif.js'];
 
 $allCategories = $categoryManager->getAllCategories(); // Pour affichage dans footer

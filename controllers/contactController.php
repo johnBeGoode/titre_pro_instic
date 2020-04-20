@@ -7,15 +7,11 @@ $movieManager = new MovieManager();
 
 $allCategories = $categoryManager->getAllCategories();
 
-$title_page = "Contact Chromatic SinémA";
+$title_page = "Contact Chromatic Siné";
 $desc_page = "Page de contact pour toutes suggestions";
 
-// $jsFiles = ['form.js', 'contact.js'];
 $jsFiles = ['form.js', 'hideNotif.js'];
-// $errors = [];
-// $GLOBALS['userFormErrors'] = [];
 
-// session_start();
 if (isset($_POST['submit'])) {
     if (empty($_POST['nom'])) {
         $GLOBALS['userFormErrors'][] = "Vous n'avez pas renseigné votre nom";
@@ -29,8 +25,6 @@ if (isset($_POST['submit'])) {
     if (empty($_POST['message'])) {
         $GLOBALS['userFormErrors'][] = "Vous n'avez pas renseigné votre message";
     }
-
-
 
     if (!empty($GLOBALS['userFormErrors'])) {
         setErrorsAndSavePostInputs();

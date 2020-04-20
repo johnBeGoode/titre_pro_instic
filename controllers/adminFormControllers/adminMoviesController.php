@@ -20,7 +20,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Ajouter') {
         }
         $movieManager->add($titre, $synopsis, $pictureUrl, $isPublished, $categories, $trailer, $misEnAvant);
     }
-
+    
     $_SESSION['success'] = 'Le nouveau film a bien été ajouté';
     header('Location: /administration?page=movies');
 } 

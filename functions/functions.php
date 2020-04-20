@@ -56,9 +56,9 @@ function uploadMoviePicture ($file) {
     $extension = pathinfo($pictureName, PATHINFO_EXTENSION);
     $authorizedExtensions = ['jpg', 'jpeg', 'png'];
     $uploadedFilePath = '../public/images/movies/' . $pictureName;
-    // Enregistrement image sur le serveur
+
     if (in_array($extension, $authorizedExtensions)) {
-        move_uploaded_file($tempPicture, $uploadedFilePath);
+        move_uploaded_file($tempPicture, $uploadedFilePath); // Enregistrement image sur le serveur
     }
 
     return '/public/images/movies/' . $pictureName;
@@ -72,7 +72,7 @@ function uploadMisEnAvant ($file) {
     $extension = pathinfo($pictureName, PATHINFO_EXTENSION);
     $authorizedExtensions = ['jpg', 'jpeg', 'png'];
     $uploadedFilePath = '../public/images/caroussel/' . $pictureName;
-    // Enregistrement image sur le serveur
+
     if (in_array($extension, $authorizedExtensions)) {
         move_uploaded_file($tempPicture, $uploadedFilePath);
     }
@@ -120,8 +120,7 @@ function verifPasswordInput($pass1, $pass2) {
 function verifEmailInput($email) {
     if (empty($email)) {
         $GLOBALS['userFormErrors'][] = "Adresse email vide !";
-    } 
-    // elseif (!preg_match('/^[a-z_.\-0-9]+@[a-z.]+/', $email)) {
+    }
     elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $GLOBALS['userFormErrors'][] = "Votre adresse email n'est pas valide !";
     }

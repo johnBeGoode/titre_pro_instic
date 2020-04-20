@@ -8,6 +8,7 @@ class DBFactory {
     public static function getConnexion() {
         $dbFile = file_get_contents(self::$dbFile);
         $dbDatas = json_decode($dbFile, true);
+        
         if ($dbDatas['online'] == true) {
             $dbDatas = $dbDatas['prod'];
         }
@@ -16,7 +17,6 @@ class DBFactory {
         }
         
         $db = new \PDO('mysql:host=' . $dbDatas['host'] . ';dbname=' .  $dbDatas['dbname'] . ';charset=utf8', $dbDatas['login'], $dbDatas['password']);
-
         $db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
         return $db;

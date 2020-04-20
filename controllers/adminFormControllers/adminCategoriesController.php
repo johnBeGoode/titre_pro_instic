@@ -7,7 +7,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Ajouter') {
         $categoryManager->add($nom);
         $_SESSION['success'] = 'La nouvelle catégorie a bien été ajoutée';
         header('Location: /administration?page=categories');
-    } 
+} 
 elseif (isset($_GET['action']) && $_GET['action'] == 'update') {
     $id = htmlspecialchars($_GET['id']);
     $category = $categoryManager->getOne($id);

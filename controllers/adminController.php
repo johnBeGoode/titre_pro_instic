@@ -1,4 +1,4 @@
-<?php 
+<?php
 error_reporting(E_ALL);
 use App\DBFactory;
 use App\EntityManager\CategoryManager;
@@ -15,7 +15,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']->getRole() !== 'Admin') {
 
 $categoryManager = new CategoryManager();
 
-$title_page = "Administration Chromatic SinémA";
+$title_page = "Administration Chromatic Siné";
 $desc_page = "Gestion de tous les films, catégories, commentaires et utilisateurs du site";
 
 $jsFiles = ['admin.js'];

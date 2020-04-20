@@ -15,9 +15,8 @@ class CategoryManager {
     public function getAllCategories() {
         $sql = "SELECT * FROM categories";
         $req = $this->db->query($sql);
-        $datas = $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Category');
 
-        return $datas;
+        return $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Category');
     }
     
     public function getOne($id) {
@@ -25,13 +24,14 @@ class CategoryManager {
         $req = $this->db->prepare($sql);
         $req->bindValue(':id', $id, \PDO::PARAM_INT);
         $req->execute();
-        $category = $req->fetchObject('App\Entity\Category');
 
-        return $category;
+        return $req->fetchObject('App\Entity\Category');
     }
 
     public function count() {
-        return $this->db->query("SELECT COUNT(id) FROM categories")->fetchColumn();
+        $sql = "SELECT COUNT(id) FROM categories";
+        
+        return $this->db->query($sql)->fetchColumn();
     }
 
     public function add($nom) {
@@ -42,13 +42,15 @@ class CategoryManager {
     }
 
     public function update($nom, $id) {
-        $req = $this->db->prepare("UPDATE categories SET name = :name WHERE id = :id");
+        $sql = "UPDATE categories SET name = :name WHERE id = :id";
+        $req = $this->db->prepare($sql);
         $req->bindValue(':name', $nom);
         $req->bindValue(':id', $id);
         $req->execute();
     }
     
     public function delete($id) {
-        $this->db->exec("DELETE FROM categories WHERE id = " . (int)$id);
+        $sql = "DELETE FROM categories WHERE id = " . (int)$id;
+        $this->db->exec($sql);
     }
 }

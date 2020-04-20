@@ -14,30 +14,31 @@ class CommentManager {
     }
 
     public function add($comment, $movieId, $userId) {
-        $req = $this->db->prepare("INSERT INTO comments (comment, date_add, movie_id, user_id) VALUES (:comment, NOW(), :movie_id, :user_id)");
-
+        $sql = "INSERT INTO comments (comment, date_add, movie_id, user_id) VALUES (:comment, NOW(), :movie_id, :user_id)";
+        $req = $this->db->prepare($sql);
         $req->bindValue(':comment', $comment);
         $req->bindValue(':movie_id', $movieId);
         $req->bindValue(':user_id', $userId);
-
         $req->execute();
     }
 
     public function update($comment, $id) {
-        $req = $this->db->prepare("UPDATE comments SET comment = :comment WHERE id = :id");
-
+        $sql = "UPDATE comments SET comment = :comment WHERE id = :id";
+        $req = $this->db->prepare($sql);
         $req->bindValue(':comment', $comment);
         $req->bindValue(':id', $id);
-
         $req->execute();
     }
 
     public function delete($id) {
-        $this->db->exec("DELETE FROM comments WHERE id =" . (int)$id);
+        $sql = "DELETE FROM comments WHERE id =" . (int)$id;
+        $this->db->exec($sql);
     }
 
     public function count() {
-        return $this->db->query("SELECT COUNT(id) FROM comments")->fetchColumn();
+        $sql = "SELECT COUNT(id) FROM comments";
+
+        return $this->db->query($sql)->fetchColumn();
     }
 
     public function getAllCommentsForMovie($movieId) {
@@ -45,17 +46,15 @@ class CommentManager {
         $req = $this->db->prepare($sql);
         $req->bindValue(':movieId', $movieId, \PDO::PARAM_INT);
         $req->execute();
-        $datas = $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Comment');
 
-        return $datas;
+        return $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Comment');
     }
 
     public function getAllComments() {
         $sql = "SELECT * FROM comments ORDER BY date_add DESC";
         $req = $this->db->query($sql);
-        $datas = $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Comment');
 
-        return $datas;
+        return $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Comment');
     }
 
     public function getOne($id) {
@@ -63,8 +62,7 @@ class CommentManager {
         $req = $this->db->prepare($sql);
         $req->bindValue(':id', $id, \PDO::PARAM_INT);
         $req->execute();
-        $comment = $req->fetchObject('App\Entity\Comment');
 
-        return $comment;
+        return $req->fetchObject('App\Entity\Comment');
     }
 }

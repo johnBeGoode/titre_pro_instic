@@ -7,7 +7,6 @@ class Category {
     protected $name;
 
     
-    // Getters
     public function getId() {
         return $this->id;
     }

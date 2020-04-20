@@ -15,7 +15,6 @@ class Movie {
     protected $mis_en_avant;
 
 
-    // Getters
     public function getId() {
         return $this->id;
     }

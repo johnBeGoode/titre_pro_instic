@@ -50,7 +50,7 @@
     </div>
 
     <div id="reseau_social"> 
-        <a href="https://www.facebook.com"><img id ="logofb" class="logo_rs" src="/public/images/icones/ico_fb.png" alt="facebook"></a>
+        <a href="https://www.facebook.com"><img class="logo_rs" src="/public/images/icones/ico_fb.png" alt="facebook"></a>
         <a href="https://fr.linkedin.com/"><img class="logo_rs" src="/public/images/icones/ico_in.png" alt="linkedin"></a>
         <a href="https://www.instagram.com/"><img class="logo_rs" src="/public/images/icones/ico_insta.png" alt="instagram"></a>
         <a href="https://twitter.com"><img class="logo_rs" src="/public/images/icones/ico_twitter.png" alt="twitter"></a>
