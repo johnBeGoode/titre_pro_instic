@@ -1,12 +1,8 @@
 <?php
-use App\EntityManager\MovieManager;
-$movieManager = new MovieManager();
+$movies = $movieManager->getAllMovies(); // $movieManager instancié dans adminController
 
-$movies = $movieManager->getAllMovies();
-$categories = $categoryManager->getAllCategories();
-
-$linkActiveNav['articles'] = 'active'; 
-$content = '../views/admin-parts/adminArticles.php';
+$linkActiveNav['movies'] = 'active'; 
+$content = '../views/admin-parts/adminMovies.php';
 
 
 if (isset($_POST['submit']) && $_POST['submit'] == 'Ajouter') {
@@ -26,7 +22,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Ajouter') {
     }
 
     $_SESSION['success'] = 'Le nouveau film a bien été ajouté';
-    header('Location: /administration?page=articles');
+    header('Location: /administration?page=movies');
 } 
 
 // -------------------------
@@ -64,7 +60,7 @@ elseif (isset($_GET['action']) && $_GET['action'] == 'update') {
         }
 
         $_SESSION['success'] = 'Le film a été mis à jour';
-        header('Location: /administration?page=articles');
+        header('Location: /administration?page=movies');
     }
 }
 
@@ -75,5 +71,5 @@ elseif (isset($_GET['action']) && $_GET['action'] == 'delete') {
     $id = htmlspecialchars($_GET['id']);
     $movieManager->delete($id);
     $_SESSION['success'] = 'Le film a été supprimé';
-    header('Location: /administration?page=articles');
+    header('Location: /administration?page=movies');
 }

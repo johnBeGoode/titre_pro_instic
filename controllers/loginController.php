@@ -28,7 +28,7 @@ if (isset($_POST['login']) && !empty($_POST['login']) && isset($_POST['password'
         $role = $user->getRole();
 
         if ($role == 'Admin') {
-            header('Location: /administration?page=articles');
+            header('Location: /administration?page=movies');
         }
         else {
             header('Location: /');

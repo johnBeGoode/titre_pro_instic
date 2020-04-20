@@ -43,7 +43,7 @@
         <input type="reset" class="btn btn-dark" value='Annuler'>
     </form>
 </div>
-<table class="admin-articles table table-striped">
+<table class="table table-striped">
     <thead>
         <tr>
             <th>Image</th>
@@ -66,8 +66,8 @@
             <td><?= $movieManager->getNbCommentsForaMovie($movie->getId()); ?></td>
             <td><?= $movie->getIsPublished() || $movie->getMisEnAvant() ? 'oui' : 'non'; ?></td>
             <td class="icone-crud">
-                <a href="administration?page=articles&action=update&id=<?= $movie->getId(); ?>" class="btn btn-primary" title="Modifier"><i class="fas fa-pencil-alt"></i></a> 
-                <a href="administration?page=articles&action=delete&id=<?= $movie->getId(); ?>" class="btn btn-danger delete" title="Supprimer"><i class="fas fa-trash"></i></a>
+                <a href="administration?page=movies&action=update&id=<?= $movie->getId(); ?>" class="btn btn-primary" title="Modifier"><i class="fas fa-pencil-alt"></i></a> 
+                <a href="administration?page=movies&action=delete&id=<?= $movie->getId(); ?>" class="btn btn-danger delete" title="Supprimer"><i class="fas fa-trash"></i></a>
             </td>
         </tr>
         <?php endforeach ?>

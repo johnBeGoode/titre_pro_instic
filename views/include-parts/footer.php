@@ -34,7 +34,11 @@
                             echo '<div>'; 
                         } 
                     ?>
-                        <li><a href="/categorie/<?= strtolower($category->getName()); ?>/<?= $category->getId(); ?>"><?= $category->getName(); ?></a></li> 
+                        <li>
+                            <a href="/categorie/<?= strtolower($category->getName()); ?>/<?= $category->getId(); ?>">
+                                <?= $category->getName() . ' (' . $movieManager->getNumberOfMoviesByCategory($category->getId()) . ')'; ?>
+                            </a>
+                        </li> 
                     <?php
                         $i++;
                     endforeach; 
@@ -46,10 +50,10 @@
     </div>
 
     <div id="reseau_social"> 
-        <a href="#"><img id ="logofb" class="logo_rs" src="/public/images/icones/ico_fb1.png" alt="facebook"></a>
-        <a href="#"><img class="logo_rs" src="/public/images/icones/ico_in.png" alt="linkedin"></a>
-        <a href="#"><img class="logo_rs" src="/public/images/icones/ico_insta.png" alt="instagram"></a>
-        <a href="#"><img class="logo_rs" src="/public/images/icones/ico_twitter.png" alt="twitter"></a>
+        <a href="https://www.facebook.com"><img id ="logofb" class="logo_rs" src="/public/images/icones/ico_fb.png" alt="facebook"></a>
+        <a href="https://fr.linkedin.com/"><img class="logo_rs" src="/public/images/icones/ico_in.png" alt="linkedin"></a>
+        <a href="https://www.instagram.com/"><img class="logo_rs" src="/public/images/icones/ico_insta.png" alt="instagram"></a>
+        <a href="https://twitter.com"><img class="logo_rs" src="/public/images/icones/ico_twitter.png" alt="twitter"></a>
     </div>
 
     <div id="copyright">

@@ -1,8 +1,4 @@
 <?php
-use App\EntityManager\MovieManager;
-$movieManager = new MovieManager();
-
-$categories = $categoryManager->getAllCategories();
 $linkActiveNav['categories'] = 'active';
 $content = '../views/admin-parts/adminCategories.php';
 

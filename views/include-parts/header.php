@@ -23,8 +23,8 @@
             <nav>
                 <ul>
                     <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href=""><i class="fas fa-tv"></i> Séries</a></li>
-                    <li><a href=""><i class="fas fa-podcast"></i> Podcasts</a></li>
+                    <li><a href="/"><i class="fas fa-tv"></i> Séries</a></li>
+                    <li><a href="/"><i class="fas fa-podcast"></i> Podcasts</a></li>
                     <li><a href="/contact"><i class="fas fa-phone-alt"></i> Contact</a></li>
                 </ul>
             </nav>
@@ -33,7 +33,7 @@
             <?php
             if (isset($_SESSION['user']) && $_SESSION['user']->getRole() == 'Admin'): ?>
                 <a href="/">Bienvenue <?= $_SESSION['user']->getName(); ?></a>
-                <a href="/administration?page=articles" class="btn btn-dark">Admin</a>
+                <a href="/administration?page=movies" class="btn btn-dark">Admin</a>
             <?php 
             elseif(isset($_SESSION['user']) && $_SESSION['user']->getRole() == 'User'): ?>
                 <a href="/">Bienvenue <?= $_SESSION['user']->getName(); ?></a>

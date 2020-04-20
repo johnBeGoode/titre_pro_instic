@@ -1,11 +1,9 @@
 <?php
 use App\EntityManager\CommentManager;
-use App\EntityManager\MovieManager;
 
 $commentManager = new CommentManager();
-$movieManager = new MovieManager();
 
-$movies = $movieManager->getAllMovies();
+$movies = $movieManager->getAllMovies(); // $movieManager instancié dans adminController
 $comments = $commentManager->getAllComments();
 $linkActiveNav['comments'] = 'active'; 
 $content = '../views/admin-parts/adminComments.php';

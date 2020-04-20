@@ -2,6 +2,12 @@
 error_reporting(E_ALL);
 use App\DBFactory;
 use App\EntityManager\CategoryManager;
+use App\EntityManager\MovieManager;
+
+$categoryManager = new CategoryManager();
+$movieManager = new MovieManager();
+
+$categories = $categoryManager->getAllCategories();
 
 if (!isset($_SESSION['user']) || $_SESSION['user']->getRole() !== 'Admin') {
     header('Location: /connexion');
@@ -10,13 +16,13 @@ if (!isset($_SESSION['user']) || $_SESSION['user']->getRole() !== 'Admin') {
 $categoryManager = new CategoryManager();
 
 $title_page = "Administration Chromatic SinémA";
-$desc_page = "Gestion de tous les articles, films, commentaires et utilisateurs du site";
+$desc_page = "Gestion de tous les films, catégories, commentaires et utilisateurs du site";
 
 $jsFiles = ['admin.js'];
 
 $linkActiveNav = [
     'account' => null,
-    'articles' => null,
+    'movies' => null,
     'comments' => null,
     'categories' => null,
     'users' => null
@@ -30,8 +36,8 @@ $allCategories = $categoryManager->getAllCategories(); // Pour affichage dans fo
 if (isset($_GET['page'])) {
     $getPage = htmlspecialchars($_GET['page']);
 
-    if ($getPage === 'articles') {
-        require_once 'adminFormControllers/adminArticlesController.php';
+    if ($getPage === 'movies') {
+        require_once 'adminFormControllers/adminMoviesController.php';
     } 
     elseif ($getPage === 'comments') {
         require_once 'adminFormControllers/adminCommentsController.php';

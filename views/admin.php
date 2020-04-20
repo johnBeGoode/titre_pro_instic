@@ -18,7 +18,7 @@
 
     <nav>
         <ul class="tabs">
-            <li><a href="administration?page=articles" class="<?= $linkActiveNav['articles']; ?>">Movies</a></li>
+            <li><a href="administration?page=movies" class="<?= $linkActiveNav['movies']; ?>">Films</a></li>
             <li><a href="administration?page=categories" class="<?= $linkActiveNav['categories']; ?>">Categories</a></li>
             <li><a href="administration?page=comments" class="<?= $linkActiveNav['comments']; ?>">Commentaires</a></li>
             <li><a href="administration?page=users" class="<?= $linkActiveNav['users']; ?>">Utilisateurs</a></li>
@@ -31,5 +31,6 @@
         require $content;
     }
     ?>
+</div>    
     
 <?php require_once 'include-parts/footer.php'; ?>

@@ -1,7 +1,10 @@
 <?php
 use App\EntityManager\CategoryManager;
+use App\EntityManager\MovieManager;
 
 $categoryManager = new CategoryManager();
+$movieManager = new MovieManager();
+
 $allCategories = $categoryManager->getAllCategories();
 
 $title_page = "Contact Chromatic SinémA";

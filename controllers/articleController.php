@@ -15,8 +15,6 @@ $movie = $movieManager->getOne($vars['id']);
 
 $comments = $commentManager->getAllCommentsForMovie($vars['id']);
 $catForThisMovie = $movieManager->getCategoriesForAMovie($vars['id']);
-// var_dump($catForThisMovie);
-
 
 if ($vars['slug'] == $movie->getSlug() && ($movie->getIsPublished() || $movie->getMisEnAvant())) {
     $title_page = 'Article '. $movie->getTitle();
