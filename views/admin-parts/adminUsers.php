@@ -1,4 +1,5 @@
 <button type="button" class="btn btn-dark button-add-content">Add a user</button>
+
 <div class="bg-my-modal">
     <form action="" method="post" enctype="multipart/form-data" class="form-add-content my-modal">
         <label>UserName</label><br>

@@ -26,8 +26,9 @@
 
         <label>Votre message *</label> <span id="aide_message"></span><br>
         <textarea name="message" id="message" cols="80" rows="10"><?= isset($_SESSION['formInput']['message']) ? $_SESSION['formInput']['message'] : ''; ?></textarea><br><br>
+        
         <input type="submit" name="submit" class="btn btn-dark" value="ENVOYER">
-    <!-- </form> -->
+    </form>
 </div>
 
 <?php require_once 'include-parts/footer.php'; ?>

@@ -32,7 +32,6 @@
             <th></th>
         </tr>
     </thead>
-
     <tbody>
         <?php foreach ($comments as $comment): ?>
         <tr>

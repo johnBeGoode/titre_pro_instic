@@ -16,14 +16,10 @@
         justify-content: space-around;
         flex-wrap: wrap;
         article {
-            // border: 1px solid black;
             display: flex;
             margin-bottom: 80px;
             width: 525px;
             position: relative;
-            // &:last-child {
-            //     margin-right: auto; // Pour caler le dernier film tout à gauche quand affichage impaire et retréci
-            // }
             .thumbnail {
                 width: 180px;            
                 height: 250px;

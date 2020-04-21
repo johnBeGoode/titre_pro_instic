@@ -1,13 +1,11 @@
 <?php require_once 'include-parts/header.php'; ?>
 
-<!-- Message de non-connexion au compte -->
 <?php if (isset($_SESSION['error'])): ?>
     <div id="msg-error" class="alert alert-danger text-center">
         <?= $_SESSION['error']; ?>
     </div>
  <?php endif ?>
 
- <!-- Message de création de compte ok -->
  <?php if (isset($_SESSION['success'])): ?>
     <div id="msg-success" class="alert alert-success text-center">
         <?= $_SESSION['success']; ?>

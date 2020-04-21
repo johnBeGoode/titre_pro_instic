@@ -1,6 +1,5 @@
 <?php require_once 'include-parts/header.php'; ?>
 
-
 <div id="page-article">
     <section class="bande-annonce oblique-negative">
         <?php $movie->getVideoArticle(); ?>
@@ -59,7 +58,6 @@
             <a id="linkConnectComment" href="/connexion">Vous devez être connecté pour poster un commentaire.</a>
         <?php endif; ?>
     </section>
-
-
 </div>
+
 <?php require_once 'include-parts/footer.php'; ?>

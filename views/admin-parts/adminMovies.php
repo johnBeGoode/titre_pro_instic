@@ -43,6 +43,7 @@
         <input type="reset" class="btn btn-dark" value='Annuler'>
     </form>
 </div>
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -55,7 +56,6 @@
             <th></th>
         </tr>
     </thead>
-
     <tbody>
         <?php foreach ($movies as $movie): ?>
         <tr>

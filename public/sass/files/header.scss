@@ -75,8 +75,8 @@ header {
         justify-content: space-between;
         padding: 0 15px;
         #menu {
+            @include gradeDark;
             display: none;
-            background-color: black;
             width: 100%;
             height: auto;
             position: absolute;

@@ -9,5 +9,4 @@ $(document).ready(function() {
     $("html").click(function(){
         $(".trailer").slideUp(500);
     });
-    
 })
