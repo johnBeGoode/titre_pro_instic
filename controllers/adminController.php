@@ -18,7 +18,7 @@ $categoryManager = new CategoryManager();
 $title_page = "Administration Chromatic Siné";
 $desc_page = "Gestion de tous les films, catégories, commentaires et utilisateurs du site";
 
-$jsFiles = ['admin.js'];
+$jsFiles = ['admin.js', 'hideNotif.js'];
 
 $linkActiveNav = [
     'account' => null,

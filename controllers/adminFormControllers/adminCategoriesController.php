@@ -23,6 +23,6 @@ elseif (isset($_GET['action']) && $_GET['action'] == 'delete') {
     $id = htmlspecialchars($_GET['id']);
     $categoryManager->delete($id);
     $_SESSION['success'] = 'La catégorie a été supprimée';
-    header('Location: /administration?page=articles');
+    header('Location: /administration?page=categories');
 }
 

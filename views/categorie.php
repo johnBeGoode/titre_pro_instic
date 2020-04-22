@@ -1,6 +1,6 @@
 <?php require_once 'include-parts/header.php'; ?>
 
-<div id="page-categories">
+<main id="page-categories">
     <h1><?= $genre; ?></h1> 
     
     <section class="oblique-positive">
@@ -11,6 +11,6 @@
             </article>
         <?php endforeach ?>
     </section>
-</div>
+</main>
 
 <?php require_once 'include-parts/footer.php'; ?>

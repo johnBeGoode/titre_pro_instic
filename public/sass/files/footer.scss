@@ -27,13 +27,16 @@ footer {
                 li {
                     font-size: 0.9rem;
                     padding: 5px 0;
-                }
-            }
-            a {
-                color: $white;
-                &:hover {
-                    text-decoration: none;
-                    color: $colorHoverLink;
+                    a {
+                        color: $white;
+                        &:hover {
+                            text-decoration: none;
+                            color: $colorHoverLink;
+                        }
+                        span {
+                            font-size: 0.8rem;
+                        }
+                    }
                 }
             }
         }

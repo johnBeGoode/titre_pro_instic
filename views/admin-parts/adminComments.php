@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-dark button-add-content">Add a comment</button>
+<button type="button" class="btn btn-dark button-add-content">Ajouter un commentaire</button>
 
 <div class="bg-my-modal">
     <form action="" method='post' class='form-add-content my-modal'>

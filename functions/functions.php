@@ -19,7 +19,7 @@ function force_user_connected():void {
 // ------------------------
 
 function uploadFile($file, $newUserId) {
-    // On récupère l'image du user
+    // On récupère le nom de l'image du user
     $avatar = basename($file['avatar']['name']);
     // On récupère sa taille
     $size = filesize($file['avatar']['tmp_name']);

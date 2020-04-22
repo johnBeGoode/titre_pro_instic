@@ -81,7 +81,8 @@
         #votre-commentaire {
             display: flex;
             clear: both;
-
+            width: 85%;
+            margin: auto;
             img {
                 margin-right: 5px;
             }
@@ -110,7 +111,6 @@
             color: rgba(41, 40, 40, 0.7);
             padding: 10px 30px;
             box-shadow: 5px 5px 10px black;
-            
             &:hover {
                 box-shadow: 2px 2px 10px black;
                 position: relative;
@@ -121,8 +121,11 @@
     }
 }
 
-@media screen and (max-width: $tablet) { // 930px
+@media screen and (max-width: $tablet) {
     #page-article {
+        .bande-annonce {
+            margin-top: 50px;
+        }
         article {
             display: inline-block;
             .thumbnail {
@@ -134,7 +137,7 @@
             }
         }
         .bloc-commentaires {
-            width: 70%;
+            width: 60%;
             #votre-commentaire {
                 form {
                     input[type="submit"] {
@@ -148,4 +151,20 @@
             }
         }
     }   
+}
+
+@media screen and (max-width: $tabletPortrait) {
+    #page-article {
+        article {
+            margin-bottom: 130px;
+        }
+    }
+}
+
+@media screen and (max-width: $phone) {
+    #page-article {
+        article {
+
+        }
+    }
 }

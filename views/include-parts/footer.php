@@ -4,8 +4,8 @@
             <h5>Plan</h5>
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="#">Séries</a></li>
-                <li><a href="#">Podcasts</a></li>
+                <li><a href="">Séries</a></li>
+                <li><a href="">Podcasts</a></li>
                 <li><a href="/contact">Contact</a></li>
             </ul>
         </div>
@@ -13,10 +13,10 @@
         <div class="div_footer">
             <h5>Chromatic</h5>
             <ul>
-                <li><a href="#">Recrutement</a></li> 
-                <li><a href="#">Partenaires</a></li>
-                <li><a href="#">Mentions légales</a></li>
-                <li><a href="#">A propos</a></li>
+                <li><a href="">Recrutement</a></li> 
+                <li><a href="">Partenaires</a></li>
+                <li><a href="">Mentions légales</a></li>
+                <li><a href="">A propos</a></li>
             </ul>
         </div>
 
@@ -36,7 +36,7 @@
                     ?>
                         <li>
                             <a href="/categorie/<?= strtolower($category->getName()); ?>/<?= $category->getId(); ?>">
-                                <?= $category->getName() . ' (' . $movieManager->getNumberOfMoviesByCategory($category->getId()) . ')'; ?>
+                                <?= $category->getName() . ' <span>(' . $movieManager->getNumberOfMoviesByCategory($category->getId()) . ')</span>'; ?>
                             </a>
                         </li> 
                     <?php

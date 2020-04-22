@@ -56,7 +56,9 @@ elseif (isset($_GET['action']) && $_GET['action'] == 'update') {
 
         if (empty($GLOBALS['userFormErrors'])) {
             if (!empty($_FILES['avatar']['name'])) {
-                unlink('..' . $avatar); // gérer la suppression de l'ancienne image
+                if ($avatar != '/public/images/avatars/avatarpardefaut.jpg') {
+                    unlink('..' . $avatar); // gérer la suppression de l'ancienne image
+                }
                 $avatarUrl = uploadFile($_FILES, $id); 
                 $userManager->update($avatarUrl, $userName, $password, $email, $role, $id);
             }

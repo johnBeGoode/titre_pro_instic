@@ -64,7 +64,6 @@
 
 @media screen and (max-width: $phone) {
     #home {
-        margin-top: 40px;
         section.articles {
             article {
                 justify-content: center;
@@ -77,3 +76,8 @@
     }    
 }
 
+@media screen and (max-width: $tabletPortrait) {
+    #home {
+        margin-top: 70px;
+    }
+}

@@ -43,7 +43,7 @@ class MovieManager {
         $slug = strtolower($title);
         $slug = str_replace(' ','_', $slug);
         
-        $sql = "UPDATE movies SET title = :title, synopsis = :synopsis, picture = :picture, trailer = :trailer, is_published = :is_published, mis_en_avant = :mis_en_avant WHERE id = :id";
+        $sql = "UPDATE movies SET title = :title, synopsis = :synopsis, picture = :picture, trailer = :trailer, is_published = :is_published, slug = :slug, mis_en_avant = :mis_en_avant WHERE id = :id";
         $req = $this->db->prepare($sql);
 
         $req->bindValue(':title', $title);
@@ -51,6 +51,7 @@ class MovieManager {
         $req->bindValue(':picture', $picture);
         $req->bindValue(':trailer', $trailer);
         $req->bindValue(':is_published', $isPublished);
+        $req->bindValue(':slug', $slug);
         $req->bindValue(':mis_en_avant', $misEnAvant);
         $req->bindValue(':id', $id);
         $req->execute();

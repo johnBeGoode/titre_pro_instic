@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-dark button-add-content">Add a user</button>
+<button type="button" class="btn btn-dark button-add-content">Ajouter un utilisateur</button>
 
 <div class="bg-my-modal">
     <form action="" method="post" enctype="multipart/form-data" class="form-add-content my-modal">
