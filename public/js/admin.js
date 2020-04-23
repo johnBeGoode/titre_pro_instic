@@ -42,6 +42,7 @@ $(document).ready(function() {
                     url: '/public/ajax/unsetSessionInputsWithCancel.php',
                     type: 'GET'
                 })
-            });
-        });
+            })
+        })
    })
+})

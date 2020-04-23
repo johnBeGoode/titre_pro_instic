@@ -25,4 +25,3 @@ elseif (isset($_GET['action']) && $_GET['action'] == 'delete') {
     $_SESSION['success'] = 'La catégorie a été supprimée';
     header('Location: /administration?page=categories');
 }
-

@@ -47,4 +47,3 @@
             <img src="/public/images/burger.svg" alt="menu burger">
         </button>
     </header>
-    

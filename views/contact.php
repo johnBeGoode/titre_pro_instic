@@ -32,4 +32,3 @@
 </div>
 
 <?php require_once 'include-parts/footer.php'; ?>
-

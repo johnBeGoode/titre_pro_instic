@@ -51,4 +51,3 @@ message.addEventListener('blur', function (e) {
         this.style.borderColor = 'green';
     }
 })
-

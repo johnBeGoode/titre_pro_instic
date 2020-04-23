@@ -14,4 +14,3 @@ App\Autoloader::autoload();
 $url = trim($_GET['url'],"/");
 $router = new Router($url);
 $router->getRoute();
-

@@ -62,5 +62,3 @@ class Router {
         require_once("../controllers/". $vue ."Controller.php"); 
     }   
 }
-
-

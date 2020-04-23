@@ -33,4 +33,3 @@ elseif (isset($_GET['action']) && $_GET['action'] == 'delete') {
     $_SESSION['success'] = 'Le commentaire a été supprimé';
     header('Location: /administration?page=comments');
 }
-
