@@ -9,7 +9,7 @@
         <div class="thumbnail">
              <img src="<?= $movie->getPicture(); ?>" alt="<?= $movie->getSlug(); ?>">
         </div>
-        <div>
+        <div class="article-content">
             <h2><?= $movie->getTitle(); ?></h2>
             <p class="date">Ajouté le <?= $movie->getDateAdd(); ?></p><br>
             <div id="categories">

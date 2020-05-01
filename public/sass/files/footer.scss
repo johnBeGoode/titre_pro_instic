@@ -88,3 +88,24 @@ footer {
         }    
     }
 }
+
+@media screen and (max-width: $phone) {
+    footer {
+        #links {
+            .div_footer {
+                h5 {
+                    margin-bottom: 10px;
+                }
+                #categories-footer {
+                    margin-bottom: 0;
+                }
+            }
+        }
+        #reseau_social {
+            margin: 20px 0;
+            a {
+                margin:0 10px;
+            }
+        }
+    }
+}

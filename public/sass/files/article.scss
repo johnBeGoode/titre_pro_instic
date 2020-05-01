@@ -25,7 +25,7 @@
                 height: 400px;
             }
         }    
-        div:nth-child(2) {
+        .article-content {
             padding: 0 50px;  
             .date {
                 margin-bottom: -15px;
@@ -132,7 +132,7 @@
                 text-align: center;
                 margin-bottom: 50px;
             }
-            div:nth-child(2) {
+            .article-content {
                 text-align: center;
             }
         }
@@ -163,8 +163,40 @@
 
 @media screen and (max-width: $phone) {
     #page-article {
-        article {
-
-        }
+        .bande-annonce {
+            margin-bottom: 50px;
+         }
+         section, article {
+             margin-top: 10px;
+         }
+         article {
+             width: 95%;
+             margin: auto;
+             display: block;
+             margin-bottom: 50px;
+             padding: 10px;
+             .thumbnail {
+                img {
+                    width: 100%;
+                    max-width: 350px;
+                    height: auto;
+                }
+             }
+             .article-content {
+                 padding: 10px;
+                 text-align: justify;
+                 h2, .date, #categories {
+                     text-align: center;
+                 }
+             }
+         }
+         .bloc-commentaires {
+             width: 95%;
+             margin: auto;
+             padding: 10px;
+             .commentaire {
+                float: none;
+             }
+         }
     }
 }
