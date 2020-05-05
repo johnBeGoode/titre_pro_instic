@@ -22,7 +22,7 @@ class Router {
             // $matches correspond aux différents match de la regExp avec l'url
             if (preg_match('/^'.$routePatternRegexp.'$/', $this->url, $matches)) {
                 $vars = $this->detectVars($routePattern, $matches); 
-                $this->callView($templateView, $vars);
+                $this->callController($templateView, $vars);
                 return;
             }        
         }
@@ -54,7 +54,7 @@ class Router {
         require_once("../controllers/404Controller.php"); 
     }
     
-    private function callView($vue, $vars = null) { 
+    private function callController($vue, $vars = null) { 
         // On vérifie que la vue existe           
         if (!@include("../controllers/". $vue ."Controller.php")) {            
             throw new RouterException('Le controller '. $vue .'Controller.php n\'existe pas dans le dossier "/controllers/"');
