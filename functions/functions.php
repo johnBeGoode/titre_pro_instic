@@ -33,13 +33,13 @@ function uploadFile($file, $newUserId) {
     
     if (in_array($extension, $authorizedExtensions)) {
         if ($size > $maxSize) {
-            $GLOBALS['userFormErrors'][] = 'Taille de l\'image trop grande, votre fichier fait '.$size.' octets alors que le maximum autorisé est de '.$maxSize.' octets !';
+            $GLOBALS['userFormErrors'][] = 'Taille de l\'image trop grande, votre fichier fait ' . $size . ' octets alors que le maximum autorisé est de ' . $maxSize . ' octets !';
         }
         else if(empty($temp_name)) {
             $GLOBALS['userFormErrors'][] = "Le serveur php a rencontré un probleme lors de l'upload du fichier !";
         }
         else {
-            move_uploaded_file($file['avatar']['tmp_name'], $uploadedFilePath);
+            move_uploaded_file($temp_name, $uploadedFilePath);
             return '/public/images/avatars/' . $newUserId . '.' . $extension;
         }  
     }

@@ -24,7 +24,7 @@ if (isset($_POST['login']) && !empty($_POST['login']) && isset($_POST['password'
 
     if ($authentification) {
         
-        $_SESSION['user'] = $user;
+        $_SESSION['user'] = $user; // Une fois le user connecté je peux utiliser ses infos dans la partie commentaires
         $role = $user->getRole();
 
         if ($role == 'Admin') {

@@ -3,7 +3,6 @@
 <div class="bg-my-modal">
     <form action="" method="post" enctype="multipart/form-data" class="form-add-content my-modal">
         <label>UserName</label><br>
-        <!-- <input type="text" name="username" class="form-control" value="<?//= isset($_session['formInput']['username']) ? $_session['formInput']['username'] : ''; ?>"><br> -->
         <input type="text" name="username" class="form-control" value="<?= isset($user) ? $user->getName() : ''; ?>"><br>
 
         <label>Password</label><br>
