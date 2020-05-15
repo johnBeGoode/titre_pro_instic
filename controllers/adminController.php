@@ -28,7 +28,7 @@ $linkActiveNav = [
     'users' => null
 ];
 
-$baliseMetaRobots = '<meta name="robots" content="noindex">';
+$baliseMetaRobots = '<meta name="robots" content="noindex,nofollow">';
 
 $allCategories = $categoryManager->getAllCategories(); // Pour affichage dans footer
 

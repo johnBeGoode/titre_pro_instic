@@ -1,10 +1,8 @@
 $(document).ready(function(){
 
-    // Ce fichier rassemble les fichiers contact.js et login.js
-
-    $('#msg-envoi').delay(3000).slideUp(function(){
+    $('#msg-success').delay(3000).slideUp(function(){
         $.ajax({
-            url: '/public/ajax/unset.php', // appel ajax pour éviter les répétitions de notif dans l'admin
+            url: '/public/ajax/unset.php',
             type: 'GET',
             success: function(reponse) {
                 console.log(reponse)
@@ -14,7 +12,7 @@ $(document).ready(function(){
 
     $('#msg-erreurs').delay(6000).slideUp(function(){
         $.ajax({
-            url: '/public/ajax/unset.php', // appel ajax pour éviter les répétitions de notif dans l'admin
+            url: '/public/ajax/unset.php',
             type: 'GET',
             success: function(reponse) {
                 console.log(reponse)
@@ -22,9 +20,9 @@ $(document).ready(function(){
         })
     })
 
-    $('#msg-success').delay(3000).slideUp(function(){
+    $('#msg-envoi').delay(3000).slideUp(function(){
         $.ajax({
-            url: '/public/ajax/unset.php', // appel ajax pour éviter les répétitions de notif dans l'admin
+            url: '/public/ajax/unset.php',
             type: 'GET',
             success: function(reponse) {
                 console.log(reponse)
@@ -35,7 +33,7 @@ $(document).ready(function(){
     $('#msg-error').delay(3000).slideUp(function(){
         $('form').show()
         $.ajax({
-            url: '/public/ajax/unset.php', // appel ajax pour éviter les répétitions de notif dans l'admin
+            url: '/public/ajax/unset.php',
             type: 'GET',
             success: function(reponse) {
                 console.log(reponse)

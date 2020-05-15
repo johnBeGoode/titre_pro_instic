@@ -16,6 +16,8 @@ $genre = ucfirst($vars['genre']);
 if ($vars['genre'] == strtolower($categ->getName())) {
     $title_page = 'Chromatic Siné: catégorie ' . $categ->getName();
     $desc_page = 'Liste des films par ' . $categ->getName();
+    $baliseMetaRobots = '<meta name="robots" content="index,follow">';
+
     require_once '../views/' . $vue . '.php';
 }
 else {

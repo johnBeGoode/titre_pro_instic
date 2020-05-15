@@ -22,7 +22,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Ajouter') {
     }
     
     $_SESSION['success'] = 'Le nouveau film a bien été ajouté';
-    header('Location: /administration?page=movies');
+    header('Location: /administration?page=movies'); // sinon la modal s'affiche de nouveau
 } 
 
 // -------------------------

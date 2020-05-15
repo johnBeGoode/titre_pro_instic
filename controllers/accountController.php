@@ -10,6 +10,7 @@ $movieManager = new MovieManager();
 
 $title_page = 'Créer un compte';
 $desc_page = 'Création de compte utilisateur';
+$baliseMetaRobots = '<meta name="robots" content="index,follow">';
 
 $jsFiles = ['hideNotif.js'];
 

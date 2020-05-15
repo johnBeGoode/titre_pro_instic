@@ -8,6 +8,7 @@ $movieManager = new MovieManager();
 
 $title_page = "Accueil Chromatic Siné";
 $desc_page = "Articles du jour avec les nouveaux films ouvert à débat";
+$baliseMetaRobots = '<meta name="robots" content="index,follow">';
 
 $jsFiles = ['home.js','caroussel.js'];
 

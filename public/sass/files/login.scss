@@ -23,6 +23,14 @@
             margin-bottom: -1px;
         }
     }
+    p {
+        font-size: 0.8rem;
+        text-align: center;
+        a {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    }
     footer {
         position: absolute;
         bottom: 0;

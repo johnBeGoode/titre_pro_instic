@@ -19,5 +19,6 @@
         <input type="password" name="password" class="form-control" placeholder="Votre mot de passe" required>
         <button class="btn btn-lg btn-primary btn-block mt-5" type="submit">Valider</button>
     </form>
+    <p>Si vous ne disposez pas d'un compte, vous pouvez en créer un <a href="/account-creating">ici</a></p>
     <?php require_once 'include-parts/footer.php'; ?>
 </div>

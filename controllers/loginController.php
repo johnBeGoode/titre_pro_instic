@@ -9,6 +9,7 @@ $movieManager = new MovieManager();
 
 $title_page = 'Page de connexion';
 $desc_page = 'Identification pour accéder aux différentes sessions';
+$baliseMetaRobots = '<meta name="robots" content="index,follow">';
 
 $allCategories = $categoryManager->getAllCategories();
 

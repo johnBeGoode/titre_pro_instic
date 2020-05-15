@@ -19,6 +19,7 @@ $catForThisMovie = $movieManager->getCategoriesForAMovie($vars['id']);
 if ($vars['slug'] == $movie->getSlug() && ($movie->getIsPublished() || $movie->getMisEnAvant())) {
     $title_page = 'Article '. $movie->getTitle();
     $desc_page = "Fiche détaillé et commentaires utilisateurs";
+    $baliseMetaRobots = '<meta name="robots" content="index,follow">';
 
     if (isset($_POST['submit'])) {
         $comment = $_POST['comment'];

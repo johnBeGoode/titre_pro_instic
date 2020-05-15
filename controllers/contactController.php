@@ -9,6 +9,7 @@ $allCategories = $categoryManager->getAllCategories();
 
 $title_page = "Contact Chromatic Siné";
 $desc_page = "Page de contact pour toutes suggestions";
+$baliseMetaRobots = '<meta name="robots" content="index,follow">';
 
 $jsFiles = ['form.js', 'hideNotif.js'];
 
