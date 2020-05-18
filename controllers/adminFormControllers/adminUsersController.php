@@ -79,7 +79,6 @@ elseif (isset($_GET['action']) && $_GET['action'] == 'update') {
 // -------------------------
 // SUPPRIMER
 
-
 elseif (isset($_GET['action']) && $_GET['action'] == 'delete') {
     $id = htmlspecialchars($_GET['id']);
     $userManager->delete($id);

@@ -26,8 +26,7 @@ if (isset($_POST['submit'])) {
     $role = 'User';
    
     if (empty($GLOBALS['userFormErrors']) && $username && $password && $email) {
-        $newUserId = $userManager->add($avatar, $username, $password, $email, $role);
-        // retourne aussi le last userId
+        $newUserId = $userManager->add($avatar, $username, $password, $email, $role);  // retourne aussi le last userId
         if (!empty($_FILES['avatar']['name'])) {
             $avatarUrl = uploadFile($_FILES, $newUserId);
             if (empty($GLOBALS['userFormErrors'])) {

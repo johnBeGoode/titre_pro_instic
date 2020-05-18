@@ -88,7 +88,7 @@ function verifUsernameInput($username) {
         $GLOBALS['userFormErrors'][] = "Le nom utilisateur doit contenir au moins 4 lettres !";
     } 
     else {
-        return $username;
+        return htmlspecialchars($username);
     }    
 
     return false;
@@ -125,7 +125,7 @@ function verifEmailInput($email) {
         $GLOBALS['userFormErrors'][] = "Votre adresse email n'est pas valide !";
     }
     else {
-        return $email;
+        return htmlspecialchars($email);
     }
 
     return false;

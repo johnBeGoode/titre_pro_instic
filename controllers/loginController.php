@@ -19,7 +19,7 @@ if (isset($_POST['login']) && !empty($_POST['login']) && isset($_POST['password'
     $user = $userManager->getUserbyName($_POST['login']);
 
     if ($user) {
-        $authentification = password_verify($_POST['password'], $user->getPassword());
+        $authentification = password_verify($_POST['password'], $user->getPassword()); // Vérifie que le mot de passe correspond au hachage
     }
 
     if ($authentification) {
