@@ -1,17 +1,15 @@
 {
     "local": {
-        "host" :     "localhost",
-        "dbname":    "appjohn",
-        "login":     "root",
-        "password":  ""
+        "host": "localhost",
+        "dbname": "appjohn",
+        "login": "root",
+        "password": ""
     },
-
     "prod": {
-        "host":     "ovh.net",
-        "dbname":   "appjohnOVH",
-        "login":    "myID",
+        "host": "ovh.net",
+        "dbname": "appjohnOVH",
+        "login": "myID",
         "password": "myPassword"
     },
-
     "online": false
 }

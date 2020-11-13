@@ -1,4 +1,5 @@
 <?php
+
 use App\EntityManager\CategoryManager;
 
 $categoryManager = new CategoryManager();

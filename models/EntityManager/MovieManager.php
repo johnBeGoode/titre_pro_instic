@@ -1,21 +1,26 @@
 <?php
+
 namespace App\EntityManager;
+
 use App\DBFactory;
 use App\Entity\Movie;
 
 
-class MovieManager {
+class MovieManager
+{
 
     protected $db;
 
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->db = DBFactory::getConnexion();
     }
 
-    public function add($title, $synopsis, $picture, $isPublished, $categories, $trailer, $misEnAvant) {
+    public function add($title, $synopsis, $picture, $isPublished, $categories, $trailer, $misEnAvant)
+    {
         $slug = strtolower($title);
-        $slug = str_replace(' ','_', $slug);
+        $slug = str_replace(' ', '_', $slug);
 
         $sql = "INSERT INTO movies (title, synopsis, date_add, picture, is_published, slug, trailer, mis_en_avant) VALUES (:title, :synopsis, NOW(), :picture, :is_published, :slug, :trailer, :mis_en_avant)";
         $req = $this->db->prepare($sql);
@@ -39,10 +44,11 @@ class MovieManager {
         }
     }
 
-    public function update($title, $synopsis, $picture, $categories, $trailer, $isPublished, $misEnAvant, $id) {
+    public function update($title, $synopsis, $picture, $categories, $trailer, $isPublished, $misEnAvant, $id)
+    {
         $slug = strtolower($title);
-        $slug = str_replace(' ','_', $slug);
-        
+        $slug = str_replace(' ', '_', $slug);
+
         $sql = "UPDATE movies SET title = :title, synopsis = :synopsis, picture = :picture, trailer = :trailer, is_published = :is_published, slug = :slug, mis_en_avant = :mis_en_avant WHERE id = :id";
         $req = $this->db->prepare($sql);
 
@@ -69,48 +75,56 @@ class MovieManager {
         }
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $sql = "DELETE FROM movies WHERE id = " . (int)$id;
         $this->db->exec($sql);
     }
 
-    public function count() {
+    public function count()
+    {
         $sql = "SELECT COUNT(id) FROM movies";
-        
+
         return $this->db->query($sql)->fetchColumn();
     }
 
-    public function getAllMovies() {
+    public function getAllMovies()
+    {
         $sql = "SELECT * FROM movies ORDER BY date_add DESC";
         $req = $this->db->query($sql);
 
         return $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Movie');
     }
 
-    public function getAllMoviesPublished() {
+    public function getAllMoviesPublished()
+    {
         $sql = "SELECT * FROM movies WHERE is_published = 1 ORDER BY date_add DESC";
         $req = $this->db->query($sql);
 
         return $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Movie');
     }
 
-    public function getNbMovies(int $nb) {
+    // Nombre de films affichés sur la page home
+    public function getNbMovies(int $nb)
+    {
         $sql = "SELECT * FROM movies WHERE is_published = 1 ORDER BY date_add DESC LIMIT 0, :nb_max";
-        $req = $this->db->prepare($sql);        
+        $req = $this->db->prepare($sql);
         $req->bindValue(':nb_max', $nb, \PDO::PARAM_INT);
         $req->execute();
 
         return $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Movie');
     }
 
-    public function getMoviesMisenAvant() {
+    public function getMoviesMisenAvant()
+    {
         $sql = "SELECT * FROM movies WHERE mis_en_avant = 1 ORDER BY date_add DESC";
         $req = $this->db->query($sql);
 
         return $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Movie');
     }
 
-    public function getOne($id) {
+    public function getOne($id)
+    {
         $sql = "SELECT * FROM movies WHERE id = :id";
         $req = $this->db->prepare($sql);
         $req->bindValue(':id', $id, \PDO::PARAM_INT);
@@ -119,7 +133,8 @@ class MovieManager {
         return $req->fetchObject('App\Entity\Movie');
     }
 
-    public function getNumberOfMoviesByCategory($categoriesId) {
+    public function getNumberOfMoviesByCategory($categoriesId)
+    {
         $sql = "SELECT DISTINCT COUNT(movie_id) FROM movies_categories INNER JOIN movies ON movies.id = movies_categories.Movie_id WHERE Categorie_id = :categoriesId AND (is_published = 1 OR mis_en_avant = 1) ";
         $req = $this->db->prepare($sql);
         $req->bindValue(':categoriesId', $categoriesId);
@@ -128,7 +143,8 @@ class MovieManager {
         return $req->fetchColumn();
     }
 
-    public function getMoviesByCategory($idCategory) {
+    public function getMoviesByCategory($idCategory)
+    {
         $sql =  "SELECT * FROM movies INNER JOIN movies_categories ON movies.id = movies_categories.Movie_id WHERE (is_published = 1 OR mis_en_avant = 1) AND movies_categories.Categorie_id = :idCategory";
         $req = $this->db->prepare($sql);
         $req->bindValue(':idCategory', $idCategory);
@@ -137,7 +153,8 @@ class MovieManager {
         return $req->fetchAll(\PDO::FETCH_CLASS, 'App\Entity\Movie');
     }
 
-    public function getCategoriesForAMovie($idMovie) {
+    public function getCategoriesForAMovie($idMovie)
+    {
         $sql = "SELECT categorie_id FROM movies_categories WHERE Movie_id = :movieId";
         $req = $this->db->prepare($sql);
         $req->bindValue(':movieId', (int)$idMovie);
@@ -146,12 +163,13 @@ class MovieManager {
         return $req->fetchAll(\PDO::FETCH_COLUMN, 0);
     }
 
-    public function getNbCommentsForaMovie($idMovie) {
+    public function getNbCommentsForaMovie($idMovie)
+    {
         $sql = "SELECT COUNT(id) FROM comments WHERE movie_id = :movieId";
         $req = $this->db->prepare($sql);
         $req->bindValue(':movieId', (int)$idMovie);
         $req->execute();
-        
+
         return $req->fetchColumn();
     }
 }

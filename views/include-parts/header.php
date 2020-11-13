@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
     <meta name="description" content="<?= $desc_page; ?>">
     <?= isset($baliseMetaRobots) ? $baliseMetaRobots : null; ?>
 </head>
+
 <body>
     <header>
         <a href="/">
@@ -23,22 +25,22 @@
             <nav>
                 <ul>
                     <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="/"><i class="fas fa-tv"></i> Séries</a></li>
-                    <li><a href="/"><i class="fas fa-podcast"></i> Podcasts</a></li>
-                    <li><a href="/contact"><i class="fas fa-phone-alt"></i> Contact</a></li>
+                    <li><a href="/series"><i class="fas fa-tv"></i> Séries</a></li>
+                    <li class="decalage"><a href="/podcasts"><i class="fas fa-podcast"></i> Podcasts</a></li>
+                    <li class="decalage"><a href="/contact"><i class="fas fa-phone-alt"></i> Contact</a></li>
                 </ul>
             </nav>
         </div>
         <div id="button">
             <?php
-            if (isset($_SESSION['user']) && $_SESSION['user']->getRole() == 'Admin'): ?>
+            if (isset($_SESSION['user']) && $_SESSION['user']->getRole() == 'Admin') : ?>
                 <a href="/">Bienvenue <?= $_SESSION['user']->getName(); ?></a>
                 <a href="/administration?page=movies" class="btn btn-dark">Admin</a>
-            <?php 
-            elseif(isset($_SESSION['user']) && $_SESSION['user']->getRole() == 'User'): ?>
+            <?php
+            elseif (isset($_SESSION['user']) && $_SESSION['user']->getRole() == 'User') : ?>
                 <a href="/">Bienvenue <?= $_SESSION['user']->getName(); ?></a>
                 <a href="/deconnexion" class="btn btn-danger">LogOut</a>
-            <?php else: ?>
+            <?php else : ?>
                 <a href="/account-creating">Créer un compte</a>
                 <a href="/connexion" class="btn btn-dark">Se connecter</a>
             <?php endif; ?>

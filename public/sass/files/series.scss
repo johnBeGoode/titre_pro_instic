@@ -1,0 +1,14 @@
+#page-series {
+    h1 {
+        text-align: center;
+    }
+
+    footer {
+        position: absolute;
+        bottom: 0;
+
+        @media screen and (max-height: 800px) {
+            position: relative; // pour que le footer reste en place en bas sinon empiète sur form de connexion
+        }
+    }
+}

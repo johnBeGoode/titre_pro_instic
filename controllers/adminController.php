@@ -1,5 +1,6 @@
 <?php
 error_reporting(E_ALL);
+
 use App\DBFactory;
 use App\EntityManager\CategoryManager;
 use App\EntityManager\MovieManager;
@@ -13,7 +14,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']->getRole() !== 'Admin') {
     header('Location: /connexion');
 }
 
-$categoryManager = new CategoryManager();
+// $categoryManager = new CategoryManager();
 
 $title_page = "Administration Chromatic Siné";
 $desc_page = "Gestion de tous les films, catégories, commentaires et utilisateurs du site";
@@ -38,16 +39,13 @@ if (isset($_GET['page'])) {
 
     if ($getPage === 'movies') {
         require_once 'adminFormControllers/adminMoviesController.php';
-    } 
-    elseif ($getPage === 'comments') {
+    } elseif ($getPage === 'comments') {
         require_once 'adminFormControllers/adminCommentsController.php';
-    }
-    elseif ($getPage === 'categories') {
+    } elseif ($getPage === 'categories') {
         require_once 'adminFormControllers/adminCategoriesController.php';
-    }
-    elseif ($getPage === 'users') {
+    } elseif ($getPage === 'users') {
         require_once 'adminFormControllers/adminUsersController.php';
     }
 }
 
-require_once '../views/' . $vue . '.php'; 
+require_once '../views/' . $vue . '.php';

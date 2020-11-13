@@ -1,5 +1,6 @@
 <?php
 error_reporting(E_ALL);
+
 use App\EntityManager\CategoryManager;
 use App\EntityManager\UserManager;
 use App\EntityManager\MovieManager;
@@ -24,15 +25,14 @@ if (isset($_POST['submit'])) {
     $email = verifEmailInput($_POST['email']);
     $avatar = '';
     $role = 'User';
-   
+
     if (empty($GLOBALS['userFormErrors']) && $username && $password && $email) {
         $newUserId = $userManager->add($avatar, $username, $password, $email, $role);  // retourne aussi le last userId
         if (!empty($_FILES['avatar']['name'])) {
             $avatarUrl = uploadFile($_FILES, $newUserId);
             if (empty($GLOBALS['userFormErrors'])) {
                 $userManager->updateAvatar($newUserId, $avatarUrl);
-            } 
-            else {
+            } else {
                 setErrorsAndSavePostInputs();
             }
         }
@@ -40,13 +40,11 @@ if (isset($_POST['submit'])) {
         if ($newUserId) {
             $_SESSION['success'] = 'Votre compte a bien été créé, veuillez vous connecter svp';
             header('Location: /connexion');
-        } 
-        else  {
+        } else {
             $GLOBALS['userFormErrors'][] = $newUserId;
             setErrorsAndSavePostInputs();
         }
-    }
-    else {
+    } else {
         setErrorsAndSavePostInputs();
     }
 }

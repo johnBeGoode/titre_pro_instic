@@ -1,5 +1,6 @@
 <?php
 error_reporting(E_ALL);
+
 use App\EntityManager\MovieManager;
 use App\EntityManager\CategoryManager;
 
@@ -10,7 +11,7 @@ $title_page = "Accueil Chromatic Siné";
 $desc_page = "Articles du jour avec les nouveaux films ouvert à débat";
 $baliseMetaRobots = '<meta name="robots" content="index,follow">';
 
-$jsFiles = ['home.js','caroussel.js'];
+$jsFiles = ['home.js', 'caroussel.js'];
 
 $movies = $movieManager->getNbMovies(9);
 $allCategories = $categoryManager->getAllCategories();

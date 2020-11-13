@@ -10,6 +10,8 @@ $movieManager = new MovieManager();
 $commentManager = new CommentManager();
 $categoryManager = new CategoryManager();
 
+$jsFiles = ['recupNewComments.js'];
+
 $allCategories = $categoryManager->getAllCategories();
 $movie = $movieManager->getOne($vars['id']);
 
@@ -17,7 +19,7 @@ $comments = $commentManager->getAllCommentsForMovie($vars['id']);
 $catForThisMovie = $movieManager->getCategoriesForAMovie($vars['id']);
 
 if ($vars['slug'] == $movie->getSlug() && ($movie->getIsPublished() || $movie->getMisEnAvant())) {
-    $title_page = 'Article '. $movie->getTitle();
+    $title_page = 'Article ' . $movie->getTitle();
     $desc_page = "Fiche détaillé et commentaires utilisateurs";
     $baliseMetaRobots = '<meta name="robots" content="index,follow">';
 
@@ -31,7 +33,6 @@ if ($vars['slug'] == $movie->getSlug() && ($movie->getIsPublished() || $movie->g
     }
 
     require_once '../views/' . $vue . '.php';
-}
-else {    
+} else {
     Router::badUrl();
 }

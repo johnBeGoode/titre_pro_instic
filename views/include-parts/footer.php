@@ -4,8 +4,8 @@
             <h5>Plan</h5>
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="">Séries</a></li>
-                <li><a href="">Podcasts</a></li>
+                <li><a href="/series">Séries</a></li>
+                <li><a href="/podcasts">Podcasts</a></li>
                 <li><a href="/contact">Contact</a></li>
             </ul>
         </div>
@@ -13,43 +13,43 @@
         <div class="div_footer">
             <h5>Chromatic</h5>
             <ul>
-                <li><a href="">Recrutement</a></li> 
-                <li><a href="">Partenaires</a></li>
-                <li><a href="">Mentions légales</a></li>
-                <li><a href="">A propos</a></li>
+                <li><a href="#">Recrutement</a></li>
+                <li><a href="#">Partenaires</a></li>
+                <li><a href="#">Mentions légales</a></li>
+                <li><a href="#">A propos</a></li>
             </ul>
         </div>
 
         <div class="div_footer">
             <h5>Catégories</h5>
-                <ul id="categories-footer">
-                    <?php 
-                    define('NB_PAR_COL', 4); // nb de catégories par colonne
-                    $i = 0; 
-                    foreach ($allCategories as $category):
-                        if ($i % NB_PAR_COL == 0) {
-                            if ($i > 0) {
-                                echo '</div>';
-                            }
-                            echo '<div>'; 
-                        } 
-                    ?>
-                        <li>
-                            <a href="/categorie/<?= strtolower($category->getName()); ?>/<?= $category->getId(); ?>">
-                                <?= $category->getName() . ' <span>(' . $movieManager->getNumberOfMoviesByCategory($category->getId()) . ')</span>'; ?>
-                            </a>
-                        </li> 
-                    <?php
-                        $i++;
-                    endforeach; 
-                    ?>
-                    <!-- fermeture seconde div -->
-                    </div> 
-                </ul>
+            <ul id="categories-footer">
+                <?php
+                define('NB_PAR_COL', 4); // nb de catégories par colonne
+                $i = 0;
+                foreach ($allCategories as $category) :
+                    if ($i % NB_PAR_COL == 0) {
+                        if ($i > 0) {
+                            echo '</div>';
+                        }
+                        echo '<div>';
+                    }
+                ?>
+                    <li>
+                        <a href="/categorie/<?= strtolower($category->getName()); ?>/<?= $category->getId(); ?>">
+                            <?= $category->getName() . ' <span>(' . $movieManager->getNumberOfMoviesByCategory($category->getId()) . ')</span>'; ?>
+                        </a>
+                    </li>
+                <?php
+                    $i++;
+                endforeach;
+                ?>
+                <!-- fermeture seconde div -->
         </div>
+        </ul>
+    </div>
     </div>
 
-    <div id="reseau_social"> 
+    <div id="reseau_social">
         <a href="https://www.facebook.com"><img class="logo_rs" src="/public/images/icones/ico_fb.png" alt="facebook"></a>
         <a href="https://fr.linkedin.com/"><img class="logo_rs" src="/public/images/icones/ico_in.png" alt="linkedin"></a>
         <a href="https://www.instagram.com/"><img class="logo_rs" src="/public/images/icones/ico_insta.png" alt="instagram"></a>
@@ -70,12 +70,13 @@
 
 <script src="/public/js/burger.js"></script>
 
-<?php 
-if(isset($jsFiles)):
-    for ($i=0; $i < count($jsFiles); $i++) {
+<?php
+if (isset($jsFiles)) :
+    for ($i = 0; $i < count($jsFiles); $i++) {
         echo '<script src="/public/js/' .  $jsFiles[$i] . '"></script>';
     }
-endif; 
+endif;
 ?>
 </body>
+
 </html>

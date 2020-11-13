@@ -20,7 +20,7 @@ class Router {
         foreach ($this->routes as $routePattern => $templateView) {            
             $routePatternRegexp = $this->transformRouteWithRegexp($routePattern);
             // $matches correspond aux différents match de la regExp avec l'url
-            if (preg_match('/^'.$routePatternRegexp.'$/', $this->url, $matches)) {
+            if (preg_match('/^'. $routePatternRegexp .'$/', $this->url, $matches)) {
                 $vars = $this->detectVars($routePattern, $matches); 
                 $this->callController($templateView, $vars);
                 return;
@@ -41,7 +41,7 @@ class Router {
     private function detectVars($routePattern, $matches) {
         $vars = [];
         $matches = array_slice($matches, 1); // on fait sauter le 1er param qui correspond a l'url entière qui a matché
-        // Détection des mots entre crochets grâce aux parenthèses capturantes
+        // Détection des mots entre accolades grâce aux parenthèses capturantes
         if (preg_match_all('/{(\w+)}*/', $routePattern, $detected)) {
             foreach ($detected[1] as $key=>$value) {
                 $vars[$value] = $matches[$key];                
@@ -55,7 +55,7 @@ class Router {
     }
     
     private function callController($vue, $vars = null) { 
-        // On vérifie que la vue existe           
+        // On vérifie que le contrôleur existe           
         if (!@include("../controllers/". $vue ."Controller.php")) {            
             throw new RouterException('Le controller '. $vue .'Controller.php n\'existe pas dans le dossier "/controllers/"');
         }

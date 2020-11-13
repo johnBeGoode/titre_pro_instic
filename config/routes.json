@@ -1,18 +1,19 @@
 {
     "routes": {
-        "":                         "home",
-        "categorie/{genre}/{id}":   "categorie",
-        "contact":                  "contact",
-        "article/{slug}/{id}":      "article",
-        "connexion":                "login",
-        "account-creating":         "account",
-        "administration":           "admin",
-        "deconnexion":              "deconnexion"        
-    },  
-    
+        "": "home",
+        "categorie/{genre}/{id}": "categorie",
+        "contact": "contact",
+        "article/{slug}/{id}": "article",
+        "connexion": "login",
+        "account-creating": "account",
+        "administration": "admin",
+        "deconnexion": "deconnexion",
+        "series": "series",
+        "podcasts": "podcasts"
+    },
     "regexParam": {
-        "{slug}":  "(.+)",
-        "{id}":    "([0-9]+)",
+        "{slug}": "(.+)",
+        "{id}": "([0-9]+)",
         "{genre}": "(.+)"
     }
 }

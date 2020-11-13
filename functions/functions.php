@@ -1,5 +1,6 @@
 <?php
-function is_connected():bool {
+function is_connected(): bool
+{
     // Si la session n'est pas débuté alors on la démarre
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
@@ -9,7 +10,8 @@ function is_connected():bool {
 
 // ------------------------
 
-function force_user_connected():void {
+function force_user_connected(): void
+{
     if (!is_connected()) {
         header('Location: /connexion');
         exit();
@@ -18,7 +20,8 @@ function force_user_connected():void {
 
 // ------------------------
 
-function uploadFile($file, $newUserId) {
+function uploadFile($file, $newUserId)
+{
     // On récupère le nom de l'image du user
     $avatar = basename($file['avatar']['name']);
     // On récupère sa taille
@@ -30,27 +33,25 @@ function uploadFile($file, $newUserId) {
     $uploadedFilePath = '../public/images/avatars/' . $newUserId . '.' . $extension;
 
     $temp_name = $file['avatar']['tmp_name'];
-    
+
     if (in_array($extension, $authorizedExtensions)) {
         if ($size > $maxSize) {
             $GLOBALS['userFormErrors'][] = 'Taille de l\'image trop grande, votre fichier fait ' . $size . ' octets alors que le maximum autorisé est de ' . $maxSize . ' octets !';
-        }
-        else if(empty($temp_name)) {
+        } else if (empty($temp_name)) {
             $GLOBALS['userFormErrors'][] = "Le serveur php a rencontré un probleme lors de l'upload du fichier !";
-        }
-        else {
+        } else {
             move_uploaded_file($temp_name, $uploadedFilePath);
             return '/public/images/avatars/' . $newUserId . '.' . $extension;
-        }  
-    }
-    else {
+        }
+    } else {
         $GLOBALS['userFormErrors'][] = 'Format de l\'image ' . $extension . ' non accepté';
     }
 }
 
 // ------------------------
 
-function uploadMoviePicture ($file) {
+function uploadMoviePicture($file)
+{
     $pictureName = basename($file['picture']['name']);
     $tempPicture = $file['picture']['tmp_name'];
     $extension = pathinfo($pictureName, PATHINFO_EXTENSION);
@@ -66,7 +67,8 @@ function uploadMoviePicture ($file) {
 
 // ------------------------
 
-function uploadMisEnAvant ($file) {
+function uploadMisEnAvant($file)
+{
     $pictureName = basename($file['misenavant']['name']);
     $tempPicture = $file['misenavant']['tmp_name'];
     $extension = pathinfo($pictureName, PATHINFO_EXTENSION);
@@ -80,34 +82,31 @@ function uploadMisEnAvant ($file) {
 
 // ------------------------
 
-function verifUsernameInput($username) {
+function verifUsernameInput($username)
+{
     if (empty($username)) {
         $GLOBALS['userFormErrors'][] = "Nom utilisateur vide !";
-    } 
-    elseif (strlen($username) < 4) {
+    } elseif (strlen($username) < 4) {
         $GLOBALS['userFormErrors'][] = "Le nom utilisateur doit contenir au moins 4 lettres !";
-    } 
-    else {
+    } else {
         return htmlspecialchars($username);
-    }    
+    }
 
     return false;
 }
 
 // ------------------------
 
-function verifPasswordInput($pass1, $pass2) {
+function verifPasswordInput($pass1, $pass2)
+{
     if ($pass1 !== $pass2) {
         $GLOBALS['userFormErrors'][] = "Mot de passe différents";
-    } 
-    elseif (empty($pass1) && empty($pass2)) {
+    } elseif (empty($pass1) && empty($pass2)) {
         $GLOBALS['userFormErrors'][] = "Mot de passe à renseigner";
-    } 
-    else {
+    } else {
         if (strlen($pass2) < MIN_LENGTH_PASSWORD) {
             $GLOBALS['userFormErrors'][] = "Le mot de passe doit contenir " . MIN_LENGTH_PASSWORD . " caracteres minimum !";
-        }
-        else {
+        } else {
             return password_hash(htmlspecialchars($pass2), PASSWORD_DEFAULT);
         }
     }
@@ -117,14 +116,13 @@ function verifPasswordInput($pass1, $pass2) {
 
 // ------------------------
 
-function verifEmailInput($email) {
+function verifEmailInput($email)
+{
     if (empty($email)) {
         $GLOBALS['userFormErrors'][] = "Adresse email vide !";
-    }
-    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $GLOBALS['userFormErrors'][] = "Votre adresse email n'est pas valide !";
-    }
-    else {
+    } else {
         return htmlspecialchars($email);
     }
 
@@ -133,7 +131,8 @@ function verifEmailInput($email) {
 
 // ------------------------
 
-function setErrorsAndSavePostInputs() {
+function setErrorsAndSavePostInputs()
+{
     $_SESSION['erreurs'] = $GLOBALS['userFormErrors'];
-    $_SESSION['formInput'] = $_POST;    
+    $_SESSION['formInput'] = $_POST;
 }

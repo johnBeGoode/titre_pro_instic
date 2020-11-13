@@ -1,5 +1,5 @@
 header {
-    width: 100%;  
+    width: 100%;
     height: 80px;
     display: flex;
     justify-content: space-around;
@@ -7,12 +7,15 @@ header {
     margin-bottom: 40px;
     @include gradeDark;
     @include boxShadowAround;
+
     div#logo_header {
         display: flex;
+
         #logo_image {
             width: 50px;
             height: 50px;
         }
+
         p {
             position: relative;
             top: 10px;
@@ -21,33 +24,40 @@ header {
             color: white;
         }
     }
+
     #menu {
         width: 40%;
         height: 50px;
+
         ul {
             list-style: none;
             display: flex;
             justify-content: space-around;
-            padding: 10px 0; 
+            padding: 10px 0;
+
             a {
                 text-decoration: none;
                 color: white;
                 font-weight: bold;
+
                 &:hover {
                     color: darkorange;
                 }
-            } 
+            }
         }
     }
+
     #button {
         a {
             color: $white;
             margin-left: 10px;
+
             &:hover {
                 color: $colorHoverLink;
             }
         }
     }
+
     #menu-burger {
         display: none;
         background-color: transparent;
@@ -63,10 +73,11 @@ header {
                 display: none;
             }
         }
+
         #menu {
             width: 50%;
         }
-    }  
+    }
 }
 
 
@@ -74,6 +85,7 @@ header {
     header {
         justify-content: space-between;
         padding: 0 15px;
+
         #menu {
             @include gradeDark;
             display: none;
@@ -89,21 +101,32 @@ header {
                 ul {
                     display: block;
                     text-align: center;
+
                     li {
                         margin-bottom: 10px;
+
+                        &.decalage {
+                            margin-left: 21px;
+                        }
+
+                        a {
+                            i {
+                                margin-right: 15px;
+                            }
+                        }
                     }
                 }
             }
         }
+
         #menu-burger {
             display: block;
         }
+
         #button {
             text-align: center;
         }
     }
 }
 
-@media screen and (max-width: $tabletPortrait) {
-    
-}
+@media screen and (max-width: $tabletPortrait) {}
