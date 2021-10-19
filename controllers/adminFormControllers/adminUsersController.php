@@ -10,7 +10,7 @@ $content = '../views/admin-parts/adminUsers.php';
 
 if (isset($_POST['submit']) && $_POST['submit'] == 'Ajouter') {
     $role = $_POST['role'];
-    $avatar = '/public/images/avatars/avatarpardefaut.jpg';
+    $avatar = '/public/images/avatars/default_avatar.png';
     $GLOBALS['userFormErrors'] = []; // Nécessaire de déclarer ??
     $userName   = verifUserNameInput($_POST["username"]);
     $password   = verifPasswordInput($_POST["password1"], $_POST["password2"]);
@@ -56,7 +56,7 @@ elseif (isset($_GET['action']) && $_GET['action'] == 'update') {
 
         if (empty($GLOBALS['userFormErrors'])) {
             if (!empty($_FILES['avatar']['name'])) {
-                if ($avatar != '/public/images/avatars/avatarpardefaut.jpg') {
+                if ($avatar != '/public/images/avatars/default_avatar.png') {
                     unlink('..' . $avatar); // gérer la suppression de l'ancienne image
                 }
                 $avatarUrl = uploadFile($_FILES, $id); 
@@ -81,6 +81,9 @@ elseif (isset($_GET['action']) && $_GET['action'] == 'update') {
 
 elseif (isset($_GET['action']) && $_GET['action'] == 'delete') {
     $id = htmlspecialchars($_GET['id']);
+    $user = $userManager->getUser($id);
+    $avatar = $user->getAvatar();
+    unlink('..' . $avatar);
     $userManager->delete($id);
     $_SESSION['success'] = 'L\'utilisateur a bien été supprimé';
     header('Location: /administration?page=users');

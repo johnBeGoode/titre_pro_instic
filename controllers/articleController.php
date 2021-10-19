@@ -10,7 +10,7 @@ $movieManager = new MovieManager();
 $commentManager = new CommentManager();
 $categoryManager = new CategoryManager();
 
-$jsFiles = ['recupNewComments.js'];
+// $jsFiles = ['recupNewComments.js'];
 
 $allCategories = $categoryManager->getAllCategories();
 $movie = $movieManager->getOne($vars['id']);

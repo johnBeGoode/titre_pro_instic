@@ -25,7 +25,7 @@
                     </p>
                 </div>
 
-                <!-- <?php $movie->getVideo(); ?>  -->
+                <?php $movie->getVideo(); ?> 
             </article>
 
         <?php endforeach; ?>

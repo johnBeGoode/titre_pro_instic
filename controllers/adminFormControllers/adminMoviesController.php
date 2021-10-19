@@ -1,6 +1,5 @@
 <?php
 $movies = $movieManager->getAllMovies(); // $movieManager instancié dans adminController
-
 $linkActiveNav['movies'] = 'active'; 
 $content = '../views/admin-parts/adminMovies.php';
 
@@ -69,6 +68,13 @@ elseif (isset($_GET['action']) && $_GET['action'] == 'update') {
 
 elseif (isset($_GET['action']) && $_GET['action'] == 'delete') {
     $id = htmlspecialchars($_GET['id']);
+    $movie = $movieManager->getOne($id);
+    $pictureMovie = $movie->getPicture();
+    $pictureMisEnAvant = $movie->getMisEnAvant();
+    unlink('..' . $pictureMovie);
+    if ($pictureMisEnAvant) {
+        unlink('../public/images/caroussel/' . $movie->getSlug() . '.jpg');
+    }
     $movieManager->delete($id);
     $_SESSION['success'] = 'Le film a été supprimé';
     header('Location: /administration?page=movies');

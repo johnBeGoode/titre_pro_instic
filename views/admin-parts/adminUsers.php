@@ -54,7 +54,7 @@
         foreach ($users as $user): 
             $avatar = $user->getAvatar();
             if ($avatar == '') {
-                $avatar = '/public/images/avatars/avatarpardefaut.jpg';
+                $avatar = '/public/images/avatars/default_avatar.png';
             }
         ?>
         <tr>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -17,7 +17,7 @@
     <header>
         <a href="/">
             <div id="logo_header">
-                <img src="https://cdn.svgporn.com/logos/chromatic-icon.svg" alt="logo blog" id="logo_image">
+                <img src="https://cdn.svgporn.com/logos/chromatic-icon.svg" alt="logo blog chromatic Siné" id="logo_image">
                 <p>Chromatic Siné</p>
             </div>
         </a>

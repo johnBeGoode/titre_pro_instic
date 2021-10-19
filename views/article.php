@@ -44,9 +44,6 @@
             <div id="votre-commentaire">
                 <?php
                 $avatar = $_SESSION['user']->getAvatar();
-                if ($avatar == '') {
-                    $avatar = '/public/images/avatars/avatarpardefaut.jpg';
-                }
                 ?>
                 <img width="40" height="40" src="<?= $avatar; ?>" alt="avatar de <?= $_SESSION['user']->getName(); ?>">
                 <form action="" method="post">

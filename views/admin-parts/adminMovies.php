@@ -18,16 +18,21 @@
         </select><br><br>
 
         <label>Catégorie</label><br>
+        
         <select name="categories[]" id="categories" multiple>
             <?php foreach ($categories as $category): ?>
                 <?php 
                 $attrSelected = '';
-                if(in_array($category->getId(), $movieCategories)) {
+                // Pose problème avec PHP8
+                if (in_array($category->getId(), $movieCategories)) {
                     $attrSelected = 'selected';
-                } ?>
+                }
+                // ... jusque là
+                ?>
                 <option value="<?= $category->getId() ?>" <?= $attrSelected; ?>><?= $category->getName() ?></option>
             <?php endforeach ?>
         </select><br><br>
+        
 
         <label>Trailer</label><br>
         <input type="text" class="form-control" name="trailer" value="<?= isset($movie) ? $movie->getTrailer() : ''; ?>"><br>

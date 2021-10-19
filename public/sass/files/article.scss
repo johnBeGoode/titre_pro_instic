@@ -63,12 +63,12 @@
             display: flex; 
             clear: both;
             margin-bottom: 20px;
-            &:nth-child(even) {
-                float: right;
-            }
-            &:nth-child(odd) {
-                float: left;
-            }
+            // &:nth-child(even) {
+            //     float: right;
+            // }
+            // &:nth-child(odd) {
+            //     float: left;
+            // }
             .commentaire-content {
                 padding-left: 15px;
                 font-style: italic;

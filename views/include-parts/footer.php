@@ -44,9 +44,9 @@
                 endforeach;
                 ?>
                 <!-- fermeture seconde div -->
+                </div>
+            </ul>
         </div>
-        </ul>
-    </div>
     </div>
 
     <div id="reseau_social">
@@ -58,7 +58,7 @@
 
     <div id="copyright">
         <img src="https://cdn.svgporn.com/logos/chromatic-icon.svg" alt="">
-        Chromatic Siné, All Rights Reserved, 2020
+        Chromatic Siné, All Rights Reserved, 2021
     </div>
 </footer>
 

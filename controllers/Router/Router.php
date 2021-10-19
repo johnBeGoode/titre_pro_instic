@@ -10,17 +10,18 @@ class Router {
     public function __construct($url) {
         $this->url = $url;
         
-        $routesJsonFile = file_get_contents(__DIR__."/../../config/routes.json");
+        $routesJsonFile = file_get_contents(__DIR__ . "/../../config/routes.json");
         $routesJson = json_decode($routesJsonFile, true);
         $this->routes = $routesJson['routes'];
         $this->regExpParam = $routesJson['regexParam'];            
     }
     
     public function getRoute() {
-        foreach ($this->routes as $routePattern => $templateView) {            
+        
+        foreach ($this->routes as $routePattern => $templateView) {   
             $routePatternRegexp = $this->transformRouteWithRegexp($routePattern);
-            // $matches correspond aux différents match de la regExp avec l'url
-            if (preg_match('/^'. $routePatternRegexp .'$/', $this->url, $matches)) {
+            // Si matches est fourni, il sera rempli par les résultats de la recherche
+            if (preg_match('#^'. $routePatternRegexp .'$#', $this->url, $matches)) {
                 $vars = $this->detectVars($routePattern, $matches); 
                 $this->callController($templateView, $vars);
                 return;
@@ -30,19 +31,23 @@ class Router {
     }
     
     // Transforme les routes pour les rendre compatible avec les regEx
-    private function transformRouteWithRegexp($routePattern) {
-        $routePattern = str_replace("/","\/",$routePattern);
+    private function transformRouteWithRegexp($routePattern) { 
+        // $routePattern = str_replace("/","\/",$routePattern);
         foreach ($this->regExpParam as $param => $regexp) {
-           $routePattern = str_replace($param,$regexp,$routePattern);
+            $routePattern = str_replace($param, $regexp, $routePattern);
         }
         return $routePattern;
     }
        
     private function detectVars($routePattern, $matches) {
         $vars = [];
-        $matches = array_slice($matches, 1); // on fait sauter le 1er param qui correspond a l'url entière qui a matché
+        // on fait sauter le 1er param qui correspond a l'url entière qui a matché
         // Détection des mots entre accolades grâce aux parenthèses capturantes
-        if (preg_match_all('/{(\w+)}*/', $routePattern, $detected)) {
+        $matches = array_slice($matches, 1);
+        // raccourci \w indique un caractère alphanumérique et l'underscore
+        // met la correspondance dans $detected (correspond aux param slug, id...)
+        if (preg_match_all('/{(\w+)}*/', $routePattern, $detected)) { 
+            // $detected[1] = 0 => 'slug' et 1 => 'id' et non 0 => {slug} et 1 => {id}
             foreach ($detected[1] as $key=>$value) {
                 $vars[$value] = $matches[$key];                
             }

@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
     $username = verifUsernameInput($_POST['username']);
     $password = verifPasswordInput($_POST['password1'], $_POST['password2']);
     $email = verifEmailInput($_POST['email']);
-    $avatar = '';
+    $avatar = '/public/images/avatars/default_avatar.png';
     $role = 'User';
 
     if (empty($GLOBALS['userFormErrors']) && $username && $password && $email) {

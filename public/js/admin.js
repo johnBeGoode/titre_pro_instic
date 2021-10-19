@@ -29,6 +29,8 @@ $(document).ready(function() {
         $('.button-add-content').trigger('click')
     }
 
+    
+    // Bouton annuler du formulaire d'ajout/update
     $('input[type=reset]').click(function(e) {
         e.preventDefault()
         $('.my-modal').slideUp(500, function() {
